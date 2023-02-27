@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a8f6a443b015944b2831cabeb63b81, type: 3}
   m_Name: TestPost
   m_EditorClassIdentifier: 
-  username: Admin
-  postImage: {fileID: 0}
+  username: admin
+  postImage: {fileID: 21300000, guid: 8efeee038e9b81140a6986b00859988d, type: 3}
   postText: This is the example post.
   comments: []
