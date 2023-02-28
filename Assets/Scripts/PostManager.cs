@@ -24,7 +24,7 @@ public class PostManager : MonoBehaviour
         if(dailyPosts.Count > 0)
         {
             curPost = 0;
-            changePost(curPost);
+            ChangePost(curPost);
         }
         else
         {
@@ -45,7 +45,7 @@ public class PostManager : MonoBehaviour
         }
     }
 
-    public void changePost(int postIndex) 
+    public void ChangePost(int postIndex) 
     {
         if(postIndex < dailyPosts.Count && postIndex >= 0)
         {
@@ -60,13 +60,13 @@ public class PostManager : MonoBehaviour
         }
     }
 
-    public void nextPost()
+    public void NextPost()
     {
-        changePost(curPost + 1);
+        ChangePost(curPost + 1);
     }
 
-    public void previousPost()
+    public void PreviousPost()
     {
-        changePost(curPost - 1);
+        ChangePost(curPost - 1);
     }
 }

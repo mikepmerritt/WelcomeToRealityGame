@@ -504,6 +504,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 986765855}
+    - target: {fileID: 2531558346487484951, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PreviousPost
+      objectReference: {fileID: 0}
     - target: {fileID: 2531558346827057850, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
       propertyPath: m_Name
       value: Post UI
@@ -600,6 +604,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 986765855}
+    - target: {fileID: 2531558347113188055, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextPost
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
 --- !u!1001 &4348563452727348051
@@ -640,6 +648,10 @@ PrefabInstance:
     - target: {fileID: 4348563452948664355, guid: 36669b0292ca33a41abf6a40828025fa, type: 3}
       propertyPath: m_Name
       value: Comments UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348563452948664355, guid: 36669b0292ca33a41abf6a40828025fa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4348563452948664359, guid: 36669b0292ca33a41abf6a40828025fa, type: 3}
       propertyPath: m_Pivot.x
