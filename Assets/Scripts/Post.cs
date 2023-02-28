@@ -12,4 +12,7 @@ public class Post : ScriptableObject
     public string postText;
     // TODO: make these comments objects too
     public List<string> comments;
+    public bool liked = false;
+    public bool shared = false;
+    public bool saved = false;
 }

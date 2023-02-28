@@ -16,3 +16,6 @@ MonoBehaviour:
   postImage: {fileID: 21300000, guid: 08e935df4f8be4146bfed8297c53e350, type: 3}
   postText: It's my birthday today! The party was awesome!
   comments: []
+  liked: 1
+  shared: 1
+  saved: 1

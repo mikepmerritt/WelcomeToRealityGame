@@ -7,9 +7,10 @@ using TMPro;
 public class PostManager : MonoBehaviour
 {
     public List<Post> dailyPosts, allPosts;
-    public int curPost;
+    public int curPostIndex;
     public TMP_Text username, postText;
     public Image image;
+    public Post curPost;
 
     void Start()
     {
@@ -23,8 +24,8 @@ public class PostManager : MonoBehaviour
 
         if(dailyPosts.Count > 0)
         {
-            curPost = 0;
-            ChangePost(curPost);
+            curPostIndex = 0;
+            ChangePost(curPostIndex);
         }
         else
         {
@@ -41,7 +42,14 @@ public class PostManager : MonoBehaviour
         Object[] fetchedPosts = Resources.LoadAll("Posts", typeof(Post));
         foreach (Object o in fetchedPosts)
         {
-            allPosts.Add((Post) o);
+            // TODO: this is to prevent likes saving across playthroughs, find a better way to do this!
+            // Also, this forces us to re-run to cleanse the posts, so really look into a solution.
+            Post p = (Post) o;
+            p.liked = false;
+            p.shared = false;
+            p.saved = false;
+
+            allPosts.Add(p);
         }
     }
 
@@ -49,10 +57,11 @@ public class PostManager : MonoBehaviour
     {
         if(postIndex < dailyPosts.Count && postIndex >= 0)
         {
-            curPost = postIndex;
-            username.text = "@" + dailyPosts[curPost].username;
-            postText.text = dailyPosts[curPost].postText;
-            image.sprite = dailyPosts[curPost].postImage;
+            curPostIndex = postIndex;
+            username.text = "@" + dailyPosts[curPostIndex].username;
+            postText.text = dailyPosts[curPostIndex].postText;
+            image.sprite = dailyPosts[curPostIndex].postImage;
+            curPost = dailyPosts[curPostIndex];
         }
         else
         {
@@ -62,11 +71,11 @@ public class PostManager : MonoBehaviour
 
     public void NextPost()
     {
-        ChangePost(curPost + 1);
+        ChangePost(curPostIndex + 1);
     }
 
     public void PreviousPost()
     {
-        ChangePost(curPost - 1);
+        ChangePost(curPostIndex - 1);
     }
 }

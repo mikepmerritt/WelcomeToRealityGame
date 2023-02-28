@@ -415,10 +415,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dailyPosts: []
   allPosts: []
-  curPost: 0
+  curPostIndex: 0
   username: {fileID: 0}
   postText: {fileID: 0}
   image: {fileID: 0}
+  curPost: {fileID: 0}
 --- !u!1 &1468587524
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +466,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2108726661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2108726663}
+  - component: {fileID: 2108726662}
+  m_Layer: 0
+  m_Name: Interaction Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2108726662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108726661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03912fd2cd7e1e042869e4ea63491723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  like: {fileID: 0}
+  share: {fileID: 0}
+  save: {fileID: 0}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  likedColor: {r: 0.8207547, g: 0.29036134, b: 0.4665884, a: 1}
+  sharedColor: {r: 0.086863644, g: 0.3018868, b: 0.11904603, a: 1}
+  savedColor: {r: 0.23820755, g: 0.3070868, b: 0.9528302, a: 1}
+  pm: {fileID: 0}
+--- !u!4 &2108726663
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108726661}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 14.031617}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2531558345912586856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -472,22 +525,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2531558345385756003, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
-      propertyPath: m_Sprite
+    - target: {fileID: 2531558345385756002, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 21300000, guid: 39f0482f638c20c4391a3cfe57d6492a, type: 3}
+      objectReference: {fileID: 2108726662}
+    - target: {fileID: 2531558345385756002, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSave
+      objectReference: {fileID: 0}
+    - target: {fileID: 2531558345385756002, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InteractionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2531558345515773438, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1468587525}
+    - target: {fileID: 2531558346426833444, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2108726662}
+    - target: {fileID: 2531558346426833444, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLike
+      objectReference: {fileID: 0}
+    - target: {fileID: 2531558346426833444, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InteractionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2531558346487484951, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 986765855}
-    - target: {fileID: 2531558346529448999, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
-      propertyPath: m_Sprite
+    - target: {fileID: 2531558346529448998, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 21300000, guid: bdfc382d3340a99498ff69c28608f3a5, type: 3}
+      objectReference: {fileID: 2108726662}
+    - target: {fileID: 2531558346529448998, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnShare
+      objectReference: {fileID: 0}
+    - target: {fileID: 2531558346529448998, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InteractionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2531558346827057850, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
       propertyPath: m_Name
       value: Post UI
