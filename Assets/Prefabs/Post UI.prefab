@@ -1338,7 +1338,7 @@ GameObject:
   - component: {fileID: 2531558346827057852}
   - component: {fileID: 2531558346827057851}
   m_Layer: 5
-  m_Name: Application UI
+  m_Name: Post UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
