@@ -12,11 +12,20 @@ public class PostManager : MonoBehaviour
     public Image image;
     public Post curPost;
 
+    // interaction variables
+    // TODO: there will be a lot more in here later, but for now we just want the rest of the buttons to do something
+    public GameObject like, share, save;
+    public Color defaultColor, likedColor, sharedColor, savedColor;
+
     void Start()
     {
         username = GameObject.Find("Username").GetComponent<TMP_Text>();
         postText = GameObject.Find("Post Text").GetComponent<TMP_Text>();
         image = GameObject.Find("Post Image").GetComponent<Image>();
+
+        like = GameObject.Find("Like");
+        share = GameObject.Find("Share");
+        save = GameObject.Find("Save");
 
         // TODO: need to change in the future when GenerateDailyPosts is updated
         GenerateDailyPosts();
@@ -62,6 +71,7 @@ public class PostManager : MonoBehaviour
             postText.text = dailyPosts[curPostIndex].postText;
             image.sprite = dailyPosts[curPostIndex].postImage;
             curPost = dailyPosts[curPostIndex];
+            ApplyInteractionColors();
         }
         else
         {
@@ -77,5 +87,56 @@ public class PostManager : MonoBehaviour
     public void PreviousPost()
     {
         ChangePost(curPostIndex - 1);
+    }
+
+    // interaction functions
+    // for now, just change colors
+    public void OnLike()
+    {
+        curPost.liked = !curPost.liked;
+        ApplyInteractionColors();
+    }
+
+    public void OnShare()
+    {
+        curPost.shared = !curPost.shared;
+        ApplyInteractionColors();
+    }
+
+    public void OnSave()
+    {
+        curPost.saved = !curPost.saved;
+        ApplyInteractionColors();
+    }
+
+    public void ApplyInteractionColors()
+    {
+        // liked
+        if(curPost.liked)
+        {
+            like.GetComponent<Image>().color = likedColor;
+        }
+        else
+        {
+            like.GetComponent<Image>().color = defaultColor;
+        }
+        // shared
+        if(curPost.shared)
+        {
+            share.GetComponent<Image>().color = sharedColor;
+        }
+        else
+        {
+            share.GetComponent<Image>().color = defaultColor;
+        }
+        // saved
+        if(curPost.saved)
+        {
+            save.GetComponent<Image>().color = savedColor;
+        }
+        else
+        {
+            save.GetComponent<Image>().color = defaultColor;
+        }
     }
 }

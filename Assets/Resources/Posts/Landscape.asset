@@ -16,3 +16,6 @@ MonoBehaviour:
   postImage: {fileID: 21300000, guid: 6fee579cbec395e4d83072a25a3144ef, type: 3}
   postText: Check out this great picture I got on my last vacation!
   comments: []
+  liked: 0
+  shared: 0
+  saved: 0
