@@ -50,7 +50,7 @@ public class PostManager : MonoBehaviour
         if(postIndex < dailyPosts.Count && postIndex >= 0)
         {
             curPost = postIndex;
-            username.text = dailyPosts[curPost].username;
+            username.text = "@" + dailyPosts[curPost].username;
             postText.text = dailyPosts[curPost].postText;
             image.sprite = dailyPosts[curPost].postImage;
         }
