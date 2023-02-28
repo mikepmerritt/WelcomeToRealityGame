@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28a8f6a443b015944b2831cabeb63b81, type: 3}
-  m_Name: TestPost
+  m_Name: News
   m_EditorClassIdentifier: 
-  username: admin
+  username: the_times
   postImage: {fileID: 21300000, guid: c756990b368716f488fdaa445daa2fbf, type: 3}
-  postText: This is the example post.
+  postText: 'BREAKING: New school to open next year'
   comments: []

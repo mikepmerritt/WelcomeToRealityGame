@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -413,6 +413,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9abf131d9cfebec4d9157cfc69269988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dailyPosts: []
+  allPosts: []
+  curPost: 0
+  username: {fileID: 0}
+  postText: {fileID: 0}
+  image: {fileID: 0}
 --- !u!1001 &2531558345912586856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -420,6 +426,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2531558346487484951, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 986765855}
     - target: {fileID: 2531558346827057850, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
       propertyPath: m_Name
       value: Application UI
@@ -508,5 +518,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2531558347113188055, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 986765855}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 009f0532f75603346a90869922e3e7dd, type: 3}
