@@ -15,7 +15,14 @@ MonoBehaviour:
   username: birthday_user
   postImage: {fileID: 21300000, guid: 08e935df4f8be4146bfed8297c53e350, type: 3}
   postText: It's my birthday today! The party was awesome!
-  comments: []
+  comments:
+  - commenter: friend1
+    commentText: Happy birthday!
+  - commenter: friend2
+    commentText: I wish I could have made it to the party, but I got sick last week.
+      Hope you had fun!
+  - commenter: friend3
+    commentText: Nice!
   liked: 0
   shared: 0
   saved: 0

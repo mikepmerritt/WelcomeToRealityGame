@@ -10,8 +10,7 @@ public class Post : ScriptableObject
     public Sprite postImage;
     [TextArea(15, 20)]
     public string postText;
-    // TODO: make these comments objects too
-    public List<string> comments;
+    public List<Comment> comments;
     public bool liked = false;
     public bool shared = false;
     public bool saved = false;
