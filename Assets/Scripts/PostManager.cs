@@ -8,7 +8,7 @@ public class PostManager : MonoBehaviour
 {
     public List<Post> dailyPosts, allPosts;
     public int curPostIndex;
-    public TMP_Text username, postText;
+    public TMP_Text username, postText, commentNum;
     public Image image;
     public Post curPost;
 
@@ -21,6 +21,7 @@ public class PostManager : MonoBehaviour
     {
         username = GameObject.Find("Username").GetComponent<TMP_Text>();
         postText = GameObject.Find("Post Text").GetComponent<TMP_Text>();
+        commentNum = GameObject.Find("Num Comments").GetComponent<TMP_Text>();
         image = GameObject.Find("Post Image").GetComponent<Image>();
 
         like = GameObject.Find("Like");
@@ -71,6 +72,7 @@ public class PostManager : MonoBehaviour
             postText.text = dailyPosts[curPostIndex].postText;
             image.sprite = dailyPosts[curPostIndex].postImage;
             curPost = dailyPosts[curPostIndex];
+            commentNum.text = "" + curPost.comments.Count;
             ApplyInteractionColors();
         }
         else

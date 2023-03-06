@@ -6,7 +6,8 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject posts, comments, content;
+    public GameObject posts, comments, leavingComments;
+    public GameObject content;
     public LayoutElement layout;
     public PostManager pm;
     public GameObject commentPrefab;
@@ -44,7 +45,6 @@ public class UIManager : MonoBehaviour
         {
             GameObject o = Instantiate(commentPrefab, content.transform);
             TMP_Text[] commentBoxes = o.GetComponentsInChildren<TMP_Text>();
-            Debug.Log("children: " + commentBoxes.Length);
             foreach(TMP_Text t in commentBoxes)
             {
                 if(t.gameObject.name == "Commenter")
