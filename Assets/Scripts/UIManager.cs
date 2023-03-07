@@ -7,10 +7,10 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     public GameObject posts, comments, leavingComments;
-    public GameObject commentContent;
-    public LayoutElement layout;
+    public GameObject commentContent, userCommentContent;
+    public LayoutElement commentLayout, userCommentLayout;
     public PostManager pm;
-    public GameObject commentPrefab;
+    public GameObject commentPrefab, userCommentPrefab;
 
     void Start()
     {
@@ -18,7 +18,9 @@ public class UIManager : MonoBehaviour
         comments = GameObject.Find("Comments UI");
         leavingComments = GameObject.Find("Leave Comment UI");
         commentContent = comments.GetComponentInChildren<LayoutElement>().gameObject;
-        layout = comments.GetComponentInChildren<LayoutElement>();
+        commentLayout = comments.GetComponentInChildren<LayoutElement>();
+        userCommentContent = leavingComments.GetComponentInChildren<LayoutElement>().gameObject;
+        userCommentLayout = leavingComments.GetComponentInChildren<LayoutElement>();
         pm = GameObject.Find("Post Manager").GetComponent<PostManager>();
         GoToPosts();
     }
@@ -43,7 +45,7 @@ public class UIManager : MonoBehaviour
         leavingComments.SetActive(false);
 
         // add comments to comments box
-        layout.preferredHeight = pm.curPost.comments.Count * 100; // add space for comments in box
+        commentLayout.preferredHeight = pm.curPost.comments.Count * 100; // add space for comments in box
         foreach(Comment c in pm.curPost.comments)
         {
             GameObject o = Instantiate(commentPrefab, commentContent.transform);
@@ -73,5 +75,20 @@ public class UIManager : MonoBehaviour
         {
             GameObject.Destroy(childTransform.gameObject);
         }
+
+        // generate user comment buttons
+        int userCommentsContentSize = 0;
+        foreach(Comment c in pm.curPost.userComments)
+        {
+            // if the comment has not already been made, add a button
+            if(!pm.curPost.comments.Contains(c))
+            {
+                GameObject o = Instantiate(userCommentPrefab, userCommentContent.transform);
+                o.GetComponentInChildren<TMP_Text>().text = c.commentText;
+                userCommentsContentSize += 100; // increase box size by 100 to fit a new button
+            }
+        }
+
+        userCommentLayout.preferredHeight = userCommentsContentSize;
     }
 }

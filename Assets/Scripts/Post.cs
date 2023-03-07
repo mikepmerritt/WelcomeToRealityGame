@@ -11,6 +11,7 @@ public class Post : ScriptableObject
     [TextArea(15, 20)]
     public string postText;
     public List<Comment> comments;
+    public List<Comment> userComments;
     public bool liked = false;
     public bool shared = false;
     public bool saved = false;

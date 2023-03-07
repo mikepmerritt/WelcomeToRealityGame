@@ -23,6 +23,11 @@ MonoBehaviour:
       Hope you had fun!
   - commenter: friend3
     commentText: Nice!
+  userComments:
+  - commenter: you
+    commentText: Happy birthday!
+  - commenter: you
+    commentText: Wish I got invited...
   liked: 0
   shared: 0
   saved: 0
