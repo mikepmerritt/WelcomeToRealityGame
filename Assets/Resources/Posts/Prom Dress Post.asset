@@ -16,7 +16,13 @@ MonoBehaviour:
   postImage: {fileID: 21300000, guid: 08e935df4f8be4146bfed8297c53e350, type: 3}
   postText: "Prom this year is going to be fun af! Can\u2019t wait to see you all
     there :)"
-  comments: []
+  comments:
+  - commenter: marku.s.mith
+    commentText: Gorgeous dress Kay!
+  - commenter: meg.farber
+    commentText: GIRL, YOU ARE SO PRETTY
+  - commenter: azure.does.art
+    commentText: "How are you not modeling already??\r"
   userComments:
   - commenter: you
     commentText: "More like frumpy af\u2013 That dress is Not flattering on you"

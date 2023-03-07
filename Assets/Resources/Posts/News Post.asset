@@ -16,7 +16,11 @@ MonoBehaviour:
   postImage: {fileID: 21300000, guid: c756990b368716f488fdaa445daa2fbf, type: 3}
   postText: Scientologist sources say that COVID-19 may have dwindled for good. They
     have encouraged followers to forgo mask-wearing.
-  comments: []
+  comments:
+  - commenter: azure.does.art
+    commentText: Fake!!
+  - commenter: user8390118
+    commentText: "I knew it! Stupid snowflakes and their \u201Cvirus\u201D"
   userComments: []
   liked: 0
   shared: 0

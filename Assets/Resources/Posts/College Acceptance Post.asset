@@ -16,7 +16,15 @@ MonoBehaviour:
   postImage: {fileID: 21300000, guid: c756990b368716f488fdaa445daa2fbf, type: 3}
   postText: "I MADE IT Y\u2019ALL! Going to Brownstone next year to make my family
     proud. I worked hard to get here, and I can\u2019t wait to work harder there."
-  comments: []
+  comments:
+  - commenter: carlosgonzales28
+    commentText: So proud of you man!
+  - commenter: meg.farber
+    commentText: HELL YEAH! College club!!
+  - commenter: azure.does.art
+    commentText: "AH! That\u2019s so awesome Markus!"
+  - commenter: kayla_brownie
+    commentText: So so sooo proud!
   userComments:
   - commenter: you
     commentText: Congrats dude!

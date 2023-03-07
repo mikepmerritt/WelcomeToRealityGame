@@ -16,7 +16,11 @@ MonoBehaviour:
   postImage: {fileID: 21300000, guid: 08e935df4f8be4146bfed8297c53e350, type: 3}
   postText: "First party with the college track team I\u2019ll be joining next year!
     Love my girlies~"
-  comments: []
+  comments:
+  - commenter: kayla_brownie
+    commentText: Oooo, looks like fun!
+  - commenter: carlosgonzales28
+    commentText: Bahaha, just juice in those solo cups I assume?
   userComments: []
   liked: 0
   shared: 0
