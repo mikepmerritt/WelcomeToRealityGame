@@ -27,22 +27,27 @@ public class UIManager : MonoBehaviour
 
     public void GoToPosts()
     {
+        // activate one screen, deactivate the rest
         posts.SetActive(true);
         comments.SetActive(false);
         leavingComments.SetActive(false);
         
-        // clear all comments so they don't stick around for other posts
-        foreach(Transform childTransform in commentContent.transform)
-        {
-            GameObject.Destroy(childTransform.gameObject);
-        }
+        // clean up screens for next opening
+        ClearComments();
+        ClearUserCommentButtons();
+        // update the comment counter when returning to the post in case it changed (added a commment?)
+        pm.commentNum.text = "" + pm.curPost.comments.Count;
     }
 
     public void GoToComments()
     {
+        // activate one screen, deactivate the rest
         comments.SetActive(true);
         posts.SetActive(false);
         leavingComments.SetActive(false);
+
+        // clean up screens for next opening
+        ClearUserCommentButtons();
 
         // add comments to comments box
         commentLayout.preferredHeight = pm.curPost.comments.Count * 100; // add space for comments in box
@@ -66,15 +71,13 @@ public class UIManager : MonoBehaviour
 
     public void GoToLeavingComments()
     {
+        // activate one screen, deactivate the rest
         leavingComments.SetActive(true);
         posts.SetActive(false);
         comments.SetActive(false);
         
-        // clear all comments so they don't stick around on screen
-        foreach(Transform childTransform in commentContent.transform)
-        {
-            GameObject.Destroy(childTransform.gameObject);
-        }
+        // clean up screens for next opening
+        ClearComments();
 
         // generate user comment buttons
         int userCommentsContentSize = 0;
@@ -85,10 +88,34 @@ public class UIManager : MonoBehaviour
             {
                 GameObject o = Instantiate(userCommentPrefab, userCommentContent.transform);
                 o.GetComponentInChildren<TMP_Text>().text = c.commentText;
+                o.GetComponent<Button>().onClick.AddListener(() => 
+                {
+                    pm.AddCommentToPost(c); 
+                    Destroy(o);
+                    userCommentLayout.preferredHeight -= 100;
+                });
                 userCommentsContentSize += 100; // increase box size by 100 to fit a new button
             }
         }
 
         userCommentLayout.preferredHeight = userCommentsContentSize;
+    }
+
+    public void ClearComments()
+    {
+        // clear all comments so they don't stick around for other posts
+        foreach(Transform childTransform in commentContent.transform)
+        {
+            GameObject.Destroy(childTransform.gameObject);
+        }
+    }
+
+    public void ClearUserCommentButtons()
+    {
+        // clear all comments so they don't stick around for other posts
+        foreach(Transform childTransform in userCommentContent.transform)
+        {
+            GameObject.Destroy(childTransform.gameObject);
+        }
     }
 }

@@ -59,6 +59,20 @@ public class PostManager : MonoBehaviour
             p.shared = false;
             p.saved = false;
 
+            // TODO: this is to remove user comments on subsequent replays, find a better way to do this if possible or necessary!
+            // Also, this forces us to re-run to cleanse the posts, so really look into a solution.
+            foreach(Comment uc in p.userComments)
+            {
+                // same as if(p.comments.Contains(c)) but for my unique comment objects
+                for(int i = p.comments.Count - 1; i >= 0; i--)
+                {
+                    Comment c = p.comments[i];
+                    if(uc.Equals(c))
+                    {
+                        p.comments.Remove(c);
+                    }
+                }
+            }
             allPosts.Add(p);
         }
     }
@@ -140,5 +154,11 @@ public class PostManager : MonoBehaviour
         {
             save.GetComponent<Image>().color = defaultColor;
         }
+    }
+
+    // add a comment to a post
+    public void AddCommentToPost(Comment c)
+    {
+        curPost.comments.Add(c);
     }
 }
