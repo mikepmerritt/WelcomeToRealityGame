@@ -102,6 +102,23 @@ public class UIManager : MonoBehaviour
                 o.GetComponent<Button>().onClick.AddListener(() => 
                 {
                     pm.AddCommentToPost(c); 
+
+                    // add rep changes on comment
+                    foreach(ReputationInfluencers r in pm.curPost.reputationInfluencers)
+                    {
+                        // if the influence type is comment and the comment specified in the rep event matches the comment being made
+                        if(r.args[0] == "comment" && pm.curPost.userComments[int.Parse(r.args[3])].Equals(c))
+                        {
+                            // try to add the thing, if it fails it already exists so add change to the one that exists already
+                            if(!pm.reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
+                            {
+                                // add rep if comment is made
+                                pm.reputations[r.args[2]] += int.Parse(r.args[1]);
+                            }
+                        }
+                    }
+
+                    // remove button
                     Destroy(o);
                     userCommentLayout.preferredHeight -= 100;
                 });

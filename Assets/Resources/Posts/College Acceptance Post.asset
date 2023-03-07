@@ -32,3 +32,22 @@ MonoBehaviour:
     - like
     - 1
     - marku.s.mith
+  - args:
+    - share
+    - 1
+    - marku.s.mith
+  - args:
+    - comment
+    - 3
+    - marku.s.mith
+    - 0
+  - args:
+    - comment
+    - 3
+    - marku.s.mith
+    - 1
+  - args:
+    - comment
+    - -3
+    - marku.s.mith
+    - 2

@@ -155,7 +155,7 @@ public class PostManager : MonoBehaviour
                 if(!reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
                 {
                     // add rep if post is shared
-                    if(!curPost.shared)
+                    if(curPost.shared)
                     {
                         reputations[r.args[2]] += int.Parse(r.args[1]);
                     }
