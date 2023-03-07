@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a8f6a443b015944b2831cabeb63b81, type: 3}
+  m_Name: College Acceptance Post
+  m_EditorClassIdentifier: 
+  username: marku.s.mith
+  postImage: {fileID: 21300000, guid: c756990b368716f488fdaa445daa2fbf, type: 3}
+  postText: "I MADE IT Y\u2019ALL! Going to Brownstone next year to make my family
+    proud. I worked hard to get here, and I can\u2019t wait to work harder there."
+  comments: []
+  userComments:
+  - commenter: you
+    commentText: Congrats dude!
+  - commenter: you
+    commentText: "So proud of you. You\u2019re going to do great out there!"
+  - commenter: you
+    commentText: Literally no one cares.
+  liked: 0
+  shared: 0
+  saved: 0
