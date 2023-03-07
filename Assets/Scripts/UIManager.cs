@@ -6,21 +6,29 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject posts, comments, leavingComments;
+    public GameObject posts, comments, leavingComments, profile;
     public GameObject commentContent, userCommentContent;
     public LayoutElement commentLayout, userCommentLayout;
     public PostManager pm;
     public GameObject commentPrefab, userCommentPrefab;
+    public TMP_Text profileTitle, reputation;
 
     void Start()
     {
         posts = GameObject.Find("Post UI");
         comments = GameObject.Find("Comments UI");
         leavingComments = GameObject.Find("Leave Comment UI");
+        profile = GameObject.Find("Profile UI");
+
         commentContent = comments.GetComponentInChildren<LayoutElement>().gameObject;
         commentLayout = comments.GetComponentInChildren<LayoutElement>();
+
         userCommentContent = leavingComments.GetComponentInChildren<LayoutElement>().gameObject;
         userCommentLayout = leavingComments.GetComponentInChildren<LayoutElement>();
+
+        profileTitle = GameObject.Find("Profile Title").GetComponent<TMP_Text>();
+        reputation = GameObject.Find("Reputation").GetComponent<TMP_Text>();
+
         pm = GameObject.Find("Post Manager").GetComponent<PostManager>();
         GoToPosts();
     }
@@ -31,6 +39,7 @@ public class UIManager : MonoBehaviour
         posts.SetActive(true);
         comments.SetActive(false);
         leavingComments.SetActive(false);
+        profile.SetActive(false);
         
         // clean up screens for next opening
         ClearComments();
@@ -45,6 +54,7 @@ public class UIManager : MonoBehaviour
         comments.SetActive(true);
         posts.SetActive(false);
         leavingComments.SetActive(false);
+        profile.SetActive(false);
 
         // clean up screens for next opening
         ClearUserCommentButtons();
@@ -75,6 +85,7 @@ public class UIManager : MonoBehaviour
         leavingComments.SetActive(true);
         posts.SetActive(false);
         comments.SetActive(false);
+        profile.SetActive(false);
         
         // clean up screens for next opening
         ClearComments();
@@ -99,6 +110,25 @@ public class UIManager : MonoBehaviour
         }
 
         userCommentLayout.preferredHeight = userCommentsContentSize;
+    }
+
+    public void GoToProfile()
+    {
+        // activate one screen, deactivate the rest
+        profile.SetActive(true);
+        posts.SetActive(false);
+        comments.SetActive(false);
+        leavingComments.SetActive(false);
+
+        // clean up screens for next opening
+        ClearComments();
+        ClearUserCommentButtons();
+
+        // set up profile
+        profileTitle.text = "@" + pm.curPost.username;
+        int repNum = 0;
+        pm.reputations.TryGetValue(pm.curPost.username, out repNum);
+        reputation.text = "Reputation: " + repNum;
     }
 
     public void ClearComments()

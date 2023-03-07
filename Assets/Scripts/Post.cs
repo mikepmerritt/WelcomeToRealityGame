@@ -15,4 +15,6 @@ public class Post : ScriptableObject
     public bool liked = false;
     public bool shared = false;
     public bool saved = false;
+    
+    public List<ReputationInfluencers> reputationInfluencers;
 }

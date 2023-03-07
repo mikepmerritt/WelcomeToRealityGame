@@ -27,3 +27,8 @@ MonoBehaviour:
   liked: 0
   shared: 0
   saved: 0
+  reputationInfluencers:
+  - args:
+    - like
+    - 1
+    - marku.s.mith
