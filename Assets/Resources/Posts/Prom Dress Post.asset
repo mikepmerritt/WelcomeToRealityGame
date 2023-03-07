@@ -27,3 +27,27 @@ MonoBehaviour:
   liked: 0
   shared: 0
   saved: 0
+  reputationInfluencers:
+  - args:
+    - like
+    - 1
+    - kayla_brownie
+  - args:
+    - share
+    - 1
+    - kayla_brownie
+  - args:
+    - comment
+    - -3
+    - kayla_brownie
+    - 0
+  - args:
+    - comment
+    - 2
+    - kayla_brownie
+    - 1
+  - args:
+    - comment
+    - 3
+    - kayla_brownie
+    - 2
