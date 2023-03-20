@@ -70,6 +70,11 @@ public class UIManager : MonoBehaviour
                 if(t.gameObject.name == "Commenter")
                 {
                     t.text = "@" + c.commenter;
+                    // add button behavior for clicking on the username which brings the player to the user's profile
+                    t.gameObject.GetComponent<Button>().onClick.AddListener(() => 
+                    {
+                        GoToProfileFromComment(c.commenter);
+                    });
                 }
                 else if(t.gameObject.name == "Comment Text")
                 {
@@ -145,6 +150,25 @@ public class UIManager : MonoBehaviour
         profileTitle.text = "@" + pm.curPost.username;
         int repNum = 0;
         pm.reputations.TryGetValue(pm.curPost.username, out repNum);
+        reputation.text = "Reputation: " + repNum;
+    }
+
+    public void GoToProfileFromComment(string commenterName)
+    {
+        // activate one screen, deactivate the rest
+        profile.SetActive(true);
+        posts.SetActive(false);
+        comments.SetActive(false);
+        leavingComments.SetActive(false);
+
+        // clean up screens for next opening
+        ClearComments();
+        ClearUserCommentButtons();
+
+        // set up profile
+        profileTitle.text = "@" + commenterName;
+        int repNum = 0;
+        pm.reputations.TryGetValue(commenterName, out repNum);
         reputation.text = "Reputation: " + repNum;
     }
 
