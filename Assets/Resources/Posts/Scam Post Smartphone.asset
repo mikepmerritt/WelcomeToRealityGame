@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Scam Post Smartphone
   m_EditorClassIdentifier: 
   username: carlosgonzales28
-  postImage: {fileID: 21300000, guid: 6fee579cbec395e4d83072a25a3144ef, type: 3}
+  postImage: {fileID: 21300000, guid: 221594f6e9170b84a861744fc7b7b6b9, type: 3}
   postText: OMG guys, I just won a new iPhone by entering this giveaway. Click the 
     link in my bio to enter before they run out!
   comments: []
@@ -21,3 +21,4 @@ MonoBehaviour:
   liked: 0
   shared: 0
   saved: 0
+  reputationInfluencers: []
