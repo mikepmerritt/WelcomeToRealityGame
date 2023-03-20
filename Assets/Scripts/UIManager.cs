@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public PostManager pm;
     public GameObject commentPrefab, userCommentPrefab;
     public TMP_Text profileTitle, reputation;
+    public Button profileReturn;
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class UIManager : MonoBehaviour
 
         profileTitle = GameObject.Find("Profile Title").GetComponent<TMP_Text>();
         reputation = GameObject.Find("Reputation").GetComponent<TMP_Text>();
+        profileReturn = GameObject.Find("Profile Return").GetComponent<Button>();
 
         pm = GameObject.Find("Post Manager").GetComponent<PostManager>();
         GoToPosts();
@@ -145,12 +147,21 @@ public class UIManager : MonoBehaviour
         // clean up screens for next opening
         ClearComments();
         ClearUserCommentButtons();
+        DestroyProfileListeners();
 
         // set up profile
         profileTitle.text = "@" + pm.curPost.username;
         int repNum = 0;
         pm.reputations.TryGetValue(pm.curPost.username, out repNum);
         reputation.text = "Reputation: " + repNum;
+
+        // set return screen since ambiguous
+        // in this case, the user came from a post, so return them to the current post
+        profileReturn.onClick.AddListener(() =>
+        {
+            GoToPosts();
+            DestroyProfileListeners();
+        });
     }
 
     public void GoToProfileFromComment(string commenterName)
@@ -170,6 +181,14 @@ public class UIManager : MonoBehaviour
         int repNum = 0;
         pm.reputations.TryGetValue(commenterName, out repNum);
         reputation.text = "Reputation: " + repNum;
+
+        // set return screen since ambiguous
+        // in this case, the user came from a commenter, so return them to the current post's comment section
+        profileReturn.onClick.AddListener(() =>
+        {
+            GoToComments();
+            DestroyProfileListeners();
+        });
     }
 
     public void ClearComments()
@@ -188,5 +207,10 @@ public class UIManager : MonoBehaviour
         {
             GameObject.Destroy(childTransform.gameObject);
         }
+    }
+
+    public void DestroyProfileListeners()
+    {
+        profileReturn.onClick.RemoveAllListeners();
     }
 }

@@ -523,14 +523,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2857308729472177789, guid: 3ff6b0c91f5da9e49b45e51ec3025a83, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1468587525}
-    - target: {fileID: 2857308729472177789, guid: 3ff6b0c91f5da9e49b45e51ec3025a83, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GoToPosts
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ff6b0c91f5da9e49b45e51ec3025a83, type: 3}
 --- !u!1 &1468587524
@@ -575,6 +567,7 @@ MonoBehaviour:
   userCommentPrefab: {fileID: 8004328022972797291, guid: 449668c3953a0324d851edc2b307e1f5, type: 3}
   profileTitle: {fileID: 0}
   reputation: {fileID: 0}
+  profileReturn: {fileID: 0}
 --- !u!4 &1468587526
 Transform:
   m_ObjectHideFlags: 0
@@ -1045,7 +1038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8631987517505959398, guid: 36669b0292ca33a41abf6a40828025fa, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 89.99985
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36669b0292ca33a41abf6a40828025fa, type: 3}
