@@ -21,7 +21,14 @@ MonoBehaviour:
     commentText: Oooo, looks like fun!
   - commenter: carlosgonzales28
     commentText: Bahaha, just juice in those solo cups I assume?
-  userComments: []
+  userComments:
+  - commenter: you
+    commentText: "Hey, watch what you\u2019re drinking. That stuff is bad for you,
+      Meg."
+  - commenter: you
+    commentText: YASSSS, go hard!!
+  - commenter: you
+    commentText: Omg, where was my invite tho
   liked: 0
   shared: 0
   saved: 0
@@ -36,3 +43,27 @@ MonoBehaviour:
     - 1
     - meg.farber
     - 1
+  - args:
+    - comment
+    - -3
+    - meg.farber
+    - 3
+    - 0
+  - args:
+    - comment
+    - 3
+    - meg.farber
+    - 3
+    - 1
+  - args:
+    - comment
+    - 3
+    - kayla_brownie
+    - 0
+    - 1
+  - args:
+    - comment
+    - 3
+    - meg.farber
+    - 3
+    - 2

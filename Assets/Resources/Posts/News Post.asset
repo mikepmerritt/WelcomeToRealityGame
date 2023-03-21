@@ -21,8 +21,56 @@ MonoBehaviour:
     commentText: Fake!!
   - commenter: user8390118
     commentText: "I knew it! Stupid snowflakes and their \u201Cvirus\u201D"
-  userComments: []
+  userComments:
+  - commenter: you
+    commentText: This is literally all lies. How are you claiming this is real??
+  - commenter: you
+    commentText: "Haha, I\u2019m willing to buy that."
   liked: 0
   shared: 0
   saved: 0
-  reputationInfluencers: []
+  reputationInfluencers:
+  - args:
+    - like
+    - 1
+    - user8390118
+    - 1
+  - args:
+    - like
+    - -1
+    - azure.does.art
+    - 0
+  - args:
+    - share
+    - 1
+    - user8390118
+    - 1
+  - args:
+    - share
+    - -1
+    - azure.does.art
+    - 0
+  - args:
+    - comment
+    - -3
+    - user8390118
+    - 3
+    - 0
+  - args:
+    - comment
+    - 3
+    - azure.does.art
+    - 0
+    - 0
+  - args:
+    - comment
+    - 3
+    - user8390118
+    - 3
+    - 1
+  - args:
+    - comment
+    - -3
+    - azure.does.art
+    - 0
+    - 1
