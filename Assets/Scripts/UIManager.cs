@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     public GameObject posts, comments, leavingComments, profile;
     public GameObject commentContent, userCommentContent;
     public LayoutElement commentLayout, userCommentLayout;
-    public PostManager pm;
+    public PostFeedManager pfm;
     public GameObject commentPrefab, userCommentPrefab;
     public TMP_Text profileTitle, reputation;
     public Button profileReturn;
@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
         reputation = GameObject.Find("Reputation").GetComponent<TMP_Text>();
         profileReturn = GameObject.Find("Profile Return").GetComponent<Button>();
 
-        pm = GameObject.Find("Post Manager").GetComponent<PostManager>();
+        pfm = GameObject.Find("Post Feed Manager").GetComponent<PostFeedManager>();
         GoToPosts();
     }
 
@@ -47,7 +47,10 @@ public class UIManager : MonoBehaviour
         ClearComments();
         ClearUserCommentButtons();
         // update the comment counter when returning to the post in case it changed (added a commment?)
-        pm.commentNum.text = "" + pm.curPost.comments.Count;
+        if(pfm.commentNum != null) // ignore on first time load
+        {
+            pfm.commentNum.text = "" + pfm.curPost.comments.Count;
+        }
     }
 
     public void GoToComments()
@@ -62,8 +65,8 @@ public class UIManager : MonoBehaviour
         ClearUserCommentButtons();
 
         // add comments to comments box
-        commentLayout.preferredHeight = pm.curPost.comments.Count * 100; // add space for comments in box
-        foreach(Comment c in pm.curPost.comments)
+        commentLayout.preferredHeight = pfm.curPost.comments.Count * 100; // add space for comments in box
+        foreach(Comment c in pfm.curPost.comments)
         {
             GameObject o = Instantiate(commentPrefab, commentContent.transform);
             TMP_Text[] commentBoxes = o.GetComponentsInChildren<TMP_Text>();
@@ -99,28 +102,28 @@ public class UIManager : MonoBehaviour
 
         // generate user comment buttons
         int userCommentsContentSize = 0;
-        foreach(Comment c in pm.curPost.userComments)
+        foreach(Comment c in pfm.curPost.userComments)
         {
             // if the comment has not already been made, add a button
-            if(!pm.curPost.comments.Contains(c))
+            if(!pfm.curPost.comments.Contains(c))
             {
                 GameObject o = Instantiate(userCommentPrefab, userCommentContent.transform);
                 o.GetComponentInChildren<TMP_Text>().text = c.commentText;
                 o.GetComponent<Button>().onClick.AddListener(() => 
                 {
-                    pm.AddCommentToPost(c); 
+                    pfm.AddCommentToPost(c); 
 
                     // add rep changes on comment
-                    foreach(ReputationInfluencers r in pm.curPost.reputationInfluencers)
+                    foreach(ReputationInfluencers r in pfm.curPost.reputationInfluencers)
                     {
                         // if the influence type is comment and the comment specified in the rep event matches the comment being made
-                        if(r.args[0] == "comment" && pm.curPost.userComments[int.Parse(r.args[3])].Equals(c))
+                        if(r.args[0] == "comment" && pfm.curPost.userComments[int.Parse(r.args[3])].Equals(c))
                         {
                             // try to add the thing, if it fails it already exists so add change to the one that exists already
-                            if(!pm.reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
+                            if(!pfm.reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
                             {
                                 // add rep if comment is made
-                                pm.reputations[r.args[2]] += int.Parse(r.args[1]);
+                                pfm.reputations[r.args[2]] += int.Parse(r.args[1]);
                             }
                         }
                     }
@@ -150,9 +153,37 @@ public class UIManager : MonoBehaviour
         DestroyProfileListeners();
 
         // set up profile
-        profileTitle.text = "@" + pm.curPost.username;
+        profileTitle.text = "@" + pfm.curPost.username;
         int repNum = 0;
-        pm.reputations.TryGetValue(pm.curPost.username, out repNum);
+        pfm.reputations.TryGetValue(pfm.curPost.username, out repNum);
+        reputation.text = "Reputation: " + repNum;
+
+        // set return screen since ambiguous
+        // in this case, the user came from a post, so return them to the current post
+        profileReturn.onClick.AddListener(() =>
+        {
+            GoToPosts();
+            DestroyProfileListeners();
+        });
+    }
+
+    public void GoToProfileFromFeed(string username)
+    {
+        // activate one screen, deactivate the rest
+        profile.SetActive(true);
+        posts.SetActive(false);
+        comments.SetActive(false);
+        leavingComments.SetActive(false);
+
+        // clean up screens for next opening
+        ClearComments();
+        ClearUserCommentButtons();
+        DestroyProfileListeners();
+
+        // set up profile
+        profileTitle.text = "@" + username;
+        int repNum = 0;
+        pfm.reputations.TryGetValue(username, out repNum);
         reputation.text = "Reputation: " + repNum;
 
         // set return screen since ambiguous
@@ -179,7 +210,7 @@ public class UIManager : MonoBehaviour
         // set up profile
         profileTitle.text = "@" + commenterName;
         int repNum = 0;
-        pm.reputations.TryGetValue(commenterName, out repNum);
+        pfm.reputations.TryGetValue(commenterName, out repNum);
         reputation.text = "Reputation: " + repNum;
 
         // set return screen since ambiguous
