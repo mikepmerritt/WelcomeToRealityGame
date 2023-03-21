@@ -40,8 +40,10 @@ public class PostFeedManager : MonoBehaviour
 
     public void CreatePostInFeed(Post p)
     {
+        // make an empty post object in the feed
         GameObject o = Instantiate(postPrefab, feed.transform);
-        Debug.Log(o.transform.childCount);
+
+        // go through all of the children for the empty post prefab and fill them out for the post
         for(int i = 0; i < o.transform.childCount; i++)
         {
             GameObject c = o.transform.GetChild(i).gameObject;
