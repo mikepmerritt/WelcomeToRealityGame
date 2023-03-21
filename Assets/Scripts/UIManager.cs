@@ -11,8 +11,8 @@ public class UIManager : MonoBehaviour
     public LayoutElement commentLayout, userCommentLayout;
     public PostFeedManager pfm;
     public GameObject commentPrefab, userCommentPrefab;
-    public TMP_Text profileTitle, reputation;
-    public Button profileReturn;
+    public TMP_Text commentExceptionText, profileTitle, reputation;
+    public Button leaveCommentButton, profileReturn;
 
     void Start()
     {
@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
 
         commentContent = comments.GetComponentInChildren<LayoutElement>().gameObject;
         commentLayout = comments.GetComponentInChildren<LayoutElement>();
+        commentExceptionText = GameObject.Find("Comments Exception Text").GetComponent<TMP_Text>();
+        leaveCommentButton = GameObject.Find("Leave Comment").GetComponent<Button>();
 
         userCommentContent = leavingComments.GetComponentInChildren<LayoutElement>().gameObject;
         userCommentLayout = leavingComments.GetComponentInChildren<LayoutElement>();
@@ -63,6 +65,25 @@ public class UIManager : MonoBehaviour
 
         // clean up screens for next opening
         ClearUserCommentButtons();
+        leaveCommentButton.interactable = true; // enable button for leaving comments
+        commentExceptionText.gameObject.SetActive(false); // remove text for no comments
+
+        // enable the exception text box if needed (for example, if there are no comments)
+        if(pfm.curPost.comments.Count == 0)
+        {
+            // set explanatory text for no comments
+            if(pfm.curPost.userComments.Count > 0)
+            {
+                commentExceptionText.text = "Be the first to leave a comment!";
+            }
+            else
+            {
+                commentExceptionText.text = "Comments are disabled for this post.";
+                leaveCommentButton.interactable = false;
+            }
+            // make text visible
+            commentExceptionText.gameObject.SetActive(true);
+        }
 
         // add comments to comments box
         commentLayout.preferredHeight = pfm.curPost.comments.Count * 100; // add space for comments in box
@@ -86,7 +107,7 @@ public class UIManager : MonoBehaviour
                     t.text = c.commentText;
                 }
             }
-        }
+        }        
     }
 
     public void GoToLeavingComments()
