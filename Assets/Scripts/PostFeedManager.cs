@@ -9,7 +9,7 @@ public class PostFeedManager : MonoBehaviour
     public List<Post> dailyPosts, allPosts;
     public Dictionary<string, int> reputations;
     public Color defaultColor, likedColor, sharedColor, savedColor;
-    public int sizePerPost;
+    public int sizePerPost, dailyTime;
     public GameObject postPrefab, feed;
     public UIManager uim;
     public Post curPost; // for UI manager to use with comments
@@ -103,8 +103,11 @@ public class PostFeedManager : MonoBehaviour
                                 {
                                     reputations[r.args[2]] -= int.Parse(r.args[1]);
                                 }
-                                    
                             }
+                            
+                            // time costs
+                            dailyTime -= int.Parse(r.args[3]);
+                            uim.UpdateTime();
                         }
                     }
                 });
@@ -148,6 +151,10 @@ public class PostFeedManager : MonoBehaviour
                                 }
                                 
                             }
+
+                            // time costs
+                            dailyTime -= int.Parse(r.args[3]);
+                            uim.UpdateTime();
                         }
                     }
                 });

@@ -38,22 +38,27 @@ MonoBehaviour:
     - like
     - 1
     - kayla_brownie
+    - 1
   - args:
     - share
     - 1
     - kayla_brownie
+    - 1
   - args:
     - comment
     - -3
     - kayla_brownie
+    - 3
     - 0
   - args:
     - comment
     - 2
     - kayla_brownie
+    - 3
     - 1
   - args:
     - comment
     - 3
     - kayla_brownie
+    - 3
     - 2

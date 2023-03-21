@@ -9,6 +9,7 @@ public class ReputationInfluencers
     // string 0: interaction type (like/share/comment)
     // string 1: numerical change
     // string 2: username of the person it affects
-    // string 3 (optional): comment number
+    // string 3: time cost
+    // string 4 (optional): comment number
     public string[] args;
 }

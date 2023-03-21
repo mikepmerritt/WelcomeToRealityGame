@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject commentPrefab, userCommentPrefab;
     public TMP_Text commentExceptionText, profileTitle, reputation;
     public Button leaveCommentButton, profileReturn;
+    public TMP_Text timeTracker, timeWarning;
 
     void Start()
     {
@@ -20,6 +21,8 @@ public class UIManager : MonoBehaviour
         comments = GameObject.Find("Comments UI");
         leavingComments = GameObject.Find("Leave Comment UI");
         profile = GameObject.Find("Profile UI");
+        timeTracker = GameObject.Find("Time Tracker").GetComponent<TMP_Text>();
+        timeWarning = GameObject.Find("Time Warning").GetComponent<TMP_Text>();
 
         commentContent = comments.GetComponentInChildren<LayoutElement>().gameObject;
         commentLayout = comments.GetComponentInChildren<LayoutElement>();
@@ -138,13 +141,17 @@ public class UIManager : MonoBehaviour
                     foreach(ReputationInfluencers r in pfm.curPost.reputationInfluencers)
                     {
                         // if the influence type is comment and the comment specified in the rep event matches the comment being made
-                        if(r.args[0] == "comment" && pfm.curPost.userComments[int.Parse(r.args[3])].Equals(c))
+                        if(r.args[0] == "comment" && pfm.curPost.userComments[int.Parse(r.args[4])].Equals(c))
                         {
                             // try to add the thing, if it fails it already exists so add change to the one that exists already
                             if(!pfm.reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
                             {
                                 // add rep if comment is made
                                 pfm.reputations[r.args[2]] += int.Parse(r.args[1]);
+
+                                // time costs
+                                pfm.dailyTime -= int.Parse(r.args[3]);
+                                UpdateTime();
                             }
                         }
                     }
@@ -264,5 +271,22 @@ public class UIManager : MonoBehaviour
     public void DestroyProfileListeners()
     {
         profileReturn.onClick.RemoveAllListeners();
+    }
+
+    public void UpdateTime()
+    {
+        timeTracker.text = "Time Remaining:\n" + pfm.dailyTime;
+        if(pfm.dailyTime <= -5)
+        {
+            // time penalty
+            timeWarning.gameObject.SetActive(true);
+            timeWarning.text = "You spent too much time on social media rather than studying!";
+        }
+        else if(pfm.dailyTime <= 0)
+        {
+            // low on time warning
+            timeWarning.gameObject.SetActive(true);
+            timeWarning.text = "Spending more time will hurt your grades!";
+        }
     }
 }
