@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour
     public TMP_Text commentExceptionText, profileTitle, reputation;
     public Button leaveCommentButton, profileReturn;
     public TMP_Text timeTracker, timeWarning;
+    public Sprite kaylaProfile, markusProfile, megProfile, scamProfile; // TODO: these should be removed when the profile interface is finished
+    public List<string> profileExceptions = new List<string>(); // TODO: this too
+    public GameObject profileOverlay, profileBackup; // TODO: this too
 
     void Start()
     {
@@ -37,6 +40,11 @@ public class UIManager : MonoBehaviour
         profileReturn = GameObject.Find("Profile Return").GetComponent<Button>();
 
         pfm = GameObject.Find("Post Feed Manager").GetComponent<PostFeedManager>();
+
+        // TODO: these should be removed when the profile interface is finished
+        profileOverlay = GameObject.Find("Profile Interface");
+        profileBackup = GameObject.Find("Profile Backup");
+
         GoToPosts();
     }
 
@@ -208,6 +216,36 @@ public class UIManager : MonoBehaviour
         ClearUserCommentButtons();
         DestroyProfileListeners();
 
+        // TODO: this should be removed when the profile interface is finished
+        // determine if we should use the image overlay or the backup one
+        if (profileExceptions.Contains(username))
+        {
+            profileOverlay.SetActive(true);
+            profileBackup.SetActive(false);
+
+            if(username == "meg.farber")
+            {
+                profileOverlay.GetComponent<Image>().sprite = megProfile;
+            }
+            else if(username == "marku.s.mith")
+            {
+                profileOverlay.GetComponent<Image>().sprite = markusProfile;
+            }
+            else if(username == "kayla_brownie")
+            {
+                profileOverlay.GetComponent<Image>().sprite = kaylaProfile;
+            }
+            else if(username == "user8390118")
+            {
+                profileOverlay.GetComponent<Image>().sprite = scamProfile;
+            }
+        }
+        else
+        {
+            profileOverlay.SetActive(false);
+            profileBackup.SetActive(true);
+        }
+
         // set up profile
         profileTitle.text = "@" + username;
         int repNum = 0;
@@ -234,6 +272,36 @@ public class UIManager : MonoBehaviour
         // clean up screens for next opening
         ClearComments();
         ClearUserCommentButtons();
+
+        // TODO: this should be removed when the profile interface is finished
+        // determine if we should use the image overlay or the backup one
+        if (profileExceptions.Contains(commenterName))
+        {
+            profileOverlay.SetActive(true);
+            profileBackup.SetActive(false);
+
+            if(commenterName == "meg.farber")
+            {
+                profileOverlay.GetComponent<Image>().sprite = megProfile;
+            }
+            else if(commenterName == "marku.s.mith")
+            {
+                profileOverlay.GetComponent<Image>().sprite = markusProfile;
+            }
+            else if(commenterName == "kayla_brownie")
+            {
+                profileOverlay.GetComponent<Image>().sprite = kaylaProfile;
+            }
+            else if(commenterName == "user8390118")
+            {
+                profileOverlay.GetComponent<Image>().sprite = scamProfile;
+            }
+        }
+        else
+        {
+            profileOverlay.SetActive(false);
+            profileBackup.SetActive(true);
+        }
 
         // set up profile
         profileTitle.text = "@" + commenterName;

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a8f6a443b015944b2831cabeb63b81, type: 3}
   m_Name: Scam Post Smartphone
   m_EditorClassIdentifier: 
-  username: carlosgonzales28
-  postImage: {fileID: 21300000, guid: 221594f6e9170b84a861744fc7b7b6b9, type: 3}
-  postText: OMG guys, I just won a new iPhone by entering this giveaway. Click the 
+  username: user8390118
+  postImage: {fileID: 21300000, guid: e122e7f66f8ac6c4fa0700209c5999b7, type: 3}
+  postText: OMG guys, I just won a new iPhone by entering this giveaway. Click the
     link in my bio to enter before they run out!
   comments: []
   userComments: []
