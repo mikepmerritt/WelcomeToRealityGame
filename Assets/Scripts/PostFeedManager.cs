@@ -64,6 +64,16 @@ public class PostFeedManager : MonoBehaviour
             }
             else if(c.name == "Like")
             {
+                // recolor button if liked previously
+                if(p.liked)
+                {
+                    c.GetComponent<Image>().color = likedColor;
+                }
+                else
+                {
+                    c.GetComponent<Image>().color = defaultColor;
+                }
+
                 // add like functionality
                 c.GetComponent<Button>().onClick.AddListener(() =>
                 {
@@ -113,6 +123,16 @@ public class PostFeedManager : MonoBehaviour
             }
             else if(c.name == "Share")
             {
+                // recolor button if shared previously
+                if(p.shared)
+                {
+                    c.GetComponent<Image>().color = sharedColor;
+                }
+                else
+                {
+                    c.GetComponent<Image>().color = defaultColor;
+                }
+
                 // add share functionality
                 c.GetComponent<Button>().onClick.AddListener(() =>
                 {
@@ -162,6 +182,16 @@ public class PostFeedManager : MonoBehaviour
             }
             else if(c.name == "Save")
             {
+                // recolor button if saved previously
+                if(p.saved)
+                {
+                    c.GetComponent<Image>().color = savedColor;
+                }
+                else
+                {
+                    c.GetComponent<Image>().color = defaultColor;
+                }
+
                 // add save functionality
                 c.GetComponent<Button>().onClick.AddListener(() =>
                 {
