@@ -30,47 +30,35 @@ MonoBehaviour:
   shared: 0
   saved: 0
   reputationInfluencers:
-  - args:
-    - like
-    - 1
-    - user8390118
-    - 1
-  - args:
-    - like
-    - -1
-    - azure.does.art
-    - 0
-  - args:
-    - share
-    - 1
-    - user8390118
-    - 1
-  - args:
-    - share
-    - -1
-    - azure.does.art
-    - 0
-  - args:
-    - comment
-    - -3
-    - user8390118
-    - 3
-    - 0
-  - args:
-    - comment
-    - 3
-    - azure.does.art
-    - 0
-    - 0
-  - args:
-    - comment
-    - 3
-    - user8390118
-    - 3
-    - 1
-  - args:
-    - comment
-    - -3
-    - azure.does.art
-    - 0
-    - 1
+  - type: 0
+    reputationChanges:
+    - username: user8390118
+      change: 1
+    - username: azure.does.art
+      change: -1
+    timeCost: 1
+    commentIndex: 0
+  - type: 1
+    reputationChanges:
+    - username: user8390118
+      change: 1
+    - username: azure.does.art
+      change: -1
+    timeCost: 1
+    commentIndex: 0
+  - type: 2
+    reputationChanges:
+    - username: user8390118
+      change: -3
+    - username: azure.does.art
+      change: 3
+    timeCost: 3
+    commentIndex: 0
+  - type: 2
+    reputationChanges:
+    - username: user8390118
+      change: 3
+    - username: azure.does.art
+      change: -3
+    timeCost: 3
+    commentIndex: 1

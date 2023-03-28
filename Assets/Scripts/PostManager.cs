@@ -118,27 +118,27 @@ public class PostManager : MonoBehaviour
 
         // reputation changes on like
         // string 1 should be "like", string 2 is the numerical change, string 3 is the username
-        foreach(ReputationInfluencers r in curPost.reputationInfluencers)
-        {
-            if(r.args[0] == "like")
-            {
-                // try to add the thing, if it fails it already exists so add change to the one that exists already
-                if(!reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
-                {
-                    // add rep if post is liked
-                    if(curPost.liked)
-                    {
-                        reputations[r.args[2]] += int.Parse(r.args[1]);
-                    }
-                    // remove rep if the post is unliked
-                    else
-                    {
-                        reputations[r.args[2]] -= int.Parse(r.args[1]);
-                    }
+        // foreach(ReputationInfluencers r in curPost.reputationInfluencers)
+        // {
+        //     if(r.args[0] == "like")
+        //     {
+        //         // try to add the thing, if it fails it already exists so add change to the one that exists already
+        //         if(!reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
+        //         {
+        //             // add rep if post is liked
+        //             if(curPost.liked)
+        //             {
+        //                 reputations[r.args[2]] += int.Parse(r.args[1]);
+        //             }
+        //             // remove rep if the post is unliked
+        //             else
+        //             {
+        //                 reputations[r.args[2]] -= int.Parse(r.args[1]);
+        //             }
                     
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
     }
 
     public void OnShare()
@@ -148,27 +148,27 @@ public class PostManager : MonoBehaviour
 
         // reputation changes on share
         // string 1 should be "share", string 2 is the numerical change, string 3 is the username
-        foreach(ReputationInfluencers r in curPost.reputationInfluencers)
-        {
-            if(r.args[0] == "share")
-            {
-                // try to add the thing, if it fails it already exists so add change to the one that exists already
-                if(!reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
-                {
-                    // add rep if post is shared
-                    if(curPost.shared)
-                    {
-                        reputations[r.args[2]] += int.Parse(r.args[1]);
-                    }
-                    // remove rep if the post is unshared
-                    else
-                    {
-                        reputations[r.args[2]] -= int.Parse(r.args[1]);
-                    }
+        // foreach(ReputationInfluencers r in curPost.reputationInfluencers)
+        // {
+        //     if(r.args[0] == "share")
+        //     {
+        //         // try to add the thing, if it fails it already exists so add change to the one that exists already
+        //         if(!reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
+        //         {
+        //             // add rep if post is shared
+        //             if(curPost.shared)
+        //             {
+        //                 reputations[r.args[2]] += int.Parse(r.args[1]);
+        //             }
+        //             // remove rep if the post is unshared
+        //             else
+        //             {
+        //                 reputations[r.args[2]] -= int.Parse(r.args[1]);
+        //             }
                     
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
     }
 
     public void OnSave()

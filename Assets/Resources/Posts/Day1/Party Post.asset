@@ -33,37 +33,35 @@ MonoBehaviour:
   shared: 0
   saved: 0
   reputationInfluencers:
-  - args:
-    - like
-    - 1
-    - meg.farber
-    - 1
-  - args:
-    - share
-    - 1
-    - meg.farber
-    - 1
-  - args:
-    - comment
-    - -3
-    - meg.farber
-    - 3
-    - 0
-  - args:
-    - comment
-    - 3
-    - meg.farber
-    - 3
-    - 1
-  - args:
-    - comment
-    - 3
-    - kayla_brownie
-    - 0
-    - 1
-  - args:
-    - comment
-    - 3
-    - meg.farber
-    - 3
-    - 2
+  - type: 0
+    reputationChanges:
+    - username: meg.farber
+      change: 1
+    timeCost: 1
+    commentIndex: 0
+  - type: 1
+    reputationChanges:
+    - username: meg.farber
+      change: 1
+    timeCost: 1
+    commentIndex: 0
+  - type: 2
+    reputationChanges:
+    - username: meg.farber
+      change: -3
+    timeCost: 3
+    commentIndex: 0
+  - type: 2
+    reputationChanges:
+    - username: meg.farber
+      change: 3
+    - username: kayla_brownie
+      change: 3
+    timeCost: 3
+    commentIndex: 1
+  - type: 2
+    reputationChanges:
+    - username: meg.farber
+      change: 3
+    timeCost: 3
+    commentIndex: 2

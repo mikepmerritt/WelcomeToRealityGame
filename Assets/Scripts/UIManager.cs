@@ -146,20 +146,24 @@ public class UIManager : MonoBehaviour
                     pfm.AddCommentToPost(c); 
 
                     // add rep changes on comment
+                    
                     foreach(ReputationInfluencers r in pfm.curPost.reputationInfluencers)
                     {
                         // if the influence type is comment and the comment specified in the rep event matches the comment being made
-                        if(r.args[0] == "comment" && pfm.curPost.userComments[int.Parse(r.args[4])].Equals(c))
+                        if(r.type == InteractionType.comment && pfm.curPost.userComments[r.commentIndex].Equals(c))
                         {
-                            // try to add the thing, if it fails it already exists so add change to the one that exists already
-                            if(!pfm.reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
+                            foreach(ReputationChange rc in r.reputationChanges)
                             {
-                                // add rep if comment is made
-                                pfm.reputations[r.args[2]] += int.Parse(r.args[1]);
+                                // try to add the thing, if it fails it already exists so add change to the one that exists already
+                                if(!pfm.reputations.TryAdd(rc.username, rc.change))
+                                {
+                                    // add rep if comment is made
+                                    pfm.reputations[rc.username] += rc.change;
 
-                                // time costs
-                                pfm.dailyTime -= int.Parse(r.args[3]);
-                                UpdateTime();
+                                    // time costs
+                                    pfm.dailyTime -= r.timeCost;
+                                    UpdateTime();
+                                }
                             }
                         }
                     }

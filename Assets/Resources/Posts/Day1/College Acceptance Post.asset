@@ -36,31 +36,33 @@ MonoBehaviour:
   shared: 0
   saved: 0
   reputationInfluencers:
-  - args:
-    - like
-    - 1
-    - marku.s.mith
-    - 1
-  - args:
-    - share
-    - 1
-    - marku.s.mith
-    - 1
-  - args:
-    - comment
-    - 3
-    - marku.s.mith
-    - 3
-    - 0
-  - args:
-    - comment
-    - 3
-    - marku.s.mith
-    - 3
-    - 1
-  - args:
-    - comment
-    - -3
-    - marku.s.mith
-    - 3
-    - 2
+  - type: 0
+    reputationChanges:
+    - username: marku.s.mith
+      change: 1
+    timeCost: 1
+    commentIndex: 0
+  - type: 1
+    reputationChanges:
+    - username: marku.s.mith
+      change: 1
+    timeCost: 1
+    commentIndex: 0
+  - type: 2
+    reputationChanges:
+    - username: marku.s.mith
+      change: 3
+    timeCost: 3
+    commentIndex: 0
+  - type: 2
+    reputationChanges:
+    - username: marku.s.mith
+      change: 3
+    timeCost: 3
+    commentIndex: 1
+  - type: 2
+    reputationChanges:
+    - username: marku.s.mith
+      change: -3
+    timeCost: 3
+    commentIndex: 2

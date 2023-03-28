@@ -84,25 +84,28 @@ public class PostFeedManager : MonoBehaviour
                     // if so, apply them
                     foreach(ReputationInfluencers r in p.reputationInfluencers)
                     {
-                        if(r.args[0] == "like")
+                        if(r.type == InteractionType.like)
                         {
-                            // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
-                            if(!reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
+                            foreach(ReputationChange rc in r.reputationChanges)
                             {
-                                // add rep if post is liked
-                                if(p.liked)
+                                // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
+                                if(!reputations.TryAdd(rc.username, rc.change))
                                 {
-                                    reputations[r.args[2]] += int.Parse(r.args[1]);
-                                }
-                                // remove rep if the post is unliked
-                                else
-                                {
-                                    reputations[r.args[2]] -= int.Parse(r.args[1]);
+                                    // add rep if post is liked
+                                    if(p.liked)
+                                    {
+                                        reputations[rc.username] += rc.change;
+                                    }
+                                    // remove rep if the post is unliked
+                                    else
+                                    {
+                                        reputations[rc.username] -= rc.change;
+                                    }
                                 }
                             }
                             
                             // time costs
-                            dailyTime -= int.Parse(r.args[3]);
+                            dailyTime -= r.timeCost;
                             uim.UpdateTime();
                         }
                     }
@@ -130,26 +133,28 @@ public class PostFeedManager : MonoBehaviour
                     // if so, apply them
                     foreach(ReputationInfluencers r in p.reputationInfluencers)
                     {
-                        if(r.args[0] == "share")
+                        if(r.type == InteractionType.share)
                         {
-                            // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
-                            if(!reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
+                            foreach(ReputationChange rc in r.reputationChanges)
                             {
-                                // add rep if post is shared
-                                if(p.shared)
+                                // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
+                                if(!reputations.TryAdd(rc.username, rc.change))
                                 {
-                                    reputations[r.args[2]] += int.Parse(r.args[1]);
+                                    // add rep if post is shared
+                                    if(p.shared)
+                                    {
+                                        reputations[rc.username] += rc.change;
+                                    }
+                                    // remove rep if the post is unshared
+                                    else
+                                    {
+                                        reputations[rc.username] -= rc.change;
+                                    }
                                 }
-                                // remove rep if the post is unshared
-                                else
-                                {
-                                    reputations[r.args[2]] -= int.Parse(r.args[1]);
-                                }
-                                
                             }
-
+                            
                             // time costs
-                            dailyTime -= int.Parse(r.args[3]);
+                            dailyTime -= r.timeCost;
                             uim.UpdateTime();
                         }
                     }
