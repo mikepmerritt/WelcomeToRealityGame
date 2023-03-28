@@ -19,28 +19,19 @@ public class PostFeedManager : MonoBehaviour
 
     void Start()
     {
-        // set current day to 1 initially
-        currentDay = 1;
+        // set current day to 0 initially so we can increment to 1
+        currentDay = 0;
 
+        // fetch important objects from scene
         feed = GameObject.Find("Post Feed").GetComponentInChildren<LayoutElement>().gameObject;
         uim = GameObject.Find("UI Manager").GetComponent<UIManager>();
         dayTracker = GameObject.Find("Day Tracker").GetComponent<TMP_Text>();
 
+        // set up empty dictionary for relationships
         reputations = new Dictionary<string, int>();
-        dailyPosts = FetchPosts(currentDay);
-
-        if(dailyPosts.Count > 0)
-        {
-            // insert all posts into the feed
-            foreach(Post p in dailyPosts)
-            {
-                CreatePostInFeed(p);
-            }
-        }
-        else
-        {
-            Debug.LogError("No posts provided!");
-        }
+        
+        // call function to increment to day 1 and populate feed
+        RefreshFeedForNewDay();
     }
 
     public void CreatePostInFeed(Post p)
@@ -254,10 +245,6 @@ public class PostFeedManager : MonoBehaviour
             allPosts.Add(p);
             returnedPosts.Add(p);
         }
-
-        // resize the feed content box to have enough space to fit all of the posts
-        // this only changes it for day 1, every other day will use RefreshFeedForNewDay()
-        GameObject.Find("Post UI").GetComponentInChildren<LayoutElement>().minHeight = fetchedPosts.Length * sizePerPost;
 
         return returnedPosts;
     }
