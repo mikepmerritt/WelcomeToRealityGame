@@ -25,7 +25,6 @@ public class UIManager : MonoBehaviour
         leavingComments = GameObject.Find("Leave Comment UI");
         profile = GameObject.Find("Profile UI");
         timeTracker = GameObject.Find("Time Tracker").GetComponent<TMP_Text>();
-        timeWarning = GameObject.Find("Time Warning").GetComponent<TMP_Text>();
 
         commentContent = comments.GetComponentInChildren<LayoutElement>().gameObject;
         commentLayout = comments.GetComponentInChildren<LayoutElement>();
@@ -347,7 +346,8 @@ public class UIManager : MonoBehaviour
 
     public void UpdateTime()
     {
-        // TODO: object doesn't load fast enough, so we get a null pointer here for the initial setup. ask about fixes.
+        // since these are called by the Post Feed Manager, start may not have finished yet
+        // as such, if they don't exist yet, fix that first
         if(timeTracker == null)
         {
             timeTracker = GameObject.Find("Time Tracker").GetComponent<TMP_Text>();
@@ -356,9 +356,15 @@ public class UIManager : MonoBehaviour
         {
             pfm = GameObject.Find("Post Feed Manager").GetComponent<PostFeedManager>();
         }
+        if(timeWarning == null)
+        {
+            timeWarning = GameObject.Find("Time Warning").GetComponent<TMP_Text>();
+        }
 
+        // update time
         timeTracker.text = "Time Remaining:\n" + pfm.dailyTime;
         
+        // update warning
         if(pfm.dailyTime <= -5)
         {
             // time penalty
@@ -370,6 +376,11 @@ public class UIManager : MonoBehaviour
             // low on time warning
             timeWarning.gameObject.SetActive(true);
             timeWarning.text = "Spending more time will hurt your grades!";
+        }
+        else
+        {
+            // hide warning (used for day transitions)
+            timeWarning.gameObject.SetActive(false);
         }
     }
 }
