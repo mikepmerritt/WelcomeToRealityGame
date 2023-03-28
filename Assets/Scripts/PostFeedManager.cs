@@ -9,7 +9,7 @@ public class PostFeedManager : MonoBehaviour
     public List<Post> dailyPosts, allPosts;
     public Dictionary<string, int> reputations;
     public Color defaultColor, likedColor, sharedColor, savedColor;
-    public int sizePerPost, dailyTime;
+    public int sizePerPost, dailyTime, timePerDay;
     public GameObject postPrefab, feed;
     public UIManager uim;
     public Post curPost; // for UI manager to use with comments
@@ -259,6 +259,10 @@ public class PostFeedManager : MonoBehaviour
         // increase day
         currentDay++;
         dayTracker.text = "Day " + currentDay;
+
+        // refresh daily time
+        dailyTime = timePerDay;
+        uim.UpdateTime();
 
         // remove all posts from feed
         for(int i = feed.transform.childCount - 1; i >= 0; i--)

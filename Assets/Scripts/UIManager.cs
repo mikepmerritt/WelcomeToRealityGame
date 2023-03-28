@@ -347,7 +347,18 @@ public class UIManager : MonoBehaviour
 
     public void UpdateTime()
     {
+        // TODO: object doesn't load fast enough, so we get a null pointer here for the initial setup. ask about fixes.
+        if(timeTracker == null)
+        {
+            timeTracker = GameObject.Find("Time Tracker").GetComponent<TMP_Text>();
+        }
+        if(pfm == null)
+        {
+            pfm = GameObject.Find("Post Feed Manager").GetComponent<PostFeedManager>();
+        }
+        
         timeTracker.text = "Time Remaining:\n" + pfm.dailyTime;
+        
         if(pfm.dailyTime <= -5)
         {
             // time penalty

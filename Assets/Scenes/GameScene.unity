@@ -448,13 +448,15 @@ MonoBehaviour:
   sharedColor: {r: 0.1137255, g: 0.59607846, b: 0.18431373, a: 1}
   savedColor: {r: 0.2392157, g: 0.30588236, b: 0.95294124, a: 1}
   sizePerPost: 500
-  dailyTime: 10
+  dailyTime: 0
+  timePerDay: 10
   postPrefab: {fileID: 818554091332268624, guid: 362ccffb84d5a7d46abfa4dc60ae6102, type: 3}
   feed: {fileID: 0}
   uim: {fileID: 0}
   curPost: {fileID: 0}
   commentNum: {fileID: 0}
   currentDay: 0
+  dayTracker: {fileID: 0}
 --- !u!1001 &1446703552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -625,7 +627,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468587524}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
