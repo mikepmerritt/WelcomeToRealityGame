@@ -6,6 +6,7 @@ using TMPro;
 
 public class PostManager : MonoBehaviour
 {
+    // WARNING: This script is outdated. Use PostFeedManager.cs instead.
     public List<Post> dailyPosts, allPosts;
     public int curPostIndex;
     public TMP_Text username, postText, commentNum;

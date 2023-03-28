@@ -14,15 +14,20 @@ public class PostFeedManager : MonoBehaviour
     public UIManager uim;
     public Post curPost; // for UI manager to use with comments
     public TMP_Text commentNum; // for UI manager to use when a comment is added
+    public int currentDay;
+    public TMP_Text dayTracker;
 
     void Start()
     {
+        // set current day to 1 initially
+        currentDay = 1;
+
         feed = GameObject.Find("Post Feed").GetComponentInChildren<LayoutElement>().gameObject;
         uim = GameObject.Find("UI Manager").GetComponent<UIManager>();
+        dayTracker = GameObject.Find("Day Tracker").GetComponent<TMP_Text>();
 
         reputations = new Dictionary<string, int>();
-        FetchPosts();
-        dailyPosts = allPosts;
+        dailyPosts = FetchPosts(currentDay);
 
         if(dailyPosts.Count > 0)
         {
@@ -215,13 +220,14 @@ public class PostFeedManager : MonoBehaviour
         curPost.comments.Add(c);
     }
 
-    public void FetchPosts()
+    public List<Post> FetchPosts(int day)
     {
         // TODO: in the future, a lot more will happen in here
         // This is where we will check post preconditions and make a random selection of which posts to use for a day
         // For the time being, this will just return a testing set of posts, but more to come later!
+        List<Post> returnedPosts = new List<Post>();
 
-        Object[] fetchedPosts = Resources.LoadAll("Posts", typeof(Post));
+        Object[] fetchedPosts = Resources.LoadAll("Posts/Day" + day, typeof(Post));
         foreach (Object o in fetchedPosts)
         {
             // TODO: this is to prevent likes saving across playthroughs, find a better way to do this!
@@ -246,9 +252,54 @@ public class PostFeedManager : MonoBehaviour
                 }
             }
             allPosts.Add(p);
+            returnedPosts.Add(p);
         }
 
         // resize the feed content box to have enough space to fit all of the posts
+        // this only changes it for day 1, every other day will use RefreshFeedForNewDay()
         GameObject.Find("Post UI").GetComponentInChildren<LayoutElement>().minHeight = fetchedPosts.Length * sizePerPost;
+
+        return returnedPosts;
+    }
+
+    public void RefreshFeedForNewDay()
+    {
+        // increase day
+        currentDay++;
+        dayTracker.text = "Day " + currentDay;
+
+        // remove all posts from feed
+        for(int i = feed.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(feed.transform.GetChild(i).gameObject);
+        }
+
+        // get rid of irrelevant posts (unsaved)
+        for(int i = dailyPosts.Count - 1; i >= 0; i--)
+        {
+            if(!dailyPosts[i].saved)
+            {
+                dailyPosts.Remove(dailyPosts[i]);
+            }
+            else
+            {
+                // TODO: check for comment chain stuff here
+            }
+        }
+
+        List<Post> fetchedPosts = FetchPosts(currentDay);
+        foreach(Post p in fetchedPosts)
+        {
+            dailyPosts.Add(p);
+        }
+
+        // resize the feed content box to have enough space to fit all of the posts
+        feed.GetComponent<LayoutElement>().minHeight = dailyPosts.Count * sizePerPost;
+
+        // add new posts to feed
+        foreach(Post p in dailyPosts)
+        {
+            CreatePostInFeed(p);
+        }
     }
 }
