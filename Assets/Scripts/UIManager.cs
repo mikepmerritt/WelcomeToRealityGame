@@ -159,11 +159,11 @@ public class UIManager : MonoBehaviour
                                 {
                                     // add rep if comment is made
                                     pfm.reputations[rc.username] += rc.change;
-
-                                    // time costs
-                                    pfm.dailyTime -= r.timeCost;
-                                    UpdateTime();
                                 }
+
+                                // time costs
+                                pfm.dailyTime -= r.timeCost;
+                                UpdateTime();
                             }
                         }
                     }
@@ -356,7 +356,7 @@ public class UIManager : MonoBehaviour
         {
             pfm = GameObject.Find("Post Feed Manager").GetComponent<PostFeedManager>();
         }
-        
+
         timeTracker.text = "Time Remaining:\n" + pfm.dailyTime;
         
         if(pfm.dailyTime <= -5)
