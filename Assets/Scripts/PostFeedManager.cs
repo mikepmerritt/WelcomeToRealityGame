@@ -9,33 +9,29 @@ public class PostFeedManager : MonoBehaviour
     public List<Post> dailyPosts, allPosts;
     public Dictionary<string, int> reputations;
     public Color defaultColor, likedColor, sharedColor, savedColor;
-    public int sizePerPost, dailyTime;
+    public int sizePerPost, dailyTime, timePerDay;
     public GameObject postPrefab, feed;
     public UIManager uim;
     public Post curPost; // for UI manager to use with comments
     public TMP_Text commentNum; // for UI manager to use when a comment is added
+    public int currentDay;
+    public TMP_Text dayTracker;
 
     void Start()
     {
+        // set current day to 0 initially so we can increment to 1
+        currentDay = 0;
+
+        // fetch important objects from scene
         feed = GameObject.Find("Post Feed").GetComponentInChildren<LayoutElement>().gameObject;
         uim = GameObject.Find("UI Manager").GetComponent<UIManager>();
+        dayTracker = GameObject.Find("Day Tracker").GetComponent<TMP_Text>();
 
+        // set up empty dictionary for relationships
         reputations = new Dictionary<string, int>();
-        FetchPosts();
-        dailyPosts = allPosts;
-
-        if(dailyPosts.Count > 0)
-        {
-            // insert all posts into the feed
-            foreach(Post p in dailyPosts)
-            {
-                CreatePostInFeed(p);
-            }
-        }
-        else
-        {
-            Debug.LogError("No posts provided!");
-        }
+        
+        // call function to increment to day 1 and populate feed
+        RefreshFeedForNewDay();
     }
 
     public void CreatePostInFeed(Post p)
@@ -68,6 +64,16 @@ public class PostFeedManager : MonoBehaviour
             }
             else if(c.name == "Like")
             {
+                // recolor button if liked previously
+                if(p.liked)
+                {
+                    c.GetComponent<Image>().color = likedColor;
+                }
+                else
+                {
+                    c.GetComponent<Image>().color = defaultColor;
+                }
+
                 // add like functionality
                 c.GetComponent<Button>().onClick.AddListener(() =>
                 {
@@ -88,25 +94,28 @@ public class PostFeedManager : MonoBehaviour
                     // if so, apply them
                     foreach(ReputationInfluencers r in p.reputationInfluencers)
                     {
-                        if(r.args[0] == "like")
+                        if(r.type == InteractionType.like)
                         {
-                            // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
-                            if(!reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
+                            foreach(ReputationChange rc in r.reputationChanges)
                             {
-                                // add rep if post is liked
-                                if(p.liked)
+                                // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
+                                if(!reputations.TryAdd(rc.username, rc.change))
                                 {
-                                    reputations[r.args[2]] += int.Parse(r.args[1]);
-                                }
-                                // remove rep if the post is unliked
-                                else
-                                {
-                                    reputations[r.args[2]] -= int.Parse(r.args[1]);
+                                    // add rep if post is liked
+                                    if(p.liked)
+                                    {
+                                        reputations[rc.username] += rc.change;
+                                    }
+                                    // remove rep if the post is unliked
+                                    else
+                                    {
+                                        reputations[rc.username] -= rc.change;
+                                    }
                                 }
                             }
                             
                             // time costs
-                            dailyTime -= int.Parse(r.args[3]);
+                            dailyTime -= r.timeCost;
                             uim.UpdateTime();
                         }
                     }
@@ -114,6 +123,16 @@ public class PostFeedManager : MonoBehaviour
             }
             else if(c.name == "Share")
             {
+                // recolor button if shared previously
+                if(p.shared)
+                {
+                    c.GetComponent<Image>().color = sharedColor;
+                }
+                else
+                {
+                    c.GetComponent<Image>().color = defaultColor;
+                }
+
                 // add share functionality
                 c.GetComponent<Button>().onClick.AddListener(() =>
                 {
@@ -134,26 +153,28 @@ public class PostFeedManager : MonoBehaviour
                     // if so, apply them
                     foreach(ReputationInfluencers r in p.reputationInfluencers)
                     {
-                        if(r.args[0] == "share")
+                        if(r.type == InteractionType.share)
                         {
-                            // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
-                            if(!reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
+                            foreach(ReputationChange rc in r.reputationChanges)
                             {
-                                // add rep if post is shared
-                                if(p.shared)
+                                // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
+                                if(!reputations.TryAdd(rc.username, rc.change))
                                 {
-                                    reputations[r.args[2]] += int.Parse(r.args[1]);
+                                    // add rep if post is shared
+                                    if(p.shared)
+                                    {
+                                        reputations[rc.username] += rc.change;
+                                    }
+                                    // remove rep if the post is unshared
+                                    else
+                                    {
+                                        reputations[rc.username] -= rc.change;
+                                    }
                                 }
-                                // remove rep if the post is unshared
-                                else
-                                {
-                                    reputations[r.args[2]] -= int.Parse(r.args[1]);
-                                }
-                                
                             }
-
+                            
                             // time costs
-                            dailyTime -= int.Parse(r.args[3]);
+                            dailyTime -= r.timeCost;
                             uim.UpdateTime();
                         }
                     }
@@ -161,6 +182,16 @@ public class PostFeedManager : MonoBehaviour
             }
             else if(c.name == "Save")
             {
+                // recolor button if saved previously
+                if(p.saved)
+                {
+                    c.GetComponent<Image>().color = savedColor;
+                }
+                else
+                {
+                    c.GetComponent<Image>().color = defaultColor;
+                }
+
                 // add save functionality
                 c.GetComponent<Button>().onClick.AddListener(() =>
                 {
@@ -215,13 +246,14 @@ public class PostFeedManager : MonoBehaviour
         curPost.comments.Add(c);
     }
 
-    public void FetchPosts()
+    public List<Post> FetchPosts(int day)
     {
         // TODO: in the future, a lot more will happen in here
         // This is where we will check post preconditions and make a random selection of which posts to use for a day
         // For the time being, this will just return a testing set of posts, but more to come later!
+        List<Post> returnedPosts = new List<Post>();
 
-        Object[] fetchedPosts = Resources.LoadAll("Posts", typeof(Post));
+        Object[] fetchedPosts = Resources.LoadAll("Posts/Day" + day, typeof(Post));
         foreach (Object o in fetchedPosts)
         {
             // TODO: this is to prevent likes saving across playthroughs, find a better way to do this!
@@ -246,9 +278,54 @@ public class PostFeedManager : MonoBehaviour
                 }
             }
             allPosts.Add(p);
+            returnedPosts.Add(p);
+        }
+
+        return returnedPosts;
+    }
+
+    public void RefreshFeedForNewDay()
+    {
+        // increase day
+        currentDay++;
+        dayTracker.text = "Day " + currentDay;
+
+        // refresh daily time
+        dailyTime = timePerDay;
+        uim.UpdateTime();
+
+        // remove all posts from feed
+        for(int i = feed.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(feed.transform.GetChild(i).gameObject);
+        }
+
+        // get rid of irrelevant posts (unsaved)
+        for(int i = dailyPosts.Count - 1; i >= 0; i--)
+        {
+            if(!dailyPosts[i].saved)
+            {
+                dailyPosts.Remove(dailyPosts[i]);
+            }
+            else
+            {
+                // TODO: check for comment chain stuff here
+            }
+        }
+
+        List<Post> fetchedPosts = FetchPosts(currentDay);
+        foreach(Post p in fetchedPosts)
+        {
+            dailyPosts.Add(p);
         }
 
         // resize the feed content box to have enough space to fit all of the posts
-        GameObject.Find("Post UI").GetComponentInChildren<LayoutElement>().minHeight = fetchedPosts.Length * sizePerPost;
+        feed.GetComponent<LayoutElement>().minHeight = dailyPosts.Count * sizePerPost;
+
+        // add new posts to feed
+        foreach(Post p in dailyPosts)
+        {
+            CreatePostInFeed(p);
+        }
     }
 }

@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour
     public TMP_Text commentExceptionText, profileTitle, reputation;
     public Button leaveCommentButton, profileReturn;
     public TMP_Text timeTracker, timeWarning;
+    public Sprite kaylaProfile, markusProfile, megProfile, scamProfile; // TODO: these should be removed when the profile interface is finished
+    public List<string> profileExceptions = new List<string>(); // TODO: this too
+    public GameObject profileOverlay, profileBackup; // TODO: this too
 
     void Start()
     {
@@ -22,7 +25,6 @@ public class UIManager : MonoBehaviour
         leavingComments = GameObject.Find("Leave Comment UI");
         profile = GameObject.Find("Profile UI");
         timeTracker = GameObject.Find("Time Tracker").GetComponent<TMP_Text>();
-        timeWarning = GameObject.Find("Time Warning").GetComponent<TMP_Text>();
 
         commentContent = comments.GetComponentInChildren<LayoutElement>().gameObject;
         commentLayout = comments.GetComponentInChildren<LayoutElement>();
@@ -37,6 +39,11 @@ public class UIManager : MonoBehaviour
         profileReturn = GameObject.Find("Profile Return").GetComponent<Button>();
 
         pfm = GameObject.Find("Post Feed Manager").GetComponent<PostFeedManager>();
+
+        // TODO: these should be removed when the profile interface is finished
+        profileOverlay = GameObject.Find("Profile Interface");
+        profileBackup = GameObject.Find("Profile Backup");
+
         GoToPosts();
     }
 
@@ -138,19 +145,23 @@ public class UIManager : MonoBehaviour
                     pfm.AddCommentToPost(c); 
 
                     // add rep changes on comment
+                    
                     foreach(ReputationInfluencers r in pfm.curPost.reputationInfluencers)
                     {
                         // if the influence type is comment and the comment specified in the rep event matches the comment being made
-                        if(r.args[0] == "comment" && pfm.curPost.userComments[int.Parse(r.args[4])].Equals(c))
+                        if(r.type == InteractionType.comment && pfm.curPost.userComments[r.commentIndex].Equals(c))
                         {
-                            // try to add the thing, if it fails it already exists so add change to the one that exists already
-                            if(!pfm.reputations.TryAdd(r.args[2], int.Parse(r.args[1])))
+                            foreach(ReputationChange rc in r.reputationChanges)
                             {
-                                // add rep if comment is made
-                                pfm.reputations[r.args[2]] += int.Parse(r.args[1]);
+                                // try to add the thing, if it fails it already exists so add change to the one that exists already
+                                if(!pfm.reputations.TryAdd(rc.username, rc.change))
+                                {
+                                    // add rep if comment is made
+                                    pfm.reputations[rc.username] += rc.change;
+                                }
 
                                 // time costs
-                                pfm.dailyTime -= int.Parse(r.args[3]);
+                                pfm.dailyTime -= r.timeCost;
                                 UpdateTime();
                             }
                         }
@@ -208,6 +219,36 @@ public class UIManager : MonoBehaviour
         ClearUserCommentButtons();
         DestroyProfileListeners();
 
+        // TODO: this should be removed when the profile interface is finished
+        // determine if we should use the image overlay or the backup one
+        if (profileExceptions.Contains(username))
+        {
+            profileOverlay.SetActive(true);
+            profileBackup.SetActive(false);
+
+            if(username == "meg.farber")
+            {
+                profileOverlay.GetComponent<Image>().sprite = megProfile;
+            }
+            else if(username == "marku.s.mith")
+            {
+                profileOverlay.GetComponent<Image>().sprite = markusProfile;
+            }
+            else if(username == "kayla_brownie")
+            {
+                profileOverlay.GetComponent<Image>().sprite = kaylaProfile;
+            }
+            else if(username == "user8390118")
+            {
+                profileOverlay.GetComponent<Image>().sprite = scamProfile;
+            }
+        }
+        else
+        {
+            profileOverlay.SetActive(false);
+            profileBackup.SetActive(true);
+        }
+
         // set up profile
         profileTitle.text = "@" + username;
         int repNum = 0;
@@ -234,6 +275,36 @@ public class UIManager : MonoBehaviour
         // clean up screens for next opening
         ClearComments();
         ClearUserCommentButtons();
+
+        // TODO: this should be removed when the profile interface is finished
+        // determine if we should use the image overlay or the backup one
+        if (profileExceptions.Contains(commenterName))
+        {
+            profileOverlay.SetActive(true);
+            profileBackup.SetActive(false);
+
+            if(commenterName == "meg.farber")
+            {
+                profileOverlay.GetComponent<Image>().sprite = megProfile;
+            }
+            else if(commenterName == "marku.s.mith")
+            {
+                profileOverlay.GetComponent<Image>().sprite = markusProfile;
+            }
+            else if(commenterName == "kayla_brownie")
+            {
+                profileOverlay.GetComponent<Image>().sprite = kaylaProfile;
+            }
+            else if(commenterName == "user8390118")
+            {
+                profileOverlay.GetComponent<Image>().sprite = scamProfile;
+            }
+        }
+        else
+        {
+            profileOverlay.SetActive(false);
+            profileBackup.SetActive(true);
+        }
 
         // set up profile
         profileTitle.text = "@" + commenterName;
@@ -275,7 +346,25 @@ public class UIManager : MonoBehaviour
 
     public void UpdateTime()
     {
+        // since these are called by the Post Feed Manager, start may not have finished yet
+        // as such, if they don't exist yet, fix that first
+        if(timeTracker == null)
+        {
+            timeTracker = GameObject.Find("Time Tracker").GetComponent<TMP_Text>();
+        }
+        if(pfm == null)
+        {
+            pfm = GameObject.Find("Post Feed Manager").GetComponent<PostFeedManager>();
+        }
+        if(timeWarning == null)
+        {
+            timeWarning = GameObject.Find("Time Warning").GetComponent<TMP_Text>();
+        }
+
+        // update time
         timeTracker.text = "Time Remaining:\n" + pfm.dailyTime;
+        
+        // update warning
         if(pfm.dailyTime <= -5)
         {
             // time penalty
@@ -287,6 +376,11 @@ public class UIManager : MonoBehaviour
             // low on time warning
             timeWarning.gameObject.SetActive(true);
             timeWarning.text = "Spending more time will hurt your grades!";
+        }
+        else
+        {
+            // hide warning (used for day transitions)
+            timeWarning.gameObject.SetActive(false);
         }
     }
 }

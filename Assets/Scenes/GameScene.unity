@@ -448,12 +448,15 @@ MonoBehaviour:
   sharedColor: {r: 0.1137255, g: 0.59607846, b: 0.18431373, a: 1}
   savedColor: {r: 0.2392157, g: 0.30588236, b: 0.95294124, a: 1}
   sizePerPost: 500
-  dailyTime: 10
+  dailyTime: 0
+  timePerDay: 10
   postPrefab: {fileID: 818554091332268624, guid: 362ccffb84d5a7d46abfa4dc60ae6102, type: 3}
   feed: {fileID: 0}
   uim: {fileID: 0}
   curPost: {fileID: 0}
   commentNum: {fileID: 0}
+  currentDay: 0
+  dayTracker: {fileID: 0}
 --- !u!1001 &1446703552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -549,6 +552,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5452549192717277122, guid: 3ff6b0c91f5da9e49b45e51ec3025a83, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742683534787660288, guid: 3ff6b0c91f5da9e49b45e51ec3025a83, type: 3}
+      propertyPath: m_Name
+      value: Profile Backup
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ff6b0c91f5da9e49b45e51ec3025a83, type: 3}
 --- !u!1 &1468587524
@@ -598,6 +609,17 @@ MonoBehaviour:
   profileReturn: {fileID: 0}
   timeTracker: {fileID: 0}
   timeWarning: {fileID: 0}
+  kaylaProfile: {fileID: 21300000, guid: 289caa2cdb664a24b9a1c397c7f6cb98, type: 3}
+  markusProfile: {fileID: 21300000, guid: 613d6fb7fa0104e4f8e9c324f18101c5, type: 3}
+  megProfile: {fileID: 21300000, guid: 427f8ab2b06918d4b9f1385aeb463650, type: 3}
+  scamProfile: {fileID: 21300000, guid: 64aef2a98ca43234eb08f9cce108e42a, type: 3}
+  profileExceptions:
+  - meg.farber
+  - marku.s.mith
+  - kayla_brownie
+  - user8390118
+  profileOverlay: {fileID: 0}
+  profileBackup: {fileID: 0}
 --- !u!4 &1468587526
 Transform:
   m_ObjectHideFlags: 0
@@ -605,7 +627,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468587524}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1190,6 +1212,34 @@ PrefabInstance:
     - target: {fileID: 4742419247607242671, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363064920924861770, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363064920924861770, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363064920924861770, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 986765856}
+    - target: {fileID: 8363064920924861770, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363064920924861770, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RefreshFeedForNewDay
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363064920924861770, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PostFeedManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8363064920924861770, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}

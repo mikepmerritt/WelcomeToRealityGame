@@ -31,3 +31,24 @@ MonoBehaviour:
   liked: 0
   shared: 0
   saved: 0
+  reputationInfluencers:
+  - type: 0
+    reputationChanges:
+    - username: birthday_user
+      change: 1
+    timeCost: 1
+    commentIndex: 0
+  - type: 1
+    reputationChanges: []
+    timeCost: 1
+    commentIndex: 0
+  - type: 2
+    reputationChanges:
+    - username: birthday_user
+      change: 2
+    timeCost: 3
+    commentIndex: 0
+  - type: 2
+    reputationChanges: []
+    timeCost: 3
+    commentIndex: 1

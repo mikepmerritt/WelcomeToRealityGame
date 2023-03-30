@@ -2,6 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// objects used
+[System.Serializable]
+public enum InteractionType
+{
+    like,
+    share,
+    comment
+}
+
+[System.Serializable]
+public class ReputationChange
+{
+    [SerializeField]
+    public string username;
+    [SerializeField]
+    public int change;
+}
+
 [System.Serializable]
 public class ReputationInfluencers
 {
@@ -11,5 +29,13 @@ public class ReputationInfluencers
     // string 2: username of the person it affects
     // string 3: time cost
     // string 4 (optional): comment number
-    public string[] args;
+    // public string[] args;
+
+    
+
+    public InteractionType type;
+    public List<ReputationChange> reputationChanges;
+    
+    public int timeCost;
+    public int commentIndex;
 }
