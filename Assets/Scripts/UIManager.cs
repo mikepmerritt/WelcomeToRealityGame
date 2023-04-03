@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
         // update the comment counter when returning to the post in case it changed (added a commment?)
         if(pfm.commentNum != null) // ignore on first time load
         {
-            pfm.commentNum.text = "" + pfm.curPost.comments.Count;
+            pfm.commentNum.text = "" + pfm.curPost.rComments.Count;
         }
     }
 
@@ -79,10 +79,10 @@ public class UIManager : MonoBehaviour
         commentExceptionText.gameObject.SetActive(false); // remove text for no comments
 
         // enable the exception text box if needed (for example, if there are no comments)
-        if(pfm.curPost.comments.Count == 0)
+        if(pfm.curPost.rComments.Count == 0)
         {
             // set explanatory text for no comments
-            if(pfm.curPost.userComments.Count > 0)
+            if(pfm.curPost.rPostableComments.Count > 0)
             {
                 commentExceptionText.text = "Be the first to leave a comment!";
             }
@@ -96,25 +96,29 @@ public class UIManager : MonoBehaviour
         }
 
         // add comments to comments box
-        commentLayout.preferredHeight = pfm.curPost.comments.Count * 100; // add space for comments in box
-        foreach(Comment c in pfm.curPost.comments)
+        // TODO: recalculate
+        commentLayout.preferredHeight = pfm.curPost.rComments.Count * 100; // add space for comments in box
+        foreach(CommentChain c in pfm.curPost.rComments)
         {
             GameObject o = Instantiate(commentPrefab, commentContent.transform);
             TMP_Text[] commentBoxes = o.GetComponentsInChildren<TMP_Text>();
+            // TODO: reimplement system to create comment chain in box
+
+            // create singleton comment using initial
             foreach(TMP_Text t in commentBoxes)
             {
                 if(t.gameObject.name == "Commenter")
                 {
-                    t.text = "@" + c.commenter;
+                    t.text = "@" + c.initial.commenter;
                     // add button behavior for clicking on the username which brings the player to the user's profile
                     t.gameObject.GetComponent<Button>().onClick.AddListener(() => 
                     {
-                        GoToProfileFromComment(c.commenter);
+                        GoToProfileFromComment(c.initial.commenter);
                     });
                 }
                 else if(t.gameObject.name == "Comment Text")
                 {
-                    t.text = c.commentText;
+                    t.text = c.initial.commentText;
                 }
             }
         }        
@@ -133,46 +137,23 @@ public class UIManager : MonoBehaviour
 
         // generate user comment buttons
         int userCommentsContentSize = 0;
-        foreach(Comment c in pfm.curPost.userComments)
+        foreach(CommentChain c in pfm.curPost.rPostableComments)
         {
-            // if the comment has not already been made, add a button
-            if(!pfm.curPost.comments.Contains(c))
+            GameObject o = Instantiate(userCommentPrefab, userCommentContent.transform);
+            o.GetComponentInChildren<TMP_Text>().text = c.initial.commentText;
+            o.GetComponent<Button>().onClick.AddListener(() => 
             {
-                GameObject o = Instantiate(userCommentPrefab, userCommentContent.transform);
-                o.GetComponentInChildren<TMP_Text>().text = c.commentText;
-                o.GetComponent<Button>().onClick.AddListener(() => 
-                {
-                    pfm.AddCommentToPost(c); 
+                c.postDate = pfm.currentDay;
+                pfm.AddCommentToPost(c); 
 
-                    // add rep changes on comment
-                    
-                    foreach(ReputationInfluencers r in pfm.curPost.reputationInfluencers)
-                    {
-                        // if the influence type is comment and the comment specified in the rep event matches the comment being made
-                        if(r.type == InteractionType.comment && pfm.curPost.userComments[r.commentIndex].Equals(c))
-                        {
-                            foreach(ReputationChange rc in r.reputationChanges)
-                            {
-                                // try to add the thing, if it fails it already exists so add change to the one that exists already
-                                if(!pfm.reputations.TryAdd(rc.username, rc.change))
-                                {
-                                    // add rep if comment is made
-                                    pfm.reputations[rc.username] += rc.change;
-                                }
+                // add rep changes on comment
+                // TODO: implement with comment chains
 
-                                // time costs
-                                pfm.dailyTime -= r.timeCost;
-                                UpdateTime();
-                            }
-                        }
-                    }
-
-                    // remove button
-                    Destroy(o);
-                    userCommentLayout.preferredHeight -= 100;
-                });
-                userCommentsContentSize += 100; // increase box size by 100 to fit a new button
-            }
+                // remove button
+                Destroy(o);
+                userCommentLayout.preferredHeight -= 100;
+            });
+            userCommentsContentSize += 100; // increase box size by 100 to fit a new button
         }
 
         userCommentLayout.preferredHeight = userCommentsContentSize;

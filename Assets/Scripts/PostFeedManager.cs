@@ -90,35 +90,46 @@ public class PostFeedManager : MonoBehaviour
                         c.GetComponent<Image>().color = defaultColor;
                     }
 
-                    // check if liking this has any effects
-                    // if so, apply them
-                    foreach(ReputationInfluencers r in p.reputationInfluencers)
+                    // increase reps on like
+                    foreach(string name in p.increaseOnLike)
                     {
-                        if(r.type == InteractionType.like)
+                        // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
+                        if(!reputations.TryAdd(name, 1))
                         {
-                            foreach(ReputationChange rc in r.reputationChanges)
+                            // add rep if post is liked
+                            if(p.liked)
                             {
-                                // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
-                                if(!reputations.TryAdd(rc.username, rc.change))
-                                {
-                                    // add rep if post is liked
-                                    if(p.liked)
-                                    {
-                                        reputations[rc.username] += rc.change;
-                                    }
-                                    // remove rep if the post is unliked
-                                    else
-                                    {
-                                        reputations[rc.username] -= rc.change;
-                                    }
-                                }
+                                reputations[name] += 1;
                             }
-                            
-                            // time costs
-                            dailyTime -= r.timeCost;
-                            uim.UpdateTime();
+                            // remove rep if the post is unliked
+                            else
+                            {
+                                reputations[name] -= 1;
+                            }
                         }
                     }
+                    // decrease reps on like
+                    foreach(string name in p.decreaseOnLike)
+                    {
+                        // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
+                        if(!reputations.TryAdd(name, 1))
+                        {
+                            // add -rep if post is liked
+                            if(p.liked)
+                            {
+                                reputations[name] -= 1;
+                            }
+                            // remove -rep if the post is unliked
+                            else
+                            {
+                                reputations[name] += 1;
+                            }
+                        }
+                    }
+                    
+                    // time costs
+                    dailyTime -= 1;
+                    uim.UpdateTime();
                 });
             }
             else if(c.name == "Share")
@@ -149,35 +160,46 @@ public class PostFeedManager : MonoBehaviour
                         c.GetComponent<Image>().color = defaultColor;
                     }
 
-                    // check if sharing this has any effects
-                    // if so, apply them
-                    foreach(ReputationInfluencers r in p.reputationInfluencers)
+                    // increase reps on share
+                    foreach(string name in p.increaseOnShare)
                     {
-                        if(r.type == InteractionType.share)
+                        // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
+                        if(!reputations.TryAdd(name, 1))
                         {
-                            foreach(ReputationChange rc in r.reputationChanges)
+                            // add rep if post is shared
+                            if(p.shared)
                             {
-                                // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
-                                if(!reputations.TryAdd(rc.username, rc.change))
-                                {
-                                    // add rep if post is shared
-                                    if(p.shared)
-                                    {
-                                        reputations[rc.username] += rc.change;
-                                    }
-                                    // remove rep if the post is unshared
-                                    else
-                                    {
-                                        reputations[rc.username] -= rc.change;
-                                    }
-                                }
+                                reputations[name] += 1;
                             }
-                            
-                            // time costs
-                            dailyTime -= r.timeCost;
-                            uim.UpdateTime();
+                            // remove rep if the post is unshared
+                            else
+                            {
+                                reputations[name] -= 1;
+                            }
                         }
                     }
+                    // decrease reps on share
+                    foreach(string name in p.decreaseOnShare)
+                    {
+                        // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
+                        if(!reputations.TryAdd(name, 1))
+                        {
+                            // add -rep if post is shared
+                            if(p.shared)
+                            {
+                                reputations[name] -= 1;
+                            }
+                            // remove -rep if the post is unshared
+                            else
+                            {
+                                reputations[name] += 1;
+                            }
+                        }
+                    }
+                    
+                    // time costs
+                    dailyTime -= 1;
+                    uim.UpdateTime();
                 });
             }
             else if(c.name == "Save")
@@ -215,7 +237,7 @@ public class PostFeedManager : MonoBehaviour
             {
                 // fetch reference for the counter and set initial value
                 TMP_Text counter = c.GetComponentInChildren<TMP_Text>();
-                counter.text = "" + p.comments.Count;
+                counter.text = "" + p.rComments.Count;
 
                 // add transition to comments screen
                 c.GetComponent<Button>().onClick.AddListener(() =>
@@ -241,42 +263,38 @@ public class PostFeedManager : MonoBehaviour
     }
 
     // add a comment to a post, used by UI manager to add comments to posts
-    public void AddCommentToPost(Comment c)
+    public void AddCommentToPost(CommentChain c)
     {
-        curPost.comments.Add(c);
+        curPost.rComments.Add(c);
     }
 
     public List<Post> FetchPosts(int day)
     {
-        // TODO: in the future, a lot more will happen in here
-        // This is where we will check post preconditions and make a random selection of which posts to use for a day
-        // For the time being, this will just return a testing set of posts, but more to come later!
         List<Post> returnedPosts = new List<Post>();
 
         Object[] fetchedPosts = Resources.LoadAll("Posts/Day" + day, typeof(Post));
         foreach (Object o in fetchedPosts)
         {
-            // TODO: this is to prevent likes saving across playthroughs, find a better way to do this!
-            // Also, this forces us to re-run to cleanse the posts, so really look into a solution.
+            // load post as post object
             Post p = (Post) o;
-            p.liked = false;
-            p.shared = false;
-            p.saved = false;
 
-            // TODO: this is to remove user comments on subsequent replays, find a better way to do this if possible or necessary!
-            // Also, this forces us to re-run to cleanse the posts, so really look into a solution.
-            foreach(Comment uc in p.userComments)
+            // initialize runtime variables (allows us to change objects during runtime without losing data)
+            p.rLiked = p.liked;
+            p.rShared = p.shared;
+            p.rSaved = p.saved;
+            p.rComments = new List<CommentChain>();
+            p.rPostableComments = new List<CommentChain>();
+
+            // copy comment lists without aliasing
+            foreach(CommentChain c in p.commentChains)
             {
-                // same as if(p.comments.Contains(c)) but for my unique comment objects
-                for(int i = p.comments.Count - 1; i >= 0; i--)
-                {
-                    Comment c = p.comments[i];
-                    if(uc.Equals(c))
-                    {
-                        p.comments.Remove(c);
-                    }
-                }
+                p.rComments.Add(c);
             }
+            foreach(CommentChain c in p.postableComments)
+            {
+                p.rPostableComments.Add(c);
+            }
+
             allPosts.Add(p);
             returnedPosts.Add(p);
         }

@@ -6,30 +6,46 @@ using UnityEngine;
 public class CommentChain
 {
     public Comment initial;
-    public List<Comment> posted;
+    public List<Comment> postedReplies;
+    [HideInInspector]
     public List<Reply> availableToPlayer;
-    public List<Reply> pending;
-    public int postDate;
+    public List<Reply> pendingReplies;
+    [HideInInspector]
+    public int postDate = 1;
     
     public void UpdateChainBasedOnDate(int date)
     {
-        // check pending posts for 
-        for(int i = pending.Count - 1; i >= 0; i--)
+        // check pending posts for ones that can be posted
+        for(int i = pendingReplies.Count - 1; i >= 0; i--)
         {
-            Reply reply = pending[i];
-            if((date - postDate) >= reply.availabilityDelay)
+            // initialize reply from pending
+            Reply reply = pendingReplies[i];
+
+            // check if the post's predecessor is already in the comment chain
+            // the predecessor is the post that needs to come before a given reply in the conversation
+            bool predecessorPosted = reply.predecessor.Equals(initial); // check first comment in chain first
+            // then check the rest in the chain
+            foreach(Comment c in postedReplies)
+            {
+                if(reply.predecessor.Equals(c))
+                {
+                    predecessorPosted = true;
+                }
+            }
+
+            if(predecessorPosted && (date - postDate) >= reply.availabilityDelay)
             {
                 // check if it is a player reply and add to postable replies if so
                 if(reply.commenter == "you")
                 {
                     availableToPlayer.Add(reply);
-                    pending.Remove(reply);
+                    pendingReplies.Remove(reply);
                 }
                 // otherwise post it
                 else
                 {
-                    posted.Add(reply);
-                    pending.Remove(reply);
+                    postedReplies.Add(reply);
+                    pendingReplies.Remove(reply);
                 }
             }
             

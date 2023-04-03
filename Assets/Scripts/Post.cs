@@ -10,11 +10,14 @@ public class Post : ScriptableObject
     public Sprite postImage;
     [TextArea(15, 20)]
     public string postText;
-    public List<Comment> comments;
-    public List<Comment> userComments;
+    public List<CommentChain> commentChains;
+    public List<CommentChain> postableComments;
     public bool liked = false;
     public bool shared = false;
     public bool saved = false;
-    
-    public List<ReputationInfluencers> reputationInfluencers;
+    public List<string> increaseOnLike, decreaseOnLike, increaseOnShare, decreaseOnShare;
+    [HideInInspector]
+    public bool rLiked, rShared, rSaved;
+    [HideInInspector]
+    public List<CommentChain> rComments, rPostableComments;
 }

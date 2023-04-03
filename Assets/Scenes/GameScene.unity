@@ -378,7 +378,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 986765854}
-  - component: {fileID: 986765855}
   - component: {fileID: 986765856}
   m_Layer: 0
   m_Name: Post Feed Manager
@@ -402,33 +401,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &986765855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 986765853}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9abf131d9cfebec4d9157cfc69269988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dailyPosts: []
-  allPosts: []
-  curPostIndex: 0
-  username: {fileID: 0}
-  postText: {fileID: 0}
-  commentNum: {fileID: 0}
-  image: {fileID: 0}
-  curPost: {fileID: 0}
-  like: {fileID: 0}
-  share: {fileID: 0}
-  save: {fileID: 0}
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  likedColor: {r: 0.8196079, g: 0.2901961, b: 0.4666667, a: 1}
-  sharedColor: {r: 0.11438231, g: 0.5943396, b: 0.18419422, a: 1}
-  savedColor: {r: 0.2392157, g: 0.30588236, b: 0.95294124, a: 1}
 --- !u!114 &986765856
 MonoBehaviour:
   m_ObjectHideFlags: 0
