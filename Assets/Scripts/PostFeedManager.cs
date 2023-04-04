@@ -289,11 +289,11 @@ public class PostFeedManager : MonoBehaviour
             // copy comment lists without aliasing
             foreach(CommentChain c in p.commentChains)
             {
-                p.rComments.Add(c);
+                p.rComments.Add(c.Clone());
             }
             foreach(CommentChain c in p.postableComments)
             {
-                p.rPostableComments.Add(c);
+                p.rPostableComments.Add(c.Clone());
             }
 
             allPosts.Add(p);

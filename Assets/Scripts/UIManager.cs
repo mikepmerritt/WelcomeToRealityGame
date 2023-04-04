@@ -177,7 +177,7 @@ public class UIManager : MonoBehaviour
             o.GetComponentInChildren<TMP_Text>().text = c.initial.commentText;
             o.GetComponent<Button>().onClick.AddListener(() => 
             {
-                c.postDate = pfm.currentDay;
+                c.initial.postDate = pfm.currentDay;
                 pfm.AddCommentToPost(c); 
 
                 // add rep changes on comment
@@ -188,6 +188,10 @@ public class UIManager : MonoBehaviour
                         pfm.reputations[m.userToChange] += m.amount;
                     }
                 }
+
+                // time costs
+                pfm.dailyTime -= 3;
+                UpdateTime();
 
                 // remove comment from postable
                 pfm.curPost.rPostableComments.Remove(c);

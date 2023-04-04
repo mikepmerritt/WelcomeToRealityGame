@@ -9,6 +9,8 @@ public class Comment
     [TextArea(5, 10)]
     public string commentText;
     public List<Modifier> reputationChanges;
+    [HideInInspector]
+    public int postDate = 1;
 
     public bool Equals(Comment c)
     {
