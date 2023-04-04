@@ -67,16 +67,14 @@ MonoBehaviour:
         commentText: Congrats dude!
         reputationChanges: []
       availabilityDelay: 1
-    postDate: 0
+    postDate: 1
   - initial:
       commenter: you
       commentText: "So proud of you. You\u2019re going to do great out there!"
       reputationChanges:
       - userToChange: marku.s.mith
         amount: 3
-    postedReplies: []
-    availableToPlayer: []
-    pendingReplies:
+    postedReplies:
     - commenter: marku.s.mith
       commentText: Hell yeah! Representing!
       reputationChanges: []
@@ -85,16 +83,16 @@ MonoBehaviour:
         commentText: "So proud of you. You\u2019re going to do great out there!"
         reputationChanges: []
       availabilityDelay: 1
-    postDate: 0
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 1
   - initial:
       commenter: you
       commentText: Literally no one cares.
       reputationChanges:
       - userToChange: marku.s.mith
         amount: -3
-    postedReplies: []
-    availableToPlayer: []
-    pendingReplies:
+    postedReplies:
     - commenter: marku.s.mith
       commentText: "Okay\u2026 um, sharing for those who do"
       reputationChanges: []
@@ -103,7 +101,9 @@ MonoBehaviour:
         commentText: Literally no one cares.
         reputationChanges: []
       availabilityDelay: 1
-    postDate: 0
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 1
   liked: 0
   shared: 0
   saved: 0
@@ -116,5 +116,100 @@ MonoBehaviour:
   rLiked: 0
   rShared: 0
   rSaved: 0
-  rComments: []
-  rPostableComments: []
+  rCommentedToday: 0
+  rComments:
+  - initial:
+      commenter: carlosgonzales28
+      commentText: So proud of you man!
+      reputationChanges: []
+    postedReplies:
+    - commenter: test
+      commentText: test
+      reputationChanges: []
+      predecessor:
+        commenter: 
+        commentText: 
+        reputationChanges: []
+      availabilityDelay: 0
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  - initial:
+      commenter: meg.farber
+      commentText: HELL YEAH! College club!!
+      reputationChanges: []
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  - initial:
+      commenter: azure.does.art
+      commentText: "AH! That\u2019s so awesome Markus!"
+      reputationChanges: []
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  - initial:
+      commenter: kayla_brownie
+      commentText: So so sooo proud!
+      reputationChanges: []
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  rPostableComments:
+  - initial:
+      commenter: you
+      commentText: Congrats dude!
+      reputationChanges:
+      - userToChange: marku.s.mith
+        amount: 3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: marku.s.mith
+      commentText: Thanks dude!
+      reputationChanges: []
+      predecessor:
+        commenter: you
+        commentText: Congrats dude!
+        reputationChanges: []
+      availabilityDelay: 1
+    postDate: 1
+  - initial:
+      commenter: you
+      commentText: "So proud of you. You\u2019re going to do great out there!"
+      reputationChanges:
+      - userToChange: marku.s.mith
+        amount: 3
+    postedReplies:
+    - commenter: marku.s.mith
+      commentText: Hell yeah! Representing!
+      reputationChanges: []
+      predecessor:
+        commenter: you
+        commentText: "So proud of you. You\u2019re going to do great out there!"
+        reputationChanges: []
+      availabilityDelay: 1
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 1
+  - initial:
+      commenter: you
+      commentText: Literally no one cares.
+      reputationChanges:
+      - userToChange: marku.s.mith
+        amount: -3
+    postedReplies:
+    - commenter: marku.s.mith
+      commentText: "Okay\u2026 um, sharing for those who do"
+      reputationChanges: []
+      predecessor:
+        commenter: you
+        commentText: Literally no one cares.
+        reputationChanges: []
+      availabilityDelay: 1
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 1

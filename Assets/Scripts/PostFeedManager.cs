@@ -282,6 +282,7 @@ public class PostFeedManager : MonoBehaviour
             p.rLiked = p.liked;
             p.rShared = p.shared;
             p.rSaved = p.saved;
+            p.rCommentedToday = false;
             p.rComments = new List<CommentChain>();
             p.rPostableComments = new List<CommentChain>();
 
@@ -308,6 +309,13 @@ public class PostFeedManager : MonoBehaviour
         currentDay++;
         dayTracker.text = "Day " + currentDay;
 
+        // go to post feed if not there already
+        // skip on day 1 because that does nothing and creates a lot of null pointers
+        if(currentDay > 1)
+        {
+            uim.GoToPosts();
+        }
+
         // refresh daily time
         dailyTime = timePerDay;
         uim.UpdateTime();
@@ -321,13 +329,14 @@ public class PostFeedManager : MonoBehaviour
         // get rid of irrelevant posts (unsaved)
         for(int i = dailyPosts.Count - 1; i >= 0; i--)
         {
-            if(!dailyPosts[i].rSaved)
+            if(!dailyPosts[i].rSaved && !dailyPosts[i].rCommentedToday)
             {
                 dailyPosts.Remove(dailyPosts[i]);
             }
             else
             {
-                // TODO: check for comment chain stuff here
+                // unmark one-time save flag
+                dailyPosts[i].rCommentedToday = false;
             }
         }
 
@@ -339,6 +348,15 @@ public class PostFeedManager : MonoBehaviour
 
         // resize the feed content box to have enough space to fit all of the posts
         feed.GetComponent<LayoutElement>().minHeight = dailyPosts.Count * sizePerPost;
+
+        // recalculate the comments for each post
+        foreach(Post p in dailyPosts)
+        {
+            foreach(CommentChain c in p.rComments)
+            {
+                c.UpdateChainBasedOnDate(currentDay);
+            }
+        }
 
         // add new posts to feed
         foreach(Post p in dailyPosts)

@@ -574,6 +574,7 @@ MonoBehaviour:
   pfm: {fileID: 0}
   commentPrefab: {fileID: 4402501088551315184, guid: f86689dad2c6a184a830fb9253e430c2, type: 3}
   userCommentPrefab: {fileID: 8004328022972797291, guid: 449668c3953a0324d851edc2b307e1f5, type: 3}
+  replyPrefab: {fileID: 714354293116016, guid: b95a373eb8dec4240ba1bf640e7226fd, type: 3}
   commentExceptionText: {fileID: 0}
   profileTitle: {fileID: 0}
   reputation: {fileID: 0}

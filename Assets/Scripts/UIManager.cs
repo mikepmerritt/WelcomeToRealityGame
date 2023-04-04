@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject commentContent, userCommentContent;
     public LayoutElement commentLayout, userCommentLayout;
     public PostFeedManager pfm;
-    public GameObject commentPrefab, userCommentPrefab;
+    public GameObject commentPrefab, userCommentPrefab, replyPrefab;
     public TMP_Text commentExceptionText, profileTitle, reputation;
     public Button leaveCommentButton, profileReturn;
     public TMP_Text timeTracker, timeWarning;
@@ -95,9 +95,14 @@ public class UIManager : MonoBehaviour
             commentExceptionText.gameObject.SetActive(true);
         }
 
+        // allocate space for comment box
+        commentLayout.preferredHeight = 0;
+        foreach(CommentChain c in pfm.curPost.rComments)
+        {
+            commentLayout.preferredHeight += c.CalculateSpaceNeeded();
+        }
+
         // add comments to comments box
-        // TODO: recalculate
-        commentLayout.preferredHeight = pfm.curPost.rComments.Count * 100; // add space for comments in box
         foreach(CommentChain c in pfm.curPost.rComments)
         {
             GameObject o = Instantiate(commentPrefab, commentContent.transform);
@@ -119,6 +124,31 @@ public class UIManager : MonoBehaviour
                 else if(t.gameObject.name == "Comment Text")
                 {
                     t.text = c.initial.commentText;
+                }
+            }
+
+            foreach(Reply r in c.postedReplies)
+            {
+                GameObject ro = Instantiate(replyPrefab, commentContent.transform);
+                TMP_Text[] replyBoxes = ro.GetComponentsInChildren<TMP_Text>();
+                // TODO: reimplement system to create comment chain in box
+
+                // create singleton comment using initial
+                foreach(TMP_Text t in replyBoxes)
+                {
+                    if(t.gameObject.name == "Commenter")
+                    {
+                        t.text = "@" + r.commenter;
+                        // add button behavior for clicking on the username which brings the player to the user's profile
+                        t.gameObject.GetComponent<Button>().onClick.AddListener(() => 
+                        {
+                            GoToProfileFromComment(r.commenter);
+                        });
+                    }
+                    else if(t.gameObject.name == "Comment Text")
+                    {
+                        t.text = r.commentText;
+                    }
                 }
             }
         }        
@@ -147,7 +177,19 @@ public class UIManager : MonoBehaviour
                 pfm.AddCommentToPost(c); 
 
                 // add rep changes on comment
-                // TODO: implement with comment chains
+                foreach(Modifier m in c.initial.reputationChanges)
+                {
+                    if(!pfm.reputations.TryAdd(m.userToChange, m.amount))
+                    {
+                        pfm.reputations[m.userToChange] += m.amount;
+                    }
+                }
+
+                // remove comment from postable
+                pfm.curPost.rPostableComments.Remove(c);
+
+                // save the post so it carries across days
+                pfm.curPost.rCommentedToday = true;
 
                 // remove button
                 Destroy(o);

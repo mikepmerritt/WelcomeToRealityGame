@@ -6,7 +6,7 @@ using UnityEngine;
 public class CommentChain
 {
     public Comment initial;
-    public List<Comment> postedReplies;
+    public List<Reply> postedReplies;
     [HideInInspector]
     public List<Reply> availableToPlayer;
     public List<Reply> pendingReplies;
@@ -50,5 +50,15 @@ public class CommentChain
             }
             
         }
+    }
+
+    public int CalculateSpaceNeeded()
+    {
+        int space = 75; // space for initial
+        foreach(Comment c in postedReplies)
+        {
+            space += 75; // space for 1 reply
+        }
+        return space;
     }
 }
