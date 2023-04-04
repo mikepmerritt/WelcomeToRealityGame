@@ -16,14 +16,102 @@ MonoBehaviour:
   postImage: {fileID: 21300000, guid: 7d0bbcf13bd984e439b295ab1ca7ab76, type: 3}
   postText: "I MADE IT Y\u2019ALL! Going to Brownstone next year to make my family
     proud. I worked hard to get here, and I can\u2019t wait to work harder there."
-  commentChains: []
-  postableComments: []
+  commentChains:
+  - initial:
+      commenter: carlosgonzales28
+      commentText: So proud of you man!
+      reputationChanges: []
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  - initial:
+      commenter: meg.farber
+      commentText: HELL YEAH! College club!!
+      reputationChanges: []
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  - initial:
+      commenter: azure.does.art
+      commentText: "AH! That\u2019s so awesome Markus!"
+      reputationChanges: []
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  - initial:
+      commenter: kayla_brownie
+      commentText: So so sooo proud!
+      reputationChanges: []
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  postableComments:
+  - initial:
+      commenter: you
+      commentText: Congrats dude!
+      reputationChanges:
+      - userToChange: marku.s.mith
+        amount: 3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: marku.s.mith
+      commentText: Thanks dude!
+      reputationChanges: []
+      predecessor:
+        commenter: you
+        commentText: Congrats dude!
+        reputationChanges: []
+      availabilityDelay: 1
+    postDate: 0
+  - initial:
+      commenter: you
+      commentText: "So proud of you. You\u2019re going to do great out there!"
+      reputationChanges:
+      - userToChange: marku.s.mith
+        amount: 3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: marku.s.mith
+      commentText: Hell yeah! Representing!
+      reputationChanges: []
+      predecessor:
+        commenter: you
+        commentText: "So proud of you. You\u2019re going to do great out there!"
+        reputationChanges: []
+      availabilityDelay: 1
+    postDate: 0
+  - initial:
+      commenter: you
+      commentText: Literally no one cares.
+      reputationChanges:
+      - userToChange: marku.s.mith
+        amount: -3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: marku.s.mith
+      commentText: "Okay\u2026 um, sharing for those who do"
+      reputationChanges: []
+      predecessor:
+        commenter: you
+        commentText: Literally no one cares.
+        reputationChanges: []
+      availabilityDelay: 1
+    postDate: 0
   liked: 0
   shared: 0
   saved: 0
-  increaseOnLike: []
+  increaseOnLike:
+  - marku.s.mith
   decreaseOnLike: []
-  increaseOnShare: []
+  increaseOnShare:
+  - marku.s.mith
   decreaseOnShare: []
   rLiked: 0
   rShared: 0

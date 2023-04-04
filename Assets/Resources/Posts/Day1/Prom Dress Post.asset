@@ -16,51 +16,59 @@ MonoBehaviour:
   postImage: {fileID: 21300000, guid: c7e990754a481eb469f23095953e8547, type: 3}
   postText: "Prom this year is going to be fun af! Can\u2019t wait to see you all
     there :)"
-  comments:
-  - commenter: marku.s.mith
-    commentText: Gorgeous dress Kay!
-  - commenter: meg.farber
-    commentText: GIRL, YOU ARE SO PRETTY
-  - commenter: azure.does.art
-    commentText: "How are you not modeling already??\r"
-  userComments:
-  - commenter: you
-    commentText: "More like frumpy af\u2013 That dress is Not flattering on you"
-  - commenter: you
-    commentText: STUNNING.
-  - commenter: you
-    commentText: OMG, GORGEOUS! We need to hang more!
+  commentChains:
+  - initial:
+      commenter: marku.s.mith
+      commentText: Gorgeous dress Kay!
+      reputationChanges: []
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  - initial:
+      commenter: meg.farber
+      commentText: GIRL, YOU ARE SO PRETTY
+      reputationChanges: []
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  - initial:
+      commenter: azure.does.art
+      commentText: How are you not modeling already??
+      reputationChanges: []
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  postableComments:
+  - initial:
+      commenter: you
+      commentText: "More like frumpy af\u2013 That dress is Not flattering on you"
+      reputationChanges:
+      - userToChange: kayla_brownie
+        amount: -3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: kayla_brownie
+      commentText: Rude, damn.
+      reputationChanges: []
+      predecessor:
+        commenter: you
+        commentText: "More like frumpy af\u2013 That dress is Not flattering on you"
+        reputationChanges: []
+      availabilityDelay: 1
+    postDate: 0
   liked: 0
   shared: 0
   saved: 0
-  reputationInfluencers:
-  - type: 0
-    reputationChanges:
-    - username: kayla_brownie
-      change: 1
-    timeCost: 1
-    commentIndex: 0
-  - type: 1
-    reputationChanges:
-    - username: kayla_brownie
-      change: 1
-    timeCost: 1
-    commentIndex: 0
-  - type: 2
-    reputationChanges:
-    - username: kayla_brownie
-      change: -3
-    timeCost: 3
-    commentIndex: 0
-  - type: 2
-    reputationChanges:
-    - username: kayla_brownie
-      change: 2
-    timeCost: 3
-    commentIndex: 1
-  - type: 2
-    reputationChanges:
-    - username: kayla_brownie
-      change: 3
-    timeCost: 3
-    commentIndex: 2
+  increaseOnLike: []
+  decreaseOnLike: []
+  increaseOnShare: []
+  decreaseOnShare: []
+  rLiked: 0
+  rShared: 0
+  rSaved: 0
+  rComments: []
+  rPostableComments: []

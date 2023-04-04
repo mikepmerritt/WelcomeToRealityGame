@@ -16,52 +16,101 @@ MonoBehaviour:
   postImage: {fileID: 21300000, guid: 34855edc5137d874e904f716f0c6566e, type: 3}
   postText: "First party with the college track team I\u2019ll be joining next year!
     Love my girlies~"
-  comments:
-  - commenter: kayla_brownie
-    commentText: Oooo, looks like fun!
-  - commenter: carlosgonzales28
-    commentText: Bahaha, just juice in those solo cups I assume?
-  userComments:
-  - commenter: you
-    commentText: "Hey, watch what you\u2019re drinking. That stuff is bad for you,
-      Meg."
-  - commenter: you
-    commentText: YASSSS, go hard!!
-  - commenter: you
-    commentText: Omg, where was my invite tho
+  commentChains:
+  - initial:
+      commenter: kayla_brownie
+      commentText: Oooo, looks like fun!
+      reputationChanges: []
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  - initial:
+      commenter: carlosgonzales28
+      commentText: Bahaha, just juice in those solo cups I assume?
+      reputationChanges: []
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  postableComments:
+  - initial:
+      commenter: you
+      commentText: "Hey, watch what you\u2019re drinking. That stuff is bad for you,
+        Meg."
+      reputationChanges:
+      - userToChange: meg.farber
+        amount: -3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: meg.farber
+      commentText: Whatever, buzzkill
+      reputationChanges: []
+      predecessor:
+        commenter: you
+        commentText: "Hey, watch what you\u2019re drinking. That stuff is bad for
+          you, Meg."
+        reputationChanges: []
+      availabilityDelay: 1
+    postDate: 0
+  - initial:
+      commenter: you
+      commentText: YASSSS, go hard!!
+      reputationChanges:
+      - userToChange: meg.farber
+        amount: 3
+      - userToChange: kayla_brownie
+        amount: 3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: kayla_brownie
+      commentText: "Riiight?? That\u2019s what I\u2019m saying."
+      reputationChanges: []
+      predecessor:
+        commenter: you
+        commentText: YASSSS, go hard!!
+        reputationChanges: []
+      availabilityDelay: 1
+    - commenter: meg.farber
+      commentText: "Don\u2019t worry, I am"
+      reputationChanges: []
+      predecessor:
+        commenter: you
+        commentText: YASSSS, go hard!!
+        reputationChanges: []
+      availabilityDelay: 1
+    postDate: 0
+  - initial:
+      commenter: you
+      commentText: Omg, where was my invite tho
+      reputationChanges:
+      - userToChange: meg.farber
+        amount: 3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: meg.farber
+      commentText: You are totes invited to the next :)
+      reputationChanges: []
+      predecessor:
+        commenter: you
+        commentText: Omg, where was my invite tho
+        reputationChanges: []
+      availabilityDelay: 1
+    postDate: 0
   liked: 0
   shared: 0
   saved: 0
-  reputationInfluencers:
-  - type: 0
-    reputationChanges:
-    - username: meg.farber
-      change: 1
-    timeCost: 1
-    commentIndex: 0
-  - type: 1
-    reputationChanges:
-    - username: meg.farber
-      change: 1
-    timeCost: 1
-    commentIndex: 0
-  - type: 2
-    reputationChanges:
-    - username: meg.farber
-      change: -3
-    timeCost: 3
-    commentIndex: 0
-  - type: 2
-    reputationChanges:
-    - username: meg.farber
-      change: 3
-    - username: kayla_brownie
-      change: 3
-    timeCost: 3
-    commentIndex: 1
-  - type: 2
-    reputationChanges:
-    - username: meg.farber
-      change: 3
-    timeCost: 3
-    commentIndex: 2
+  increaseOnLike:
+  - meg.farber
+  decreaseOnLike: []
+  increaseOnShare:
+  - meg.farber
+  decreaseOnShare: []
+  rLiked: 0
+  rShared: 0
+  rSaved: 0
+  rComments: []
+  rPostableComments: []

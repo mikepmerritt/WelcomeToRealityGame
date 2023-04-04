@@ -65,7 +65,7 @@ public class PostFeedManager : MonoBehaviour
             else if(c.name == "Like")
             {
                 // recolor button if liked previously
-                if(p.liked)
+                if(p.rLiked)
                 {
                     c.GetComponent<Image>().color = likedColor;
                 }
@@ -78,10 +78,10 @@ public class PostFeedManager : MonoBehaviour
                 c.GetComponent<Button>().onClick.AddListener(() =>
                 {
                     // change the liked status
-                    p.liked = !p.liked;
+                    p.rLiked = !p.rLiked;
 
                     // recolor the button
-                    if(p.liked)
+                    if(p.rLiked)
                     {
                         c.GetComponent<Image>().color = likedColor;
                     }
@@ -97,7 +97,7 @@ public class PostFeedManager : MonoBehaviour
                         if(!reputations.TryAdd(name, 1))
                         {
                             // add rep if post is liked
-                            if(p.liked)
+                            if(p.rLiked)
                             {
                                 reputations[name] += 1;
                             }
@@ -115,7 +115,7 @@ public class PostFeedManager : MonoBehaviour
                         if(!reputations.TryAdd(name, 1))
                         {
                             // add -rep if post is liked
-                            if(p.liked)
+                            if(p.rLiked)
                             {
                                 reputations[name] -= 1;
                             }
@@ -135,7 +135,7 @@ public class PostFeedManager : MonoBehaviour
             else if(c.name == "Share")
             {
                 // recolor button if shared previously
-                if(p.shared)
+                if(p.rShared)
                 {
                     c.GetComponent<Image>().color = sharedColor;
                 }
@@ -148,10 +148,10 @@ public class PostFeedManager : MonoBehaviour
                 c.GetComponent<Button>().onClick.AddListener(() =>
                 {
                     // change the shared status
-                    p.shared = !p.shared;
+                    p.rShared = !p.rShared;
 
                     // recolor the button
-                    if(p.shared)
+                    if(p.rShared)
                     {
                         c.GetComponent<Image>().color = sharedColor;
                     }
@@ -167,7 +167,7 @@ public class PostFeedManager : MonoBehaviour
                         if(!reputations.TryAdd(name, 1))
                         {
                             // add rep if post is shared
-                            if(p.shared)
+                            if(p.rShared)
                             {
                                 reputations[name] += 1;
                             }
@@ -185,7 +185,7 @@ public class PostFeedManager : MonoBehaviour
                         if(!reputations.TryAdd(name, 1))
                         {
                             // add -rep if post is shared
-                            if(p.shared)
+                            if(p.rShared)
                             {
                                 reputations[name] -= 1;
                             }
@@ -205,7 +205,7 @@ public class PostFeedManager : MonoBehaviour
             else if(c.name == "Save")
             {
                 // recolor button if saved previously
-                if(p.saved)
+                if(p.rSaved)
                 {
                     c.GetComponent<Image>().color = savedColor;
                 }
@@ -218,10 +218,10 @@ public class PostFeedManager : MonoBehaviour
                 c.GetComponent<Button>().onClick.AddListener(() =>
                 {
                     // change the saved status
-                    p.saved = !p.saved;
+                    p.rSaved = !p.rSaved;
 
                     // recolor the button
-                    if(p.saved)
+                    if(p.rSaved)
                     {
                         c.GetComponent<Image>().color = savedColor;
                     }
@@ -321,7 +321,7 @@ public class PostFeedManager : MonoBehaviour
         // get rid of irrelevant posts (unsaved)
         for(int i = dailyPosts.Count - 1; i >= 0; i--)
         {
-            if(!dailyPosts[i].saved)
+            if(!dailyPosts[i].rSaved)
             {
                 dailyPosts.Remove(dailyPosts[i]);
             }

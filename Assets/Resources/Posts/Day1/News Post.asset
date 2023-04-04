@@ -16,49 +16,85 @@ MonoBehaviour:
   postImage: {fileID: 21300000, guid: af563d0f75d155f42b816bc85fe19ea9, type: 3}
   postText: Scientologist sources say that COVID-19 may have dwindled for good. They
     have encouraged followers to forgo mask-wearing.
-  comments:
-  - commenter: azure.does.art
-    commentText: Fake!!
-  - commenter: user8390118
-    commentText: "I knew it! Stupid snowflakes and their \u201Cvirus\u201D"
-  userComments:
-  - commenter: you
-    commentText: This is literally all lies. How are you claiming this is real??
-  - commenter: you
-    commentText: "Haha, I\u2019m willing to buy that."
+  commentChains:
+  - initial:
+      commenter: azure.does.art
+      commentText: "Fake!!\r"
+      reputationChanges:
+      - userToChange: user8390118
+        amount: -3
+      - userToChange: azure.does.art
+        amount: 3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  - initial:
+      commenter: user8390118
+      commentText: "I knew it! Stupid snowflakes and their \u201Cvirus\u201D"
+      reputationChanges:
+      - userToChange: user8390118
+        amount: 3
+      - userToChange: azure.does.art
+        amount: -3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+    postDate: 0
+  postableComments:
+  - initial:
+      commenter: you
+      commentText: This is literally all lies. How are you claiming this is real??
+      reputationChanges:
+      - userToChange: user8390118
+        amount: -3
+      - userToChange: azure.does.art
+        amount: 3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: user8390118
+      commentText: SNOWFLAKE
+      reputationChanges: []
+      predecessor:
+        commenter: you
+        commentText: This is literally all lies. How are you claiming this is real??
+        reputationChanges: []
+      availabilityDelay: 1
+    postDate: 0
+  - initial:
+      commenter: you
+      commentText: "Haha, I\u2019m willing to buy that."
+      reputationChanges:
+      - userToChange: user8390118
+        amount: 3
+      - userToChange: azure.does.art
+        amount: -3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: azure.does.art
+      commentText: Dude, so not funny of you to joke about this stuff
+      reputationChanges: []
+      predecessor:
+        commenter: you
+        commentText: "Haha, I\u2019m willing to buy that."
+        reputationChanges: []
+      availabilityDelay: 1
+    postDate: 0
   liked: 0
   shared: 0
   saved: 0
-  reputationInfluencers:
-  - type: 0
-    reputationChanges:
-    - username: user8390118
-      change: 1
-    - username: azure.does.art
-      change: -1
-    timeCost: 1
-    commentIndex: 0
-  - type: 1
-    reputationChanges:
-    - username: user8390118
-      change: 1
-    - username: azure.does.art
-      change: -1
-    timeCost: 1
-    commentIndex: 0
-  - type: 2
-    reputationChanges:
-    - username: user8390118
-      change: -3
-    - username: azure.does.art
-      change: 3
-    timeCost: 3
-    commentIndex: 0
-  - type: 2
-    reputationChanges:
-    - username: user8390118
-      change: 3
-    - username: azure.does.art
-      change: -3
-    timeCost: 3
-    commentIndex: 1
+  increaseOnLike:
+  - user8390118
+  decreaseOnLike:
+  - azure.does.art
+  increaseOnShare:
+  - user8390118
+  decreaseOnShare:
+  - azure.does.art
+  rLiked: 0
+  rShared: 0
+  rSaved: 0
+  rComments: []
+  rPostableComments: []
