@@ -593,6 +593,10 @@ MonoBehaviour:
   - user8390118
   profileOverlay: {fileID: 0}
   profileBackup: {fileID: 0}
+  hearts: []
+  fullHeart: {fileID: 21300000, guid: b3790341bc3d2e74b9aba223a349a1d1, type: 3}
+  halfHeart: {fileID: 21300000, guid: 34b19bf0942dc2349bba23bc10aed279, type: 3}
+  emptyHeart: {fileID: 21300000, guid: 339e81c5db5f2454db2e6486f651b35c, type: 3}
 --- !u!4 &1468587526
 Transform:
   m_ObjectHideFlags: 0

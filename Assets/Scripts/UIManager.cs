@@ -11,12 +11,15 @@ public class UIManager : MonoBehaviour
     public LayoutElement commentLayout, userCommentLayout;
     public PostFeedManager pfm;
     public GameObject commentPrefab, userCommentPrefab, replyPrefab;
-    public TMP_Text commentExceptionText, profileTitle, reputation;
+    public TMP_Text commentExceptionText, profileTitle;
     public Button leaveCommentButton, profileReturn;
     public TMP_Text timeTracker, timeWarning;
     public Sprite kaylaProfile, markusProfile, megProfile, scamProfile; // TODO: these should be removed when the profile interface is finished
     public List<string> profileExceptions = new List<string>(); // TODO: this too
     public GameObject profileOverlay, profileBackup; // TODO: this too
+    public GameObject reputation;
+    public Image[] hearts;
+    public Sprite fullHeart, halfHeart, emptyHeart;
 
     void Start()
     {
@@ -35,7 +38,8 @@ public class UIManager : MonoBehaviour
         userCommentLayout = leavingComments.GetComponentInChildren<LayoutElement>();
 
         profileTitle = GameObject.Find("Profile Title").GetComponent<TMP_Text>();
-        reputation = GameObject.Find("Reputation").GetComponent<TMP_Text>();
+        reputation = GameObject.Find("Reputation");
+        hearts = reputation.gameObject.GetComponentsInChildren<Image>();
         profileReturn = GameObject.Find("Profile Return").GetComponent<Button>();
 
         pfm = GameObject.Find("Post Feed Manager").GetComponent<PostFeedManager>();
@@ -218,7 +222,9 @@ public class UIManager : MonoBehaviour
         profileTitle.text = "@" + pfm.curPost.username;
         int repNum = 0;
         pfm.reputations.TryGetValue(pfm.curPost.username, out repNum);
-        reputation.text = "Reputation: " + repNum;
+        // reputation.text = "Reputation: " + repNum;
+
+        
 
         // set return screen since ambiguous
         // in this case, the user came from a post, so return them to the current post
@@ -276,7 +282,41 @@ public class UIManager : MonoBehaviour
         profileTitle.text = "@" + username;
         int repNum = 0;
         pfm.reputations.TryGetValue(username, out repNum);
-        reputation.text = "Reputation: " + repNum;
+        // reputation.text = "Reputation: " + repNum;
+
+        // heart meter - count number of hearts
+        int numHearts = (repNum + 4) / 4;
+        bool half = false;
+        if(numHearts > 5) 
+        {
+            numHearts = 5;
+        }
+        else if(numHearts < 0) 
+        {
+            numHearts = 0;
+        }
+        else
+        {
+            half = repNum % 4 >= 2;
+        }
+        // draw in hearts based on calculations
+        foreach(Image i in hearts)
+        {
+            if(numHearts > 0)
+            {
+                i.sprite = fullHeart;
+                numHearts--;
+            }
+            else if(half)
+            {
+                i.sprite = halfHeart;
+                half = false;
+            }
+            else
+            {
+                i.sprite = emptyHeart;
+            }
+        }
 
         // set return screen since ambiguous
         // in this case, the user came from a post, so return them to the current post
@@ -333,7 +373,41 @@ public class UIManager : MonoBehaviour
         profileTitle.text = "@" + commenterName;
         int repNum = 0;
         pfm.reputations.TryGetValue(commenterName, out repNum);
-        reputation.text = "Reputation: " + repNum;
+        // reputation.text = "Reputation: " + repNum;
+
+        // heart meter - count number of hearts
+        int numHearts = (repNum + 4) / 4;
+        bool half = false;
+        if(numHearts > 5) 
+        {
+            numHearts = 5;
+        }
+        else if(numHearts < 0) 
+        {
+            numHearts = 0;
+        }
+        else
+        {
+            half = repNum % 4 >= 2;
+        }
+        // draw in hearts based on calculations
+        foreach(Image i in hearts)
+        {
+            if(numHearts > 0)
+            {
+                i.sprite = fullHeart;
+                numHearts--;
+            }
+            else if(half)
+            {
+                i.sprite = halfHeart;
+                half = false;
+            }
+            else
+            {
+                i.sprite = emptyHeart;
+            }
+        }
 
         // set return screen since ambiguous
         // in this case, the user came from a commenter, so return them to the current post's comment section
