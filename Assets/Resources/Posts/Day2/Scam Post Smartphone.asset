@@ -12,21 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a8f6a443b015944b2831cabeb63b81, type: 3}
   m_Name: Scam Post Smartphone
   m_EditorClassIdentifier: 
-  username: user8390118
+  username: carlosgonzales28
   postImage: {fileID: 21300000, guid: e122e7f66f8ac6c4fa0700209c5999b7, type: 3}
   postText: OMG guys, I just won a new iPhone by entering this giveaway. Click the
     link in my bio to enter before they run out!
-  comments: []
-  userComments: []
+  commentChains: []
+  postableComments: []
   liked: 0
   shared: 0
   saved: 0
-  reputationInfluencers:
-  - type: 0
-    reputationChanges: []
-    timeCost: 1
-    commentIndex: 0
-  - type: 1
-    reputationChanges: []
-    timeCost: 1
-    commentIndex: 0
+  increaseOnLike: []
+  decreaseOnLike: []
+  increaseOnShare: []
+  decreaseOnShare: []
+  rLiked: 0
+  rShared: 0
+  rSaved: 0
+  rCommentedToday: 0
+  rComments: []
+  rPostableComments: []

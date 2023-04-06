@@ -902,15 +902,15 @@ MonoBehaviour:
   pfm: {fileID: 0}
   uim: {fileID: 0}
   panel: {fileID: 0}
-  gradesWarning: {fileID: 0}
+  gradesWarning: {fileID: 4742419246832687798}
   highlight: {fileID: 0}
   partyInvite: 0
   scammed: 0
   importantUsers:
-  - meg.farber
+  - kayla_brownie
   - marku.s.mith
   - azure.does.art
-  - kayla_brownie
+  - meg.farber
   closePanel: {fileID: 0}
   nextDay: {fileID: 0}
 --- !u!1001 &2531558345912586856
@@ -1332,3 +1332,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+--- !u!1 &4742419246832687798 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4742419246707161966, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+  m_PrefabInstance: {fileID: 4742419246832687797}
+  m_PrefabAsset: {fileID: 0}

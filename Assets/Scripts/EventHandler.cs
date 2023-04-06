@@ -22,7 +22,7 @@ public class EventHandler : MonoBehaviour
         scammed = false;
 
         panel = GameObject.Find("Highlight Panel");
-        gradesWarning = GameObject.Find("Time Warning");
+        // gradesWarning = GameObject.Find("Time Warning");
         highlight = GameObject.Find("Highlight Text").GetComponent<TMP_Text>();
         pfm = GameObject.Find("Post Feed Manager").GetComponent<PostFeedManager>();
         uim = GameObject.Find("UI Manager").GetComponent<UIManager>();
@@ -45,6 +45,12 @@ public class EventHandler : MonoBehaviour
     public string PickAndShowHighlight()
     {
         panel.SetActive(true);
+        // TODO: fix null pointer here - manually assigned for now :(
+        // if(gradesWarning == null)
+        // {
+        //     gradesWarning = GameObject.Find("Time Warning");
+        // }
+
         if(gradesWarning.activeSelf == true)
         {
             highlight.text = "You spent too much time on social media today! Hopefully it doesn't affect your grades...";
