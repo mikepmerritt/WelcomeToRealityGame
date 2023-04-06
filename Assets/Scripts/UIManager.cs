@@ -484,4 +484,12 @@ public class UIManager : MonoBehaviour
             timeWarning.gameObject.SetActive(false);
         }
     }
+
+    public void HideAllPhoneScreens()
+    {
+        profile.SetActive(false);
+        posts.SetActive(false);
+        comments.SetActive(false);
+        leavingComments.SetActive(false);
+    }
 }
