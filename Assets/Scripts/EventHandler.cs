@@ -54,7 +54,7 @@ public class EventHandler : MonoBehaviour
         {
             foreach(CommentChain c in megParty.rComments)
             {
-                if(c.Equals(megParty.postableComments[2])) // the one about an invite
+                if(c.initial.Equals(megParty.postableComments[2].initial)) // the one about an invite
                 {
                     partyInvite = true;
                 }
