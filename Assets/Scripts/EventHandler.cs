@@ -194,6 +194,18 @@ public class EventHandler : MonoBehaviour
 
                 return highlight.text;
             }
+            else if(rep <= -4)
+            {
+                highlight.text = "Due to your frequent hate toward " + user + ", they have blocked you. Hopefully you had nothing else to say to them.";
+
+                choiceHolder.SetActive(false);
+                backToFeed.SetActive(true);
+
+                // user blocks you
+                pfm.blockedUsers.Add(user);
+
+                return highlight.text;
+            }
             else if(rep < 0)
             {
                 highlight.text = "Looks like you really upset " + user + ". Did you say something rude?";
