@@ -162,7 +162,8 @@ public class EventHandler : MonoBehaviour
                     {
                         pfm.reputations["meg.farber"] += -8;
                     }
-                    // block you
+                    // meg blocks you
+                    pfm.blockedUsers.Add("meg.farber");
                 });
                 
                 return highlight.text;

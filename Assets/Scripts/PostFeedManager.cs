@@ -16,6 +16,7 @@ public class PostFeedManager : MonoBehaviour
     public TMP_Text commentNum; // for UI manager to use when a comment is added
     public int currentDay;
     public TMP_Text dayTracker;
+    public List<string> blockedUsers;
 
     void Start()
     {
@@ -29,6 +30,9 @@ public class PostFeedManager : MonoBehaviour
 
         // set up empty dictionary for relationships
         reputations = new Dictionary<string, int>();
+
+        // set up blocked users list
+        blockedUsers = new List<string>();
         
         // call function to increment to day 1 and populate feed
         RefreshFeedForNewDay();
@@ -296,8 +300,12 @@ public class PostFeedManager : MonoBehaviour
                 p.rPostableComments.Add(c.Clone());
             }
 
-            allPosts.Add(p);
-            returnedPosts.Add(p);
+            // if the user is not blocked, add the post
+            if(!blockedUsers.Contains(p.username))
+            {
+                allPosts.Add(p);
+                returnedPosts.Add(p);
+            }
         }
 
         return returnedPosts;
@@ -329,7 +337,7 @@ public class PostFeedManager : MonoBehaviour
         // get rid of irrelevant posts (unsaved)
         for(int i = dailyPosts.Count - 1; i >= 0; i--)
         {
-            if(!dailyPosts[i].rSaved && !dailyPosts[i].rCommentedToday)
+            if(!blockedUsers.Contains(dailyPosts[i].username) || (!dailyPosts[i].rSaved && !dailyPosts[i].rCommentedToday))
             {
                 dailyPosts.Remove(dailyPosts[i]);
             }
