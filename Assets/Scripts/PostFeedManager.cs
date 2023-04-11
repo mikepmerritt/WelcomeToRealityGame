@@ -354,6 +354,9 @@ public class PostFeedManager : MonoBehaviour
             dailyPosts.Add(p);
         }
 
+        // go to top of feed
+        feed.GetComponent<RectTransform>().position = new Vector3(feed.GetComponent<RectTransform>().position.x, 0, feed.GetComponent<RectTransform>().position.z);
+
         // resize the feed content box to have enough space to fit all of the posts
         feed.GetComponent<LayoutElement>().minHeight = dailyPosts.Count * sizePerPost;
 
