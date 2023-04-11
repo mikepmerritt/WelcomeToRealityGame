@@ -103,7 +103,7 @@ public class EventHandler : MonoBehaviour
                     partyInvite = true;
                 }
             }
-            if(megParty.rLiked || pfm.reputations.TryGetValue("meg.farber", out int rep) && rep >= 4)
+            if(megParty.rLiked && pfm.reputations.TryGetValue("meg.farber", out int rep) && rep >= 4)
             {
                 partyInvite = true;
             }
@@ -125,7 +125,7 @@ public class EventHandler : MonoBehaviour
                 choice1.GetComponent<Button>().onClick.AddListener(() => {
                     highlight.text = "Meg is posting about the party on her account. Would you like to post about the party online?";
 
-                    choice1.GetComponentInChildren<TMP_Text>().text = "Post a private story";
+                    choice1.GetComponentInChildren<TMP_Text>().text = "Make a post about it";
                     choice1.GetComponent<Button>().onClick.RemoveAllListeners();
                     choice1.GetComponent<Button>().onClick.AddListener(() => {
                         if(!pfm.reputations.TryAdd("meg.farber", 8))
@@ -135,7 +135,7 @@ public class EventHandler : MonoBehaviour
                         GoToNextDay();
                     });
 
-                    choice2.GetComponentInChildren<TMP_Text>().text = "Post a public story";
+                    choice2.GetComponentInChildren<TMP_Text>().text = "Make a story about it";
                     choice2.GetComponent<Button>().onClick.RemoveAllListeners();
                     choice2.GetComponent<Button>().onClick.AddListener(() => {
                         if(!pfm.reputations.TryAdd("meg.farber", 8))
@@ -153,7 +153,7 @@ public class EventHandler : MonoBehaviour
                         GoToNextDay();
                     });
 
-                    choice3.GetComponentInChildren<TMP_Text>().text = "Don't post about it";
+                    choice3.GetComponentInChildren<TMP_Text>().text = "Don't post anything about it";
                     choice3.GetComponent<Button>().onClick.RemoveAllListeners();
                     choice3.GetComponent<Button>().onClick.AddListener(() => {
                         if(!pfm.reputations.TryAdd("meg.farber", -1))
