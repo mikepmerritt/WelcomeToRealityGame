@@ -911,8 +911,13 @@ MonoBehaviour:
   - marku.s.mith
   - azure.does.art
   - meg.farber
-  closePanel: {fileID: 0}
+  - carlosgonzales28
   nextDay: {fileID: 0}
+  backToFeed: {fileID: 0}
+  choiceHolder: {fileID: 0}
+  choice1: {fileID: 0}
+  choice2: {fileID: 0}
+  choice3: {fileID: 0}
 --- !u!1001 &2531558345912586856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1328,6 +1333,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4742419247607242671, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196387115678011500, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196387115678011500, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196387115678011500, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196387115678011500, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410610465709697257, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410610465709697257, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410610465709697257, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410610465709697257, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8041076506890305077, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8041076506890305077, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8041076506890305077, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8041076506890305077, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
