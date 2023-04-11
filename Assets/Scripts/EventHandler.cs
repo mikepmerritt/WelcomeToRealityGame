@@ -174,10 +174,22 @@ public class EventHandler : MonoBehaviour
             if(hackScam.rShared == true)
             {
                 scammed = true;
-                highlight.text = "That post from Carlos seemed a little strange... I wonder if he really got that phone, or if someone hacked his account? Hopefully nothing bad happens.";
+                highlight.text = "That post from Carlos seemed a little strange... did he really get that phone, or did someone hack his account? \n\nAfter you shared it, your account got hacked and it took a whole day of working with support to get back in. You should be more careful with suspicious posts in the future.";
                 
-                choiceHolder.SetActive(false);
-                backToFeed.SetActive(true);
+                choiceHolder.SetActive(true);
+                choice1.SetActive(true);
+                choice2.SetActive(false);
+                choice3.SetActive(false);
+                backToFeed.SetActive(false);
+
+                choice1.GetComponentInChildren<TMP_Text>().text = "Hopefully I didn't miss anything...";
+                choice1.GetComponent<Button>().onClick.RemoveAllListeners();
+                choice1.GetComponent<Button>().onClick.AddListener(() => {
+                    // skip a day
+                    panel.SetActive(false);
+                    pfm.RefreshFeedForNewDay();
+                    pfm.RefreshFeedForNewDay();
+                });
 
                 return highlight.text;
             }
