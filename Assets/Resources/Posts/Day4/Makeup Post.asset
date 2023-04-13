@@ -24,15 +24,35 @@ MonoBehaviour:
       postDate: 0
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: kayla_brownie
+      commentText: Hehe, thanks girlie
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: meg.farber
+        commentText: Kayla, your makeup skills are INSANE.
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
   - initial:
-      commenter: carlosgonzales28
-      commentText: My guy, you are so insane, this is amazing
+      commenter: azure.does.art
+      commentText: FUTURE MAKEUP ARTIST !!
       reputationChanges: []
       postDate: 0
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: kayla_brownie
+      commentText: "AZURE, ILYYY\u2013 Always the hype I need"
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: azure.does.art
+        commentText: FUTURE MAKEUP ARTIST !!
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
   - initial:
       commenter: allis.on_line
       commentText: Gorgeous girl!!

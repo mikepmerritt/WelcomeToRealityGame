@@ -25,8 +25,8 @@ MonoBehaviour:
     postedReplies: []
     availableToPlayer: []
     pendingReplies:
-    - commenter: test
-      commentText: test
+    - commenter: marku.s.mith
+      commentText: Ayo, thanks! I appreciate it!
       reputationChanges: []
       postDate: 0
       predecessor:
@@ -42,7 +42,17 @@ MonoBehaviour:
       postDate: 1
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: marku.s.mith
+      commentText: HECK YEAH! We better keep each other in the loop.
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: meg.farber
+        commentText: HELL YEAH! College club!!
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
   - initial:
       commenter: azure.does.art
       commentText: "AH! That\u2019s so awesome Markus!"
@@ -50,7 +60,17 @@ MonoBehaviour:
       postDate: 1
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: marku.s.mith
+      commentText: Thanks Azure! That means a lot coming from you.
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: azure.does.art
+        commentText: "AH! That\u2019s so awesome Markus!"
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
   - initial:
       commenter: kayla_brownie
       commentText: So so sooo proud!
@@ -58,7 +78,17 @@ MonoBehaviour:
       postDate: 1
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: marku.s.mith
+      commentText: "YOU\u2019RE NEXT KAY!!"
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: kayla_brownie
+        commentText: So so sooo proud!
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
   postableComments:
   - initial:
       commenter: you

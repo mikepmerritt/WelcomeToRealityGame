@@ -24,7 +24,17 @@ MonoBehaviour:
       postDate: 0
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: carlosgonzales28
+      commentText: YOU KNOW IT BRO
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: marku.s.mith
+        commentText: YES DUDE! You worked hard for this!
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
   - initial:
       commenter: meg.farber
       commentText: Pfft, orchestra nerd, but as you should!
@@ -40,7 +50,17 @@ MonoBehaviour:
       postDate: 0
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: carlosgonzales28
+      commentText: Totally Azure, tight af forever dude
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: azure.does.art
+        commentText: Cheers to an awesome 4 years of violin with you!
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
   - initial:
       commenter: kayla_brownie
       commentText: Great concert Carlos :)

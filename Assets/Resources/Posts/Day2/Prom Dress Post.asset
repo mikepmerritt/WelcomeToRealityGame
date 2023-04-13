@@ -21,26 +21,56 @@ MonoBehaviour:
       commenter: marku.s.mith
       commentText: Gorgeous dress Kay!
       reputationChanges: []
+      postDate: 1
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
-    postDate: 0
+    pendingReplies:
+    - commenter: kayla_brownie
+      commentText: Thanks Markus <33
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: marku.s.mith
+        commentText: Gorgeous dress Kay!
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
   - initial:
       commenter: meg.farber
       commentText: GIRL, YOU ARE SO PRETTY
       reputationChanges: []
+      postDate: 1
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
-    postDate: 0
+    pendingReplies:
+    - commenter: kayla_brownie
+      commentText: NO U GIRL
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: meg.farber
+        commentText: GIRL, YOU ARE SO PRETTY
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
   - initial:
       commenter: azure.does.art
       commentText: How are you not modeling already??
       reputationChanges: []
+      postDate: 1
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
-    postDate: 0
+    pendingReplies:
+    - commenter: kayla_brownie
+      commentText: The question I've been asking for years
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: azure.does.art
+        commentText: How are you not modeling already??
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
   postableComments:
   - initial:
       commenter: you
@@ -48,46 +78,50 @@ MonoBehaviour:
       reputationChanges:
       - userToChange: kayla_brownie
         amount: -3
+      postDate: 1
     postedReplies: []
     availableToPlayer: []
     pendingReplies:
     - commenter: kayla_brownie
       commentText: Rude, damn.
       reputationChanges: []
+      postDate: 1
       predecessor:
         commenter: you
         commentText: "More like frumpy af\u2013 That dress is Not flattering on you"
         reputationChanges: []
+        postDate: 1
       availabilityDelay: 1
-    postDate: 0
   - initial:
       commenter: you
       commentText: STUNNING.
       reputationChanges:
       - userToChange: kayla_brownie
         amount: 2
+      postDate: 1
     postedReplies: []
     availableToPlayer: []
     pendingReplies: []
-    postDate: 0
   - initial:
       commenter: you
       commentText: OMG, GORGEOUS! We need to hang more!
       reputationChanges:
       - userToChange: kayla_brownie
         amount: 4
+      postDate: 1
     postedReplies: []
     availableToPlayer: []
     pendingReplies:
     - commenter: kayla_brownie
       commentText: Awww, thank you!! We totally should :)
       reputationChanges: []
+      postDate: 1
       predecessor:
         commenter: you
         commentText: OMG, GORGEOUS! We need to hang more!
         reputationChanges: []
+        postDate: 1
       availabilityDelay: 1
-    postDate: 0
   liked: 0
   shared: 0
   saved: 0
@@ -100,31 +134,32 @@ MonoBehaviour:
   rLiked: 0
   rShared: 0
   rSaved: 0
+  rCommentedToday: 0
   rComments:
   - initial:
       commenter: marku.s.mith
       commentText: Gorgeous dress Kay!
       reputationChanges: []
+      postDate: 1
     postedReplies: []
     availableToPlayer: []
     pendingReplies: []
-    postDate: 0
   - initial:
       commenter: meg.farber
       commentText: GIRL, YOU ARE SO PRETTY
       reputationChanges: []
+      postDate: 1
     postedReplies: []
     availableToPlayer: []
     pendingReplies: []
-    postDate: 0
   - initial:
       commenter: azure.does.art
       commentText: How are you not modeling already??
       reputationChanges: []
+      postDate: 1
     postedReplies: []
     availableToPlayer: []
     pendingReplies: []
-    postDate: 0
   rPostableComments:
   - initial:
       commenter: you
@@ -132,43 +167,47 @@ MonoBehaviour:
       reputationChanges:
       - userToChange: kayla_brownie
         amount: -3
+      postDate: 1
     postedReplies: []
     availableToPlayer: []
     pendingReplies:
     - commenter: kayla_brownie
       commentText: Rude, damn.
       reputationChanges: []
+      postDate: 1
       predecessor:
         commenter: you
         commentText: "More like frumpy af\u2013 That dress is Not flattering on you"
         reputationChanges: []
+        postDate: 1
       availabilityDelay: 1
-    postDate: 0
   - initial:
       commenter: you
       commentText: STUNNING.
       reputationChanges:
       - userToChange: kayla_brownie
         amount: 2
+      postDate: 1
     postedReplies: []
     availableToPlayer: []
     pendingReplies: []
-    postDate: 0
   - initial:
       commenter: you
       commentText: OMG, GORGEOUS! We need to hang more!
       reputationChanges:
       - userToChange: kayla_brownie
         amount: 4
+      postDate: 1
     postedReplies: []
     availableToPlayer: []
     pendingReplies:
     - commenter: kayla_brownie
       commentText: Awww, thank you!! We totally should :)
       reputationChanges: []
+      postDate: 1
       predecessor:
         commenter: you
         commentText: OMG, GORGEOUS! We need to hang more!
         reputationChanges: []
+        postDate: 1
       availabilityDelay: 1
-    postDate: 0

@@ -23,7 +23,17 @@ MonoBehaviour:
       postDate: 0
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: azure.does.art
+      commentText: MANIFESTING ART SCHOOL FRFR
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: kayla_brownie
+        commentText: Omg, gorgeous, Azure. STUNNING
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
   - initial:
       commenter: carlosgonzales28
       commentText: My guy, you are so insane, this is amazing
@@ -31,7 +41,17 @@ MonoBehaviour:
       postDate: 0
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: azure.does.art
+      commentText: Lmaooo, tyty. Insanity and art do go hand in hand
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: carlosgonzales28
+        commentText: My guy, you are so insane, this is amazing
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
   - initial:
       commenter: marku.s.mith
       commentText: So pretty Azure!
