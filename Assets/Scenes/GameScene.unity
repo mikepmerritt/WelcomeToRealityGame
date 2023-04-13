@@ -900,6 +900,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   megParty: {fileID: 11400000, guid: 9b4f8020ae165104082f2a5d7608c062, type: 2}
   hackScam: {fileID: 11400000, guid: 02444964d622c4a459f028bb6c7af3db, type: 2}
+  allisonPlay: {fileID: 11400000, guid: a0909c128508e5e438b6941383b3b3fd, type: 2}
   pfm: {fileID: 0}
   uim: {fileID: 0}
   panel: {fileID: 0}
@@ -907,6 +908,7 @@ MonoBehaviour:
   highlight: {fileID: 0}
   partyInvite: 0
   scammed: 0
+  playInvite: 0
   importantUsers:
   - kayla_brownie
   - marku.s.mith

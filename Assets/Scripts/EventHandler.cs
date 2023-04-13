@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class EventHandler : MonoBehaviour
 {
-    public Post megParty, hackScam;
+    public Post megParty, hackScam, allisonPlay;
     public PostFeedManager pfm;
     public UIManager uim;
     public GameObject panel, gradesWarning;
     public TMP_Text highlight;
-    public bool partyInvite, scammed; // TODO: use this later!
+    public bool partyInvite, scammed, playInvite; // TODO: use this later!
     public List<string> importantUsers;
     public Button nextDay;
     public GameObject backToFeed, choiceHolder, choice1, choice2, choice3;
@@ -103,10 +103,6 @@ public class EventHandler : MonoBehaviour
                     partyInvite = true;
                 }
             }
-            if(megParty.rLiked && pfm.reputations.TryGetValue("meg.farber", out int rep) && rep >= 4)
-            {
-                partyInvite = true;
-            }
             if(partyInvite) 
             {
                 // set text
@@ -193,7 +189,76 @@ public class EventHandler : MonoBehaviour
                 return highlight.text;
             }
         }
-        // else
+        if(!playInvite)
+        {
+            // school play - allison event
+            foreach(CommentChain c in allisonPlay.rComments)
+            {
+                if(c.initial.Equals(allisonPlay.postableComments[0].initial)) // the one about an invite
+                {
+                    playInvite = true;
+                }
+            }
+            if(playInvite) 
+            {
+                // set text
+                highlight.text = "The school play is opening tonight. You told Allison you were interested.";
+                
+                // set up choice buttons and disable back button
+                choiceHolder.SetActive(true);
+                choice1.SetActive(true);
+                choice2.SetActive(true);
+                choice3.SetActive(true);
+                backToFeed.SetActive(false);
+
+                // set up buttons and listeners
+                choice1.GetComponentInChildren<TMP_Text>().text = "Buy tickets and attend";
+                choice1.GetComponent<Button>().onClick.RemoveAllListeners();
+                choice1.GetComponent<Button>().onClick.AddListener(() => {
+                    highlight.text = "You decide to buy tickets and enjoy the show! It’s pretty good despite the lack of budget… The peers involved are appreciative of your support.";
+                    choiceHolder.SetActive(false);
+                    backToFeed.SetActive(true);
+                    if(!pfm.reputations.TryAdd("all.is.on_line", 5))
+                    {
+                        pfm.reputations["all.is.on_line"] += 5;
+                    }
+                    if(!pfm.reputations.TryAdd("azure.does.art", 5))
+                    {
+                        pfm.reputations["azure.does.art"] += 5;
+                    }
+                });
+
+                choice2.GetComponentInChildren<TMP_Text>().text = "Stay home and do homework";
+                choice2.GetComponent<Button>().onClick.RemoveAllListeners();
+                choice2.GetComponent<Button>().onClick.AddListener(() => {
+                    highlight.text = "You decide that your crushing load of homework needs to be done before going to anything like a school play. Although you miss out on a fun show, your grades are certainly going to take a turn uphill for this one.";
+                    choiceHolder.SetActive(false);
+                    backToFeed.SetActive(true);
+                    if(!pfm.reputations.TryAdd("all.is.on_line", -5))
+                    {
+                        pfm.reputations["all.is.on_line"] += -5;
+                    }
+                    // TODO: grades reward
+                });
+
+                choice3.GetComponentInChildren<TMP_Text>().text = "Stay home and play video games";
+                choice3.GetComponent<Button>().onClick.RemoveAllListeners();
+                choice3.GetComponent<Button>().onClick.AddListener(() => {
+                    highlight.text = "School plays are kind of stupid, and you need some time to recharge. The recharging goes great, but maybe lasts a bit too long. You play video games for hours upon end before accidentally falling asleep without doing your homework. Shoot!";
+                    choiceHolder.SetActive(false);
+                    backToFeed.SetActive(true);
+                    if(!pfm.reputations.TryAdd("all.is.on_line", -5))
+                    {
+                        pfm.reputations["all.is.on_line"] += -5;
+                    }
+                    // TODO: grades penalty
+                });
+                
+                return highlight.text;
+            }
+        }
+
+        // else feedback
         foreach(string user in importantUsers)
         {
             if(pfm.reputations.TryGetValue(user, out int rep) && rep >= 3)
