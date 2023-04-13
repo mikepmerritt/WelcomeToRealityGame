@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// TODO: make a "first time setup" to purge all r variables for the posts.
+
 public class PostFeedManager : MonoBehaviour
 {
     public List<Post> dailyPosts, allPosts;
