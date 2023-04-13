@@ -302,7 +302,12 @@ public class PostFeedManager : MonoBehaviour
             }
             foreach(CommentChain c in p.postableComments)
             {
-                p.rPostableComments.Add(c.Clone());
+                // clone comment chain
+                CommentChain cc = c.Clone();
+                // set initial comment's post date to this day
+                cc.initial.postDate = day;
+                // add comment with modified date
+                p.rPostableComments.Add(cc);
             }
 
             // if the user is not blocked, add the post

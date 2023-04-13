@@ -124,5 +124,99 @@ MonoBehaviour:
   rShared: 0
   rSaved: 0
   rCommentedToday: 0
-  rComments: []
-  rPostableComments: []
+  rComments:
+  - initial:
+      commenter: meg.farber
+      commentText: You are just on fire this week, huh?
+      reputationChanges: []
+      postDate: 4
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: marku.s.mith
+      commentText: "U know it, and I\u2019m keeping this energy going"
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: meg.farber
+        commentText: You are just on fire this week, huh?
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 5
+  - initial:
+      commenter: kayla_brownie
+      commentText: HELL YEAH YOU DID!
+      reputationChanges: []
+      postDate: 4
+    postedReplies:
+    - commenter: marku.s.mith
+      commentText: WOOO!
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: kayla_brownie
+        commentText: HELL YEAH YOU DID!
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1
+    availableToPlayer: []
+    pendingReplies: []
+  - initial:
+      commenter: carlosgonzales28
+      commentText: FOR THE BEARSSSS!!
+      reputationChanges: []
+      postDate: 4
+    postedReplies:
+    - commenter: marku.s.mith
+      commentText: ALL DAY EVERYDAY!!
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: carlosgonzales28
+        commentText: FOR THE BEARSSSS!!
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1
+    availableToPlayer: []
+    pendingReplies: []
+  rPostableComments:
+  - initial:
+      commenter: you
+      commentText: WOOO! FOR THE BEARS
+      reputationChanges:
+      - userToChange: marku.s.mith
+        amount: 2
+      postDate: 1
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: marku.s.mith
+      commentText: YESSS, THE HYPEEE
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: you
+        commentText: WOOO! FOR THE BEARS
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1
+  - initial:
+      commenter: you
+      commentText: "Track is stupid, you\u2019re just run around in circles"
+      reputationChanges:
+      - userToChange: marku.s.mith
+        amount: -3
+      postDate: 1
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: marku.s.mith
+      commentText: "You clearly don\u2019t get it dude, but to each their own I guess."
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: you
+        commentText: "Track is stupid, you\u2019re just run around in circles"
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1

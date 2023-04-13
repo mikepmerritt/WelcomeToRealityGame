@@ -150,17 +150,22 @@ public class CommentChain
             // check if the post's predecessor is already in the comment chain
             // the predecessor is the post that needs to come before a given reply in the conversation
             bool predecessorPosted = reply.predecessor.Equals(initial); // check first comment in chain first
+            if(predecessorPosted)
+            {
+                reply.predecessor.postDate = initial.postDate;
+            }
             // then check the rest in the chain
             foreach(Comment c in postedReplies)
             {
                 if(reply.predecessor.Equals(c))
                 {
                     predecessorPosted = true;
+                    reply.predecessor.postDate = c.postDate;
                 }
             }
 
             if(predecessorPosted && (date - reply.predecessor.postDate) >= reply.availabilityDelay)
-            {
+            {   
                 // check if it is a player reply and add to postable replies if so
                 if(reply.commenter == "you")
                 {
@@ -173,6 +178,7 @@ public class CommentChain
                     postedReplies.Add(reply);
                     pendingReplies.Remove(reply);
                 }
+                reply.postDate = date;
             }
             
         }

@@ -18,6 +18,6 @@ public class Post : ScriptableObject
     public List<string> increaseOnLike, decreaseOnLike, increaseOnShare, decreaseOnShare;
     [HideInInspector]
     public bool rLiked, rShared, rSaved, rCommentedToday;
-    [HideInInspector]
+    // [HideInInspector]
     public List<CommentChain> rComments, rPostableComments;
 }

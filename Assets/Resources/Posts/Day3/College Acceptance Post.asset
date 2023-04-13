@@ -138,7 +138,7 @@ MonoBehaviour:
       commenter: carlosgonzales28
       commentText: So proud of you man!
       reputationChanges: []
-      postDate: 1
+      postDate: 3
     postedReplies: []
     availableToPlayer: []
     pendingReplies: []
@@ -146,7 +146,7 @@ MonoBehaviour:
       commenter: meg.farber
       commentText: HELL YEAH! College club!!
       reputationChanges: []
-      postDate: 1
+      postDate: 3
     postedReplies: []
     availableToPlayer: []
     pendingReplies: []
@@ -154,7 +154,7 @@ MonoBehaviour:
       commenter: azure.does.art
       commentText: "AH! That\u2019s so awesome Markus!"
       reputationChanges: []
-      postDate: 1
+      postDate: 3
     postedReplies: []
     availableToPlayer: []
     pendingReplies: []
@@ -162,18 +162,41 @@ MonoBehaviour:
       commenter: kayla_brownie
       commentText: So so sooo proud!
       reputationChanges: []
-      postDate: 1
+      postDate: 3
     postedReplies: []
     availableToPlayer: []
     pendingReplies: []
+  - initial:
+      commenter: you
+      commentText: "So proud of you. You\u2019re going to do great out there!"
+      reputationChanges:
+      - userToChange: marku.s.mith
+        amount: 3
+      postDate: 3
+    postedReplies:
+    - commenter: marku.s.mith
+      commentText: Hell yeah! Representing!
+      reputationChanges: []
+      postDate: 4
+      predecessor:
+        commenter: you
+        commentText: "So proud of you. You\u2019re going to do great out there!"
+        reputationChanges: []
+        postDate: 3
+      availabilityDelay: 1
+    availableToPlayer: []
+    pendingReplies: []
+  rPostableComments:
   - initial:
       commenter: you
       commentText: Congrats dude!
       reputationChanges:
       - userToChange: marku.s.mith
         amount: 3
-      postDate: 1
-    postedReplies:
+      postDate: 3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
     - commenter: marku.s.mith
       commentText: Thanks dude!
       reputationChanges: []
@@ -184,36 +207,13 @@ MonoBehaviour:
         reputationChanges: []
         postDate: 1
       availabilityDelay: 1
-    availableToPlayer: []
-    pendingReplies: []
-  rPostableComments:
-  - initial:
-      commenter: you
-      commentText: "So proud of you. You\u2019re going to do great out there!"
-      reputationChanges:
-      - userToChange: marku.s.mith
-        amount: 3
-      postDate: 1
-    postedReplies: []
-    availableToPlayer: []
-    pendingReplies:
-    - commenter: marku.s.mith
-      commentText: Hell yeah! Representing!
-      reputationChanges: []
-      postDate: 1
-      predecessor:
-        commenter: you
-        commentText: "So proud of you. You\u2019re going to do great out there!"
-        reputationChanges: []
-        postDate: 1
-      availabilityDelay: 1
   - initial:
       commenter: you
       commentText: Literally no one cares.
       reputationChanges:
       - userToChange: marku.s.mith
         amount: -3
-      postDate: 1
+      postDate: 3
     postedReplies: []
     availableToPlayer: []
     pendingReplies:
