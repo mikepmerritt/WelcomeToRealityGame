@@ -429,6 +429,7 @@ MonoBehaviour:
   commentNum: {fileID: 0}
   currentDay: 0
   dayTracker: {fileID: 0}
+  blockedUsers: []
 --- !u!1001 &1446703552
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -912,6 +913,7 @@ MonoBehaviour:
   - azure.does.art
   - meg.farber
   - carlosgonzales28
+  - all.is.on_line
   nextDay: {fileID: 0}
   backToFeed: {fileID: 0}
   choiceHolder: {fileID: 0}

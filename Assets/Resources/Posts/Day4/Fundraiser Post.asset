@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a8f6a443b015944b2831cabeb63b81, type: 3}
+  m_Name: Fundraiser Post
+  m_EditorClassIdentifier: 
+  username: all.is.on_line
+  postImage: {fileID: 21300000, guid: 99cbf7d7d069c5e4688115bc1c6384ce, type: 3}
+  postText: "The fundraiser is live everyone! Donate a few dollars to keep our local
+    shelter open, or if you can\u2019t, message me and I can put you on the sheet
+    for volunteering!"
+  commentChains:
+  - initial:
+      commenter: azure.does.art
+      commentText: "Awwww, so cute! Hope we\u2019re all able to help out somehow
+        <3"
+      reputationChanges: []
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: all.is.on_line
+      commentText: "Me too! We\u2019ll take anything for these adorable puppers!\r"
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: azure.does.art
+        commentText: "Awwww, so cute! Hope we\u2019re all able to help out somehow
+          <3"
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  - initial:
+      commenter: meg.farber
+      commentText: "Oh, so adorable that you\u2019re doing this."
+      reputationChanges: []
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+  - initial:
+      commenter: carlosgonzales28
+      commentText: Bringing the whole family with me on Saturday!
+      reputationChanges: []
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: all.is.on_line
+      commentText: OMG, thank you Carlos!!
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: carlosgonzales28
+        commentText: Bringing the whole family with me on Saturday!
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  postableComments:
+  - initial:
+      commenter: you
+      commentText: Not sure I can make it this week, but maybe I could stop by later
+        this month!
+      reputationChanges:
+      - userToChange: all.is.on_line
+        amount: 2
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: all.is.on_line
+      commentText: "Aww, it\u2019s okay though! Help anytime is lovely :)"
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: you
+        commentText: Not sure I can make it this week, but maybe I could stop by
+          later this month!
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  - initial:
+      commenter: you
+      commentText: No money right now,  but I will certainly volunteer!
+      reputationChanges:
+      - userToChange: all.is.on_line
+        amount: 4
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: all.is.on_line
+      commentText: "Oh! Absolutely no problem, I can\u2019t wait to see you there!"
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: you
+        commentText: No money right now,  but I will certainly volunteer!
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  - initial:
+      commenter: you
+      commentText: Just donated!
+      reputationChanges:
+      - userToChange: all.is.on_line
+        amount: 2
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: all.is.on_line
+      commentText: Woohoo!! Thank you! :)
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: you
+        commentText: Just donated!
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  - initial:
+      commenter: you
+      commentText: "Eh, I\u2019m allergic to dogs so I kind of don\u2019t care."
+      reputationChanges:
+      - userToChange: all.is.on_line
+        amount: -3
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: all.is.on_line
+      commentText: "Wtf, who is so allergic to dogs they spread hate on a shelter
+        post? You\u2019re kinda awful for this one."
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: you
+        commentText: "Eh, I\u2019m allergic to dogs so I kind of don\u2019t care."
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  liked: 0
+  shared: 0
+  saved: 0
+  increaseOnLike:
+  - all.is.on_line
+  decreaseOnLike: []
+  increaseOnShare:
+  - all.is.on_line
+  decreaseOnShare: []
+  rLiked: 0
+  rShared: 0
+  rSaved: 0
+  rCommentedToday: 0
+  rComments: []
+  rPostableComments: []
