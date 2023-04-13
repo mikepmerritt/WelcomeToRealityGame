@@ -293,7 +293,12 @@ public class PostFeedManager : MonoBehaviour
             // copy comment lists without aliasing
             foreach(CommentChain c in p.commentChains)
             {
-                p.rComments.Add(c.Clone());
+                // clone comment chain
+                CommentChain cc = c.Clone();
+                // set initial comment's post date to this day
+                cc.initial.postDate = day;
+                // add comment with modified date
+                p.rComments.Add(cc);
             }
             foreach(CommentChain c in p.postableComments)
             {
@@ -337,7 +342,13 @@ public class PostFeedManager : MonoBehaviour
         // get rid of irrelevant posts (unsaved)
         for(int i = dailyPosts.Count - 1; i >= 0; i--)
         {
-            if(!blockedUsers.Contains(dailyPosts[i].username) || (!dailyPosts[i].rSaved && !dailyPosts[i].rCommentedToday))
+            // blocked
+            if(blockedUsers.Contains(dailyPosts[i].username))
+            {
+                dailyPosts.Remove(dailyPosts[i]);
+            }
+            // not saved or commented on
+            else if(!dailyPosts[i].rSaved && !dailyPosts[i].rCommentedToday)
             {
                 dailyPosts.Remove(dailyPosts[i]);
             }

@@ -24,7 +24,17 @@ MonoBehaviour:
       postDate: 1
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: test
+      commentText: test
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: carlosgonzales28
+        commentText: So proud of you man!
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
   - initial:
       commenter: meg.farber
       commentText: HELL YEAH! College club!!
