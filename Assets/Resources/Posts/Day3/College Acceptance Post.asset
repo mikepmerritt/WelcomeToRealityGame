@@ -159,8 +159,9 @@ MonoBehaviour:
   increaseOnShare:
   - marku.s.mith
   decreaseOnShare: []
+  CollegeReputationModifier: 1
   rLiked: 0
-  rShared: 0
+  rShared: 1
   rSaved: 0
   rCommentedToday: 0
   rComments:
@@ -171,7 +172,17 @@ MonoBehaviour:
       postDate: 3
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: marku.s.mith
+      commentText: Ayo, thanks! I appreciate it!
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: carlosgonzales28
+        commentText: So proud of you man!
+        reputationChanges: []
+        postDate: 3
+      availabilityDelay: 1
   - initial:
       commenter: meg.farber
       commentText: HELL YEAH! College club!!
@@ -179,7 +190,17 @@ MonoBehaviour:
       postDate: 3
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: marku.s.mith
+      commentText: HECK YEAH! We better keep each other in the loop.
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: meg.farber
+        commentText: HELL YEAH! College club!!
+        reputationChanges: []
+        postDate: 3
+      availabilityDelay: 1
   - initial:
       commenter: azure.does.art
       commentText: "AH! That\u2019s so awesome Markus!"
@@ -187,7 +208,17 @@ MonoBehaviour:
       postDate: 3
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: marku.s.mith
+      commentText: Thanks Azure! That means a lot coming from you.
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: azure.does.art
+        commentText: "AH! That\u2019s so awesome Markus!"
+        reputationChanges: []
+        postDate: 3
+      availabilityDelay: 1
   - initial:
       commenter: kayla_brownie
       commentText: So so sooo proud!
@@ -195,27 +226,17 @@ MonoBehaviour:
       postDate: 3
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
-  - initial:
-      commenter: you
-      commentText: "So proud of you. You\u2019re going to do great out there!"
-      reputationChanges:
-      - userToChange: marku.s.mith
-        amount: 3
-      postDate: 3
-    postedReplies:
+    pendingReplies:
     - commenter: marku.s.mith
-      commentText: Hell yeah! Representing!
+      commentText: "YOU\u2019RE NEXT KAY!!"
       reputationChanges: []
-      postDate: 4
+      postDate: 1
       predecessor:
-        commenter: you
-        commentText: "So proud of you. You\u2019re going to do great out there!"
+        commenter: kayla_brownie
+        commentText: So so sooo proud!
         reputationChanges: []
         postDate: 3
       availabilityDelay: 1
-    availableToPlayer: []
-    pendingReplies: []
   rPostableComments:
   - initial:
       commenter: you
@@ -239,6 +260,26 @@ MonoBehaviour:
       availabilityDelay: 1
   - initial:
       commenter: you
+      commentText: "So proud of you. You\u2019re going to do great out there! \\U0001F389"
+      reputationChanges:
+      - userToChange: marku.s.mith
+        amount: 3
+      postDate: 3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: marku.s.mith
+      commentText: Hell yeah! Representing!
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: you
+        commentText: "So proud of you. You\u2019re going to do great out there!"
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1
+  - initial:
+      commenter: you
       commentText: Literally no one cares.
       reputationChanges:
       - userToChange: marku.s.mith
@@ -248,7 +289,7 @@ MonoBehaviour:
     availableToPlayer: []
     pendingReplies:
     - commenter: marku.s.mith
-      commentText: "Okay\u2026 um, sharing for those who do"
+      commentText: "Okay\u2026 um, sharing for those who do \\U0001F937"
       reputationChanges: []
       postDate: 1
       predecessor:

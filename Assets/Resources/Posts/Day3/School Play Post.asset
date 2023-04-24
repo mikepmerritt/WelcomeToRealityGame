@@ -110,9 +110,92 @@ MonoBehaviour:
   - all.is.on_line
   - azure.does.art
   decreaseOnShare: []
+  CollegeReputationModifier: 1
   rLiked: 0
   rShared: 0
   rSaved: 0
   rCommentedToday: 0
-  rComments: []
-  rPostableComments: []
+  rComments:
+  - initial:
+      commenter: azure.does.art
+      commentText: Painting the set was so much fun Allie, so glad I joined drama
+        club.
+      reputationChanges: []
+      postDate: 3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: all.is.on_line
+      commentText: "Azure, you are the BEST, our set is gorgeous bc of you T-T\r"
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: azure.does.art
+        commentText: Painting the set was so much fun Allie, so glad I joined drama
+          club.
+        reputationChanges: []
+        postDate: 3
+      availabilityDelay: 1
+  - initial:
+      commenter: kayla_brownie
+      commentText: Oh, I will BE there
+      reputationChanges: []
+      postDate: 3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: all.is.on_line
+      commentText: YES! Bring your friends too!
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: kayla_brownie
+        commentText: Oh, I will BE there
+        reputationChanges: []
+        postDate: 3
+      availabilityDelay: 1
+  rPostableComments:
+  - initial:
+      commenter: you
+      commentText: Oooo, I will so be there! Are tickets online?
+      reputationChanges:
+      - userToChange: all.is.on_line
+        amount: 3
+      postDate: 3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: all.is.on_line
+      commentText: "Yes!! They\u2019re on the school website, but if you can\u2019t
+        find them, dm me. I got the link :)"
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: you
+        commentText: Oooo, I will so be there! Are tickets online?
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1
+  - initial:
+      commenter: you
+      commentText: "Ugh, theatre kids. Y\u2019all are lame af."
+      reputationChanges:
+      - userToChange: all.is.on_line
+        amount: -3
+      - userToChange: azure.does.art
+        amount: -3
+      postDate: 3
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: all.is.on_line
+      commentText: "Just because you don\u2019t have a life doesn\u2019t mean you
+        have to put others down for having one <3"
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: you
+        commentText: "Ugh, theatre kids. Y\u2019all are lame af."
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1

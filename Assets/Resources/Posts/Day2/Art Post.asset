@@ -130,9 +130,114 @@ MonoBehaviour:
   increaseOnShare:
   - azure.does.art
   decreaseOnShare: []
+  CollegeReputationModifier: 1
   rLiked: 0
   rShared: 0
   rSaved: 0
   rCommentedToday: 0
-  rComments: []
-  rPostableComments: []
+  rComments:
+  - initial:
+      commenter: kayla_brownie
+      commentText: Omg, gorgeous, Azure. STUNNING
+      reputationChanges: []
+      postDate: 2
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: azure.does.art
+      commentText: MANIFESTING ART SCHOOL FRFR
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: kayla_brownie
+        commentText: Omg, gorgeous, Azure. STUNNING
+        reputationChanges: []
+        postDate: 2
+      availabilityDelay: 1
+  - initial:
+      commenter: carlosgonzales28
+      commentText: My guy, you are so insane, this is amazing
+      reputationChanges: []
+      postDate: 2
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: azure.does.art
+      commentText: Lmaooo, tyty. Insanity and art do go hand in hand \U0001F60C \U00002728
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: carlosgonzales28
+        commentText: My guy, you are so insane, this is amazing
+        reputationChanges: []
+        postDate: 2
+      availabilityDelay: 1
+  - initial:
+      commenter: marku.s.mith
+      commentText: So pretty Azure!
+      reputationChanges: []
+      postDate: 2
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+  rPostableComments:
+  - initial:
+      commenter: you
+      commentText: AMAZING, Azure, loving ittt
+      reputationChanges:
+      - userToChange: azure.does.art
+        amount: 3
+      postDate: 2
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: azure.does.art
+      commentText: THANK YOU!
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: you
+        commentText: AMAZING, Azure, loving ittt
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1
+  - initial:
+      commenter: you
+      commentText: Your work is so inspiring, Azure!
+      reputationChanges:
+      - userToChange: azure.does.art
+        amount: 3
+      postDate: 2
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: azure.does.art
+      commentText: Awww, that is so sweet, omg
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: you
+        commentText: Your work is so inspiring, Azure!
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1
+  - initial:
+      commenter: you
+      commentText: "I don\u2019t really get it\u2026 Cool ig?"
+      reputationChanges:
+      - userToChange: azure.does.art
+        amount: -1
+      postDate: 2
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: azure.does.art
+      commentText: Right, uh, thanks ig?
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: you
+        commentText: "I don\u2019t really get it\u2026 Cool ig?"
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1

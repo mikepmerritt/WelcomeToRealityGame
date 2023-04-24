@@ -142,9 +142,124 @@ MonoBehaviour:
   - carlosgonzales28
   - azure.does.art
   decreaseOnShare: []
+  CollegeReputationModifier: 1
   rLiked: 0
   rShared: 0
   rSaved: 0
   rCommentedToday: 0
-  rComments: []
-  rPostableComments: []
+  rComments:
+  - initial:
+      commenter: marku.s.mith
+      commentText: YES DUDE! You worked hard for this!
+      reputationChanges: []
+      postDate: 1
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: carlosgonzales28
+      commentText: YOU KNOW IT BRO
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: marku.s.mith
+        commentText: YES DUDE! You worked hard for this!
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1
+  - initial:
+      commenter: meg.farber
+      commentText: Pfft, orchestra nerd, but as you should!
+      reputationChanges: []
+      postDate: 1
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+  - initial:
+      commenter: azure.does.art
+      commentText: Cheers to an awesome 4 years of violin with you!
+      reputationChanges: []
+      postDate: 1
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: carlosgonzales28
+      commentText: Totally Azure, tight af forever dude
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: azure.does.art
+        commentText: Cheers to an awesome 4 years of violin with you!
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1
+  - initial:
+      commenter: kayla_brownie
+      commentText: Great concert Carlos :)
+      reputationChanges: []
+      postDate: 1
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+  rPostableComments:
+  - initial:
+      commenter: you
+      commentText: "Didn\u2019t get to go, but I\u2019m sure it was awesome!"
+      reputationChanges:
+      - userToChange: carlosgonzales28
+        amount: 2
+      postDate: 1
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: carlosgonzales28
+      commentText: Dw, we still got the graduation concert :)
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: you
+        commentText: "Didn\u2019t get to go, but I\u2019m sure it was awesome!"
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1
+  - initial:
+      commenter: you
+      commentText: It was so awesome!! You did such a great job!
+      reputationChanges:
+      - userToChange: carlosgonzales28
+        amount: 4
+      postDate: 1
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: carlosgonzales28
+      commentText: Glad you made it! Thanks!!
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: you
+        commentText: It was so awesome!! You did such a great job!
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1
+  - initial:
+      commenter: you
+      commentText: Orchestra is so ridiculous. Guess that makes sense with the people
+        in it.
+      reputationChanges:
+      - userToChange: carlosgonzales28
+        amount: -3
+      postDate: 1
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: carlosgonzales28
+      commentText: Dude, no need to be mean about it.
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: you
+        commentText: Orchestra is so ridiculous. Guess that makes sense with the
+          people in it.
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1

@@ -157,6 +157,7 @@ MonoBehaviour:
   increaseOnShare:
   - all.is.on_line
   decreaseOnShare: []
+  CollegeReputationModifier: 1
   rLiked: 0
   rShared: 0
   rSaved: 0

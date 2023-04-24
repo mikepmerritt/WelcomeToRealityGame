@@ -97,9 +97,78 @@ MonoBehaviour:
   - user8390118
   decreaseOnShare:
   - azure.does.art
+  CollegeReputationModifier: -2
   rLiked: 0
   rShared: 0
   rSaved: 0
   rCommentedToday: 0
-  rComments: []
-  rPostableComments: []
+  rComments:
+  - initial:
+      commenter: azure.does.art
+      commentText: "Fake!!\r"
+      reputationChanges:
+      - userToChange: user8390118
+        amount: -3
+      - userToChange: azure.does.art
+        amount: 3
+      postDate: 1
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+  - initial:
+      commenter: user8390118
+      commentText: "I knew it! Stupid snowflakes and their \u201Cvirus\u201D"
+      reputationChanges:
+      - userToChange: user8390118
+        amount: 3
+      - userToChange: azure.does.art
+        amount: -3
+      postDate: 1
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies: []
+  rPostableComments:
+  - initial:
+      commenter: you
+      commentText: This is literally all lies. How are you claiming this is real??
+      reputationChanges:
+      - userToChange: user8390118
+        amount: -3
+      - userToChange: azure.does.art
+        amount: 3
+      postDate: 1
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: user8390118
+      commentText: SNOWFLAKE \U0001F595 \U0001F595
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: you
+        commentText: This is literally all lies. How are you claiming this is real??
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1
+  - initial:
+      commenter: you
+      commentText: "Haha, I\u2019m willing to buy that."
+      reputationChanges:
+      - userToChange: user8390118
+        amount: 3
+      - userToChange: azure.does.art
+        amount: -3
+      postDate: 1
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: azure.does.art
+      commentText: Dude, so not funny of you to joke about this stuff
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: you
+        commentText: "Haha, I\u2019m willing to buy that."
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1

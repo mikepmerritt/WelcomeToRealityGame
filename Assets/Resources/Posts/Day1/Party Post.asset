@@ -137,6 +137,7 @@ MonoBehaviour:
   increaseOnShare:
   - meg.farber
   decreaseOnShare: []
+  CollegeReputationModifier: -2
   rLiked: 0
   rShared: 0
   rSaved: 0
@@ -149,7 +150,17 @@ MonoBehaviour:
       postDate: 1
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: meg.farber
+      commentText: ' IT WAS Kayla!! Get ur ass over here for next time!'
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: kayla_brownie
+        commentText: Oooo, looks like fun!
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1
   - initial:
       commenter: carlosgonzales28
       commentText: Bahaha, just juice in those solo cups I assume?
@@ -157,7 +168,17 @@ MonoBehaviour:
       postDate: 1
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: carlosgonzales28
+      commentText: "Totallyyyy juice lol\r"
+      reputationChanges: []
+      postDate: 1
+      predecessor:
+        commenter: meg.farber
+        commentText: Bahaha, just juice in those solo cups I assume?
+        reputationChanges: []
+        postDate: 1
+      availabilityDelay: 1
   rPostableComments:
   - initial:
       commenter: you
@@ -171,7 +192,7 @@ MonoBehaviour:
     availableToPlayer: []
     pendingReplies:
     - commenter: meg.farber
-      commentText: Whatever, buzzkill
+      commentText: Whatever, buzzkill \U0001F644
       reputationChanges: []
       postDate: 1
       predecessor:
@@ -204,7 +225,7 @@ MonoBehaviour:
         postDate: 1
       availabilityDelay: 1
     - commenter: meg.farber
-      commentText: "Don\u2019t worry, I am"
+      commentText: "Don\u2019t worry, I am \\U00002764"
       reputationChanges: []
       postDate: 1
       predecessor:
@@ -215,7 +236,7 @@ MonoBehaviour:
       availabilityDelay: 1
   - initial:
       commenter: you
-      commentText: Omg, where was my invite tho
+      commentText: Omg, where was my invite tho \U0001F440
       reputationChanges:
       - userToChange: meg.farber
         amount: 3
