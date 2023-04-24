@@ -112,7 +112,7 @@ MonoBehaviour:
       availabilityDelay: 1
   - initial:
       commenter: you
-      commentText: "So proud of you. You\u2019re going to do great out there!"
+      commentText: "So proud of you. You\u2019re going to do great out there! \\U0001F389"
       reputationChanges:
       - userToChange: marku.s.mith
         amount: 3
@@ -141,7 +141,7 @@ MonoBehaviour:
     availableToPlayer: []
     pendingReplies:
     - commenter: marku.s.mith
-      commentText: "Okay\u2026 um, sharing for those who do"
+      commentText: "Okay\u2026 um, sharing for those who do \\U0001F937"
       reputationChanges: []
       postDate: 1
       predecessor:

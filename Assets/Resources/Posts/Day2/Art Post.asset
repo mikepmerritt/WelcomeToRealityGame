@@ -43,7 +43,7 @@ MonoBehaviour:
     availableToPlayer: []
     pendingReplies:
     - commenter: azure.does.art
-      commentText: Lmaooo, tyty. Insanity and art do go hand in hand
+      commentText: Lmaooo, tyty. Insanity and art do go hand in hand \U0001F60C \U00002728
       reputationChanges: []
       postDate: 0
       predecessor:

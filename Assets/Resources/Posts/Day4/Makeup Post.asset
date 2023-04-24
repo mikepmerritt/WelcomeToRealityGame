@@ -44,7 +44,7 @@ MonoBehaviour:
     availableToPlayer: []
     pendingReplies:
     - commenter: kayla_brownie
-      commentText: "AZURE, ILYYY\u2013 Always the hype I need"
+      commentText: "AZURE, ILYYY\u2013 Always the hype I need \\U0001F62D"
       reputationChanges: []
       postDate: 0
       predecessor:
@@ -86,7 +86,7 @@ MonoBehaviour:
       availabilityDelay: 1
   - initial:
       commenter: you
-      commentText: Kayla out here with the fire makeup looks tho
+      commentText: Kayla out here with the fire makeup looks tho \U0001F525 \U0001F525
       reputationChanges:
       - userToChange: kayla_brownie
         amount: 3
@@ -106,7 +106,7 @@ MonoBehaviour:
       availabilityDelay: 1
   - initial:
       commenter: you
-      commentText: Um, you kinda look like a colorful bug. No offense
+      commentText: Um, you kinda look like a colorful bug. No offense \U0001F937
       reputationChanges:
       - userToChange: kayla_brownie
         amount: -3
@@ -116,7 +116,7 @@ MonoBehaviour:
     pendingReplies:
     - commenter: kayla_brownie
       commentText: "Okay, we get it, you don\u2019t know how to do makeup. Get over
-        yourself"
+        yourself \\U0001F644"
       reputationChanges: []
       postDate: 0
       predecessor:

@@ -25,7 +25,8 @@ MonoBehaviour:
     availableToPlayer: []
     pendingReplies:
     - commenter: marku.s.mith
-      commentText: "U know it, and I\u2019m keeping this energy going"
+      commentText: "U know it, and I\u2019m keeping this energy going \\U0001F525
+        \\U0001F525"
       reputationChanges: []
       postDate: 0
       predecessor:

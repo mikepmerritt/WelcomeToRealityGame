@@ -66,7 +66,7 @@ MonoBehaviour:
     availableToPlayer: []
     pendingReplies:
     - commenter: meg.farber
-      commentText: Whatever, buzzkill
+      commentText: Whatever, buzzkill \U0001F644
       reputationChanges: []
       postDate: 1
       predecessor:
@@ -99,7 +99,7 @@ MonoBehaviour:
         postDate: 1
       availabilityDelay: 1
     - commenter: meg.farber
-      commentText: "Don\u2019t worry, I am"
+      commentText: "Don\u2019t worry, I am \\U00002764"
       reputationChanges: []
       postDate: 1
       predecessor:
@@ -110,7 +110,7 @@ MonoBehaviour:
       availabilityDelay: 1
   - initial:
       commenter: you
-      commentText: Omg, where was my invite tho
+      commentText: Omg, where was my invite tho \U0001F440
       reputationChanges:
       - userToChange: meg.farber
         amount: 3

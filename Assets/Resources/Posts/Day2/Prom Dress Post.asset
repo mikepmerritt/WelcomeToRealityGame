@@ -37,7 +37,7 @@ MonoBehaviour:
       availabilityDelay: 1
   - initial:
       commenter: meg.farber
-      commentText: GIRL, YOU ARE SO PRETTY
+      commentText: GIRL, YOU ARE SO PRETTY \U0001F49C
       reputationChanges: []
       postDate: 1
     postedReplies: []
@@ -62,7 +62,7 @@ MonoBehaviour:
     availableToPlayer: []
     pendingReplies:
     - commenter: kayla_brownie
-      commentText: The question I've been asking for years
+      commentText: The question I've been asking for years \U0001F485 \U0001F485
       reputationChanges: []
       postDate: 0
       predecessor:
@@ -101,7 +101,17 @@ MonoBehaviour:
       postDate: 1
     postedReplies: []
     availableToPlayer: []
-    pendingReplies: []
+    pendingReplies:
+    - commenter: kayla_brownie
+      commentText: \U00002764 \U00002764 \U00002764
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: 
+        commentText: 
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 0
   - initial:
       commenter: you
       commentText: OMG, GORGEOUS! We need to hang more!
