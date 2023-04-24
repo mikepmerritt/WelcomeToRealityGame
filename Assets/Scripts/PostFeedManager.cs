@@ -19,6 +19,7 @@ public class PostFeedManager : MonoBehaviour
     public int currentDay;
     public TMP_Text dayTracker;
     public List<string> blockedUsers;
+    public EventHandler eh;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class PostFeedManager : MonoBehaviour
         feed = GameObject.Find("Post Feed").GetComponentInChildren<LayoutElement>().gameObject;
         uim = GameObject.Find("UI Manager").GetComponent<UIManager>();
         dayTracker = GameObject.Find("Day Tracker").GetComponent<TMP_Text>();
+        eh = GameObject.Find("Highlight Manager").GetComponent<EventHandler>();
 
         // set up empty dictionary for relationships
         reputations = new Dictionary<string, int>();
@@ -156,14 +158,16 @@ public class PostFeedManager : MonoBehaviour
                     // change the shared status
                     p.rShared = !p.rShared;
 
-                    // recolor the button
+                    // recolor the button and change college rep
                     if(p.rShared)
                     {
                         c.GetComponent<Image>().color = sharedColor;
+                        eh.collegeRep += p.CollegeReputationModifier;
                     }
                     else
                     {
                         c.GetComponent<Image>().color = defaultColor;
+                        eh.collegeRep -= p.CollegeReputationModifier;
                     }
 
                     // increase reps on share

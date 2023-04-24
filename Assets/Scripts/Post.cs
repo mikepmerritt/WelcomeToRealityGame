@@ -16,6 +16,7 @@ public class Post : ScriptableObject
     public bool shared = false;
     public bool saved = false;
     public List<string> increaseOnLike, decreaseOnLike, increaseOnShare, decreaseOnShare;
+    public int CollegeReputationModifier;
     [HideInInspector]
     public bool rLiked, rShared, rSaved, rCommentedToday;
     [HideInInspector]

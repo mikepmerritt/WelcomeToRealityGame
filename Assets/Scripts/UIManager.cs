@@ -466,7 +466,7 @@ public class UIManager : MonoBehaviour
         timeTracker.text = "Time Remaining:\n" + pfm.dailyTime;
         
         // update warning
-        if(pfm.dailyTime <= -5)
+        if(pfm.dailyTime <= -3)
         {
             // time penalty
             timeWarning.gameObject.SetActive(true);

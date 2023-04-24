@@ -15,15 +15,20 @@ public class EventHandler : MonoBehaviour
     public List<string> importantUsers;
     public Button nextDay;
     public GameObject backToFeed, choiceHolder, choice1, choice2, choice3;
+    public int grade, collegeRep;
 
     public void Start()
     {
+        // set initial rep values
+        grade = 95;
+        collegeRep = 0;
+
         // set bools to false
         partyInvite = false;
         scammed = false;
 
         panel = GameObject.Find("Highlight Panel");
-        // gradesWarning = GameObject.Find("Time Warning");
+        gradesWarning = GameObject.Find("Time Warning");
         highlight = GameObject.Find("Highlight Text").GetComponent<TMP_Text>();
         pfm = GameObject.Find("Post Feed Manager").GetComponent<PostFeedManager>();
         uim = GameObject.Find("UI Manager").GetComponent<UIManager>();
@@ -53,11 +58,35 @@ public class EventHandler : MonoBehaviour
         PickAndShowHighlight();
     }
 
+    public void AdjustGradesBasedOnTime()
+    {
+        if(gradesWarning.activeSelf && gradesWarning.GetComponent<TMP_Text>().text == "You spent too much time on social media rather than studying!")
+        {
+            grade += (pfm.dailyTime + 2); // +2 so -3 time is -1 grade, -4 time is -2 grade, etc.
+        }
+    }
+
     // the return is for debugging and to break the function so it doesn't overwrite - the string returned should ideally not be used
     // and more occurs in the function rather than just making that string.
     public string PickAndShowHighlight()
     {
         panel.SetActive(true);
+
+        // TODO: the time warning should be somewhere else since it is no longer an event
+        if(gradesWarning == null)
+        {
+            gradesWarning = GameObject.Find("Time Warning"); // reference may not exist, if it doesnt exist we need to find it
+        }
+        if(gradesWarning != null && gradesWarning.activeSelf == true)
+        {
+            highlight.text = "You spent too much time on social media today! Hopefully it doesn't affect your grades...";
+            AdjustGradesBasedOnTime();
+
+            choiceHolder.SetActive(false);
+            backToFeed.SetActive(true);
+
+            return highlight.text;
+        }
         
         // TODO: fix null pointer here - manually assigned for now :(
         if(!scammed)
@@ -84,15 +113,6 @@ public class EventHandler : MonoBehaviour
 
                 return highlight.text;
             }
-        }
-        if(gradesWarning.activeSelf == true)
-        {
-            highlight.text = "You spent too much time on social media today! Hopefully it doesn't affect your grades...";
-
-            choiceHolder.SetActive(false);
-            backToFeed.SetActive(true);
-
-            return highlight.text;
         }
         if(!partyInvite)
         {
