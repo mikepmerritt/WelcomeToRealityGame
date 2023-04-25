@@ -10,11 +10,11 @@ public class EventHandler : MonoBehaviour
     public PostFeedManager pfm;
     public UIManager uim;
     public GameObject panel, gradesWarning;
-    public TMP_Text highlight;
+    public TMP_Text highlight, title;
     public bool partyInvite, scammed, playInvite; // TODO: use this later!
     public List<string> importantUsers;
     public Button nextDay;
-    public GameObject backToFeed, choiceHolder, choice1, choice2, choice3;
+    public GameObject loadHighlight, backToFeed, choiceHolder, choice1, choice2, choice3;
     public int grade, collegeRep;
 
     public void Start()
@@ -28,11 +28,18 @@ public class EventHandler : MonoBehaviour
         scammed = false;
 
         panel = GameObject.Find("Highlight Panel");
+        title = GameObject.Find("Popup Title").GetComponent<TMP_Text>();
         gradesWarning = GameObject.Find("Time Warning");
         highlight = GameObject.Find("Highlight Text").GetComponent<TMP_Text>();
         pfm = GameObject.Find("Post Feed Manager").GetComponent<PostFeedManager>();
         uim = GameObject.Find("UI Manager").GetComponent<UIManager>();
 
+        loadHighlight = GameObject.Find("To Summary");
+        loadHighlight.GetComponent<Button>().onClick.AddListener(() => 
+        {
+            ChangeEventToFeedback();
+        });
+        
         backToFeed = GameObject.Find("Close Highlight");
         backToFeed.GetComponent<Button>().onClick.AddListener(() => 
         {
@@ -55,7 +62,7 @@ public class EventHandler : MonoBehaviour
     public void GoToNextDay()
     {
         uim.HideAllPhoneScreens();
-        PickAndShowHighlight();
+        PickAndShowEvent();
     }
 
     public void AdjustGradesBasedOnTime()
@@ -66,13 +73,16 @@ public class EventHandler : MonoBehaviour
         }
     }
 
-    // the return is for debugging and to break the function so it doesn't overwrite - the string returned should ideally not be used
-    // and more occurs in the function rather than just making that string.
-    public string PickAndShowHighlight()
+    public void ChangeEventToFeedback()
     {
-        panel.SetActive(true);
+        title.text = "Daily Feedback";
 
-        // TODO: the time warning should be somewhere else since it is no longer an event
+        bool feedbackSet = false;
+
+        choiceHolder.SetActive(false);
+        loadHighlight.SetActive(false);
+        backToFeed.SetActive(true);
+
         if(gradesWarning == null)
         {
             gradesWarning = GameObject.Find("Time Warning"); // reference may not exist, if it doesnt exist we need to find it
@@ -81,12 +91,63 @@ public class EventHandler : MonoBehaviour
         {
             highlight.text = "You spent too much time on social media today! Hopefully it doesn't affect your grades...";
             AdjustGradesBasedOnTime();
-
-            choiceHolder.SetActive(false);
-            backToFeed.SetActive(true);
-
-            return highlight.text;
+            feedbackSet = true;
         }
+        if(!feedbackSet)
+        {
+            foreach(string user in importantUsers) 
+            {
+                if(pfm.reputations.TryGetValue(user, out int rep) && rep <= -4)
+                {
+                    highlight.text = "Due to your frequent hate toward " + user + ", they have blocked you. Hopefully you had nothing else to say to them.";
+
+                    // user blocks you
+                    pfm.blockedUsers.Add(user);
+
+                    feedbackSet = true;
+                }
+            }
+        }
+        if(!feedbackSet)
+        {
+            foreach(string user in importantUsers) 
+            {
+                if(pfm.reputations.TryGetValue(user, out int rep) && rep < 0)
+                {
+                    highlight.text = "Looks like you really upset " + user + ". Did you say something rude?";
+
+                    feedbackSet = true;
+                }
+            }
+        }
+        if(!feedbackSet)
+        {
+            foreach(string user in importantUsers)
+            {
+                if(pfm.reputations.TryGetValue(user, out int rep) && rep >= 3)
+                {
+                    highlight.text = "You and " + user + " have been getting along well!";
+
+                    feedbackSet = true;
+                }  
+            }
+        }
+        if(!feedbackSet)
+        {
+            // emergency failsafe
+            highlight.text = "Looks like you haven't done much yet.";
+        }
+    }
+
+    // the return is for debugging and to break the function so it doesn't overwrite - the string returned should ideally not be used
+    // and more occurs in the function rather than just making that string.
+    public void PickAndShowEvent()
+    {
+        panel.SetActive(true);
+
+        title.text = "Daily Event";
+        highlight.text = "";
+        backToFeed.SetActive(false);
         
         // TODO: fix null pointer here - manually assigned for now :(
         if(!scammed)
@@ -100,7 +161,7 @@ public class EventHandler : MonoBehaviour
                 choice1.SetActive(true);
                 choice2.SetActive(false);
                 choice3.SetActive(false);
-                backToFeed.SetActive(false);
+                loadHighlight.SetActive(false);
 
                 choice1.GetComponentInChildren<TMP_Text>().text = "Hopefully I didn't miss anything...";
                 choice1.GetComponent<Button>().onClick.RemoveAllListeners();
@@ -110,8 +171,6 @@ public class EventHandler : MonoBehaviour
                     pfm.RefreshFeedForNewDay();
                     pfm.RefreshFeedForNewDay();
                 });
-
-                return highlight.text;
             }
         }
         if(!partyInvite)
@@ -133,7 +192,7 @@ public class EventHandler : MonoBehaviour
                 choice1.SetActive(true);
                 choice2.SetActive(true);
                 choice3.SetActive(true);
-                backToFeed.SetActive(false);
+                loadHighlight.SetActive(false);
 
                 // set up buttons and listeners
                 choice1.GetComponentInChildren<TMP_Text>().text = "For sure!";
@@ -185,7 +244,7 @@ public class EventHandler : MonoBehaviour
                 choice2.GetComponent<Button>().onClick.AddListener(() => {
                     highlight.text = "The conversation continues... \n\n[@meg.farber]: Oh, uh, okay. Sorry, thought you wanted in based off the comment!\n\n[@you]: Naw, I gotchu, just not feeling it rn. But hope you have fun!\n\n[@meg.farber]: Suit yourself! Thanks <3";
                     choiceHolder.SetActive(false);
-                    backToFeed.SetActive(true);
+                    loadHighlight.SetActive(true);
                     if(!pfm.reputations.TryAdd("meg.farber", -3))
                     {
                         pfm.reputations["meg.farber"] += -3;
@@ -197,7 +256,7 @@ public class EventHandler : MonoBehaviour
                 choice3.GetComponent<Button>().onClick.AddListener(() => {
                     highlight.text = "The conversation continues... \n\n[@meg.farber]: Wtf? Then why did you say you wanted to come??\n\n[@you]: Idk, just bored ig, and you’re easy to fuck with.\n\nAfter that, Meg blocked you.";
                     choiceHolder.SetActive(false);
-                    backToFeed.SetActive(true);
+                    loadHighlight.SetActive(true);
                     if(!pfm.reputations.TryAdd("meg.farber", -8))
                     {
                         pfm.reputations["meg.farber"] += -8;
@@ -205,8 +264,6 @@ public class EventHandler : MonoBehaviour
                     // meg blocks you
                     pfm.blockedUsers.Add("meg.farber");
                 });
-                
-                return highlight.text;
             }
         }
         if(!playInvite)
@@ -229,7 +286,7 @@ public class EventHandler : MonoBehaviour
                 choice1.SetActive(true);
                 choice2.SetActive(true);
                 choice3.SetActive(true);
-                backToFeed.SetActive(false);
+                loadHighlight.SetActive(false);
 
                 // set up buttons and listeners
                 choice1.GetComponentInChildren<TMP_Text>().text = "Buy tickets and attend";
@@ -237,7 +294,7 @@ public class EventHandler : MonoBehaviour
                 choice1.GetComponent<Button>().onClick.AddListener(() => {
                     highlight.text = "You decide to buy tickets and enjoy the show! It’s pretty good despite the lack of budget… The peers involved are appreciative of your support.";
                     choiceHolder.SetActive(false);
-                    backToFeed.SetActive(true);
+                    loadHighlight.SetActive(true);
                     if(!pfm.reputations.TryAdd("all.is.on_line", 5))
                     {
                         pfm.reputations["all.is.on_line"] += 5;
@@ -253,7 +310,7 @@ public class EventHandler : MonoBehaviour
                 choice2.GetComponent<Button>().onClick.AddListener(() => {
                     highlight.text = "You decide that your crushing load of homework needs to be done before going to anything like a school play. Although you miss out on a fun show, your grades are certainly going to take a turn uphill for this one.";
                     choiceHolder.SetActive(false);
-                    backToFeed.SetActive(true);
+                    loadHighlight.SetActive(true);
                     if(!pfm.reputations.TryAdd("all.is.on_line", -5))
                     {
                         pfm.reputations["all.is.on_line"] += -5;
@@ -266,58 +323,19 @@ public class EventHandler : MonoBehaviour
                 choice3.GetComponent<Button>().onClick.AddListener(() => {
                     highlight.text = "School plays are kind of stupid, and you need some time to recharge. The recharging goes great, but maybe lasts a bit too long. You play video games for hours upon end before accidentally falling asleep without doing your homework. Shoot!";
                     choiceHolder.SetActive(false);
-                    backToFeed.SetActive(true);
+                    loadHighlight.SetActive(true);
                     if(!pfm.reputations.TryAdd("all.is.on_line", -5))
                     {
                         pfm.reputations["all.is.on_line"] += -5;
                     }
                     // TODO: grades penalty
                 });
-                
-                return highlight.text;
             }
         }
-
-        // else feedback
-        foreach(string user in importantUsers)
+        if(highlight.text == "")
         {
-            if(pfm.reputations.TryGetValue(user, out int rep) && rep >= 3)
-            {
-                highlight.text = "You and " + user + " have been getting along well!";
-
-                choiceHolder.SetActive(false);
-                backToFeed.SetActive(true);
-
-                return highlight.text;
-            }
-            else if(rep <= -4)
-            {
-                highlight.text = "Due to your frequent hate toward " + user + ", they have blocked you. Hopefully you had nothing else to say to them.";
-
-                choiceHolder.SetActive(false);
-                backToFeed.SetActive(true);
-
-                // user blocks you
-                pfm.blockedUsers.Add(user);
-
-                return highlight.text;
-            }
-            else if(rep < 0)
-            {
-                highlight.text = "Looks like you really upset " + user + ". Did you say something rude?";
-
-                choiceHolder.SetActive(false);
-                backToFeed.SetActive(true);
-
-                return highlight.text;
-            }
+            // no suitable event
+            ChangeEventToFeedback();
         }
-        // emergency failsafe
-        highlight.text = "Looks like you haven't done much yet.";
-
-        choiceHolder.SetActive(false);
-        backToFeed.SetActive(true);
-        
-        return highlight.text;
     }
 }

@@ -37,9 +37,54 @@ public class PostFeedManager : MonoBehaviour
 
         // set up blocked users list
         blockedUsers = new List<string>();
+
+        // clean up runtime variables in posts
+        AllPostsFirstTimeCleanUp();
         
         // call function to increment to day 1 and populate feed
         RefreshFeedForNewDay();
+    }
+
+    public void AllPostsFirstTimeCleanUp()
+    {
+        // TODO: replace 4 with number of days
+        for(int day = 1; day <= 4; day++)
+        {
+            Object[] fetchedPosts = Resources.LoadAll("Posts/Day" + day, typeof(Post));
+            foreach (Object o in fetchedPosts)
+            {
+                // load post as post object
+                Post p = (Post) o;
+
+                // initialize runtime variables (allows us to change objects during runtime without losing data)
+                p.rLiked = p.liked;
+                p.rShared = p.shared;
+                p.rSaved = p.saved;
+                p.rCommentedToday = false;
+                p.rComments = new List<CommentChain>();
+                p.rPostableComments = new List<CommentChain>();
+
+                // copy comment lists without aliasing
+                foreach(CommentChain c in p.commentChains)
+                {
+                    // clone comment chain
+                    CommentChain cc = c.Clone();
+                    // set initial comment's post date to this day
+                    cc.initial.postDate = day;
+                    // add comment with modified date
+                    p.rComments.Add(cc);
+                }
+                foreach(CommentChain c in p.postableComments)
+                {
+                    // clone comment chain
+                    CommentChain cc = c.Clone();
+                    // set initial comment's post date to this day
+                    cc.initial.postDate = day;
+                    // add comment with modified date
+                    p.rPostableComments.Add(cc);
+                }
+            }
+        }   
     }
 
     public void CreatePostInFeed(Post p)
