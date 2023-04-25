@@ -137,6 +137,21 @@ public class EventHandler : MonoBehaviour
             // emergency failsafe
             highlight.text = "Looks like you haven't done much yet.";
         }
+
+        highlight.text += "\n\nCurrent grade: " + grade;
+        
+        if(collegeRep > 5)
+        {
+            highlight.text += "\nCollege reputation: Good";
+        }
+        else if(collegeRep < 0)
+        {
+            highlight.text += "\nCollege reputation: Poor";
+        }
+        else
+        {
+            highlight.text += "\nCollege reputation: Standard";
+        }
     }
 
     // the return is for debugging and to break the function so it doesn't overwrite - the string returned should ideally not be used
