@@ -1,0 +1,182 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a8f6a443b015944b2831cabeb63b81, type: 3}
+  m_Name: AnnaDressPost
+  m_EditorClassIdentifier: 
+  username: annapurna
+  postImage: {fileID: 21300000, guid: f7c4a7005e9c0424ab03dbf74316f111, type: 3}
+  postText: Guys, this prom dress thrift store is literally a godsend - so many cute
+    things!!
+  commentChains:
+  - initial:
+      commenter: carlosgonzales28
+      commentText: I see u Anna \U0001F970 \U0001F525
+      reputationChanges: []
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: annapurna
+      commentText: As you should bc the dress is \U0001F525
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: carlosgonzales28
+        commentText: I see u Anna \U0001F970 \U0001F525
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  - initial:
+      commenter: meg.farber
+      commentText: "Fatass.\r"
+      reputationChanges: []
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: annapurna
+      commentText: "If you don\u2019t like it, get off my page, Megan."
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: meg.farber
+        commentText: "Fatass.\r"
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+    - commenter: meg.farber
+      commentText: "I\u2019m just wondering why you would even bother posting something
+        so revealing.\r"
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: annapurna
+        commentText: "If you don\u2019t like it, get off my page, Megan."
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  - initial:
+      commenter: azure.does.art
+      commentText: Cute af girl, I love!!
+      reputationChanges: []
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: annapurna
+      commentText: Thank youuu! I'm really feeling this one.
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: azure.does.art
+        commentText: Cute af girl, I love!!
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  - initial:
+      commenter: kayla_brownie
+      commentText: Omg omg, I got my dress there last year! They're lovely!!
+      reputationChanges: []
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: annapurna
+      commentText: Yes!!! That's how I found out about it!
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: kayla_brownie
+        commentText: Omg omg, I got my dress there last year! They're lovely!!
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  postableComments:
+  - initial:
+      commenter: you
+      commentText: OMG, that's a thrift store??
+      reputationChanges:
+      - userToChange: annapurna
+        amount: 2
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: annapurna
+      commentText: "Yes!! They\u2019re having a spring sale rn too!"
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: you
+        commentText: OMG, that's a thrift store??
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  - initial:
+      commenter: you
+      commentText: Ummm, maybe you should choose something a little more flattering
+        to your figure.
+      reputationChanges:
+      - userToChange: annapurna
+        amount: -5
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: annapurna
+      commentText: "This is plenty \u201Cflattering to my figure,\u201D actually.
+        Not like I care what you think anyway."
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: you
+        commentText: Ummm, maybe you should choose something a little more flattering
+          to your figure.
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  - initial:
+      commenter: you
+      commentText: POP OFF THO \U0001F525 \U0001F525
+      reputationChanges:
+      - userToChange: annapurna
+        amount: 3
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: annapurna
+      commentText: OFC OFC, POPPING TF OFF ALWAYS!!
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: you
+        commentText: POP OFF THO \U0001F525 \U0001F525
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  liked: 0
+  shared: 0
+  saved: 0
+  increaseOnLike:
+  - annapurna
+  decreaseOnLike: []
+  increaseOnShare:
+  - annapurna
+  decreaseOnShare: []
+  CollegeReputationModifier: 0
+  rLiked: 0
+  rShared: 0
+  rSaved: 0
+  rCommentedToday: 0
+  rComments: []
+  rPostableComments: []

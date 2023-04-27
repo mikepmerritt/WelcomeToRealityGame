@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a8f6a443b015944b2831cabeb63b81, type: 3}
+  m_Name: SmallBusinessPost
+  m_EditorClassIdentifier: 
+  username: azure.does.art
+  postImage: {fileID: 21300000, guid: e8d5e28f7fafe0f448b1c91fb52a13a0, type: 3}
+  postText: AHH, TABLING AT TERRIFICON WAS AMAZING!! All of your support this year
+    has gotten me enough money to expand, and this is so crazy y'all. Thank you to
+    Anna for being my +1 and hype squad.
+  commentChains:
+  - initial:
+      commenter: carlosgonzales28
+      commentText: "My mom fucking LOVED that painting I commissioned. It made the
+        whole holiday, fr fr.\r"
+      reputationChanges: []
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: azure.does.art
+      commentText: "Omg, I\u2019m so glad she liked it so much T-T"
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: carlosgonzales28
+        commentText: "My mom fucking LOVED that painting I commissioned. It made
+          the whole holiday, fr fr.\r"
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+    - commenter: carlosgonzales28
+      commentText: Yeah, no, pretty sure she loves you more than me now \U0001F480
+        \U0001F480
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: azure.does.art
+        commentText: "Omg, I\u2019m so glad she liked it so much T-T"
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  - initial:
+      commenter: annapurna
+      commentText: Had SO much fun this weekend!! Thanks for the inviteeee
+      reputationChanges: []
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: azure.does.art
+      commentText: ALWAYS dude! Thanks for the support!
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: annapurna
+        commentText: Had SO much fun this weekend!! Thanks for the inviteeee
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  - initial:
+      commenter: kayla_brownie
+      commentText: "You\u2019re gonna be famous online by the time we\u2019re out
+        of college, seriouslyyyy"
+      reputationChanges: []
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: azure.does.art
+      commentText: Ahaha, nawww, I WISH! Just trying to get a bit of a headstart.
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: kayla_brownie
+        commentText: "You\u2019re gonna be famous online by the time we\u2019re out
+          of college, seriouslyyyy"
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  postableComments:
+  - initial:
+      commenter: you
+      commentText: TERRIFICON?? Take me next time!!
+      reputationChanges:
+      - userToChange: azure.does.art
+        amount: 3
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: azure.does.art
+      commentText: "Totally totally, or I can at least lyk about the next one!\r"
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: you
+        commentText: TERRIFICON?? Take me next time!!
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  - initial:
+      commenter: you
+      commentText: Cons are dumb dude, and presenting shit there is not that cool.
+      reputationChanges:
+      - userToChange: azure.does.art
+        amount: -3
+      postDate: 0
+    postedReplies: []
+    availableToPlayer: []
+    pendingReplies:
+    - commenter: azure.does.art
+      commentText: Ummm, jealous much?
+      reputationChanges: []
+      postDate: 0
+      predecessor:
+        commenter: you
+        commentText: Cons are dumb dude, and presenting shit there is not that cool.
+        reputationChanges: []
+        postDate: 0
+      availabilityDelay: 1
+  liked: 0
+  shared: 0
+  saved: 0
+  increaseOnLike:
+  - azure.does.art
+  decreaseOnLike: []
+  increaseOnShare:
+  - azure.does.art
+  decreaseOnShare: []
+  CollegeReputationModifier: 1
+  rLiked: 0
+  rShared: 0
+  rSaved: 0
+  rCommentedToday: 0
+  rComments: []
+  rPostableComments: []
