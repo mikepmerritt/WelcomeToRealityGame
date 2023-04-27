@@ -57,6 +57,8 @@ public class EventHandler : MonoBehaviour
         choice1 = GameObject.Find("Choice 1");
         choice2 = GameObject.Find("Choice 2");
         choice3 = GameObject.Find("Choice 3");
+
+        panel.SetActive(false);
     }
 
     public void GoToNextDay()
@@ -67,7 +69,7 @@ public class EventHandler : MonoBehaviour
 
     public void AdjustGradesBasedOnTime()
     {
-        if(gradesWarning.activeSelf && gradesWarning.GetComponent<TMP_Text>().text == "You spent too much time on social media rather than studying!")
+        if(uim.timeExceeded)
         {
             grade += (pfm.dailyTime + 2); // +2 so -3 time is -1 grade, -4 time is -2 grade, etc.
         }
@@ -83,15 +85,12 @@ public class EventHandler : MonoBehaviour
         loadHighlight.SetActive(false);
         backToFeed.SetActive(true);
 
-        if(gradesWarning == null)
-        {
-            gradesWarning = GameObject.Find("Time Warning"); // reference may not exist, if it doesnt exist we need to find it
-        }
-        if(gradesWarning != null && gradesWarning.activeSelf == true)
+        if(uim.timeExceeded)
         {
             highlight.text = "You spent too much time on social media today! Hopefully it doesn't affect your grades...";
             AdjustGradesBasedOnTime();
             feedbackSet = true;
+            uim.timeExceeded = false;
         }
         if(!feedbackSet)
         {

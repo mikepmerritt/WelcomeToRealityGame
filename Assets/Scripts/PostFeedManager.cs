@@ -309,6 +309,10 @@ public class PostFeedManager : MonoBehaviour
                 // add post text
                 c.GetComponent<TMP_Text>().text = p.postText;
             }
+            else if(c.name == "Separator")
+            {
+                // ignore it, it does nothing
+            }
             else
             {
                 Debug.LogWarning("Feed Population Error: Child " + c.name + " has no intended behavior");

@@ -6,20 +6,23 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject posts, comments, leavingComments, profile;
+    public GameObject posts, comments, leavingComments, profile, timeUI, fakePhone;
     public GameObject commentContent, userCommentContent;
     public LayoutElement commentLayout, userCommentLayout;
     public PostFeedManager pfm;
     public GameObject commentPrefab, userCommentPrefab, replyPrefab;
     public TMP_Text commentExceptionText, profileTitle;
     public Button leaveCommentButton, profileReturn;
-    public TMP_Text timeTracker, timeWarning;
+    public TMP_Text timeTracker;
     public Sprite kaylaProfile, markusProfile, megProfile, carlosScamProfile, allisonProfile, annaProfile, carlosProfile; // TODO: these should be removed when the profile interface is finished
     public List<string> profileExceptions = new List<string>(); // TODO: this too
     public GameObject profileOverlay, profileBackup; // TODO: this too
     public GameObject reputation;
     public Image[] hearts;
     public Sprite fullHeart, halfHeart, emptyHeart;
+    public bool timeExceeded;
+    public Image clock;
+    public Sprite clock0, clock1, clock2, clock3, clock4, clock5, clock6;
 
     void Start()
     {
@@ -28,6 +31,9 @@ public class UIManager : MonoBehaviour
         leavingComments = GameObject.Find("Leave Comment UI");
         profile = GameObject.Find("Profile UI");
         timeTracker = GameObject.Find("Time Tracker").GetComponent<TMP_Text>();
+        timeUI = GameObject.Find("Time UI");
+        fakePhone = GameObject.Find("Fake Phone");
+        fakePhone.SetActive(false);
 
         commentContent = comments.GetComponentInChildren<LayoutElement>().gameObject;
         commentLayout = comments.GetComponentInChildren<LayoutElement>();
@@ -42,6 +48,8 @@ public class UIManager : MonoBehaviour
         hearts = reputation.gameObject.GetComponentsInChildren<Image>();
         profileReturn = GameObject.Find("Profile Return").GetComponent<Button>();
 
+        clock = GameObject.Find("Clock").GetComponent<Image>();
+
         pfm = GameObject.Find("Post Feed Manager").GetComponent<PostFeedManager>();
 
         // TODO: these should be removed when the profile interface is finished
@@ -54,10 +62,12 @@ public class UIManager : MonoBehaviour
     public void GoToPosts()
     {
         // activate one screen, deactivate the rest
+        fakePhone.SetActive(false);
         posts.SetActive(true);
         comments.SetActive(false);
         leavingComments.SetActive(false);
         profile.SetActive(false);
+        timeUI.SetActive(true);
         
         // clean up screens for next opening
         ClearComments();
@@ -76,6 +86,7 @@ public class UIManager : MonoBehaviour
         posts.SetActive(false);
         leavingComments.SetActive(false);
         profile.SetActive(false);
+        timeUI.SetActive(true);
 
         // clean up screens for next opening
         ClearUserCommentButtons();
@@ -165,6 +176,7 @@ public class UIManager : MonoBehaviour
         posts.SetActive(false);
         comments.SetActive(false);
         profile.SetActive(false);
+        timeUI.SetActive(true);
         
         // clean up screens for next opening
         ClearComments();
@@ -213,6 +225,7 @@ public class UIManager : MonoBehaviour
     {
         // activate one screen, deactivate the rest
         profile.SetActive(true);
+        timeUI.SetActive(false);
         posts.SetActive(false);
         comments.SetActive(false);
         leavingComments.SetActive(false);
@@ -243,6 +256,7 @@ public class UIManager : MonoBehaviour
     {
         // activate one screen, deactivate the rest
         profile.SetActive(true);
+        timeUI.SetActive(false);
         posts.SetActive(false);
         comments.SetActive(false);
         leavingComments.SetActive(false);
@@ -350,6 +364,7 @@ public class UIManager : MonoBehaviour
     {
         // activate one screen, deactivate the rest
         profile.SetActive(true);
+        timeUI.SetActive(false);
         posts.SetActive(false);
         comments.SetActive(false);
         leavingComments.SetActive(false);
@@ -487,36 +502,62 @@ public class UIManager : MonoBehaviour
         {
             pfm = GameObject.Find("Post Feed Manager").GetComponent<PostFeedManager>();
         }
-        if(timeWarning == null)
-        {
-            timeWarning = GameObject.Find("Time Warning").GetComponent<TMP_Text>();
-        }
 
         // update time
-        timeTracker.text = "Time Remaining:\n" + pfm.dailyTime;
-        
-        // update warning
-        if(pfm.dailyTime <= -3)
+        timeTracker.text = "" + pfm.dailyTime;
+
+        // update clock
+        if(clock == null)
         {
-            // time penalty
-            timeWarning.gameObject.SetActive(true);
-            timeWarning.text = "You spent too much time on social media rather than studying!";
+            clock = GameObject.Find("Clock").GetComponent<Image>();
         }
-        else if(pfm.dailyTime <= 0)
+
+        float fractime = ((float) pfm.dailyTime) / pfm.timePerDay;
+        if(fractime > 5f/6)
         {
-            // low on time warning
-            timeWarning.gameObject.SetActive(true);
-            timeWarning.text = "Spending more time will hurt your grades!";
+            clock.sprite = clock6;
+        }
+        else if(fractime > 4f/6)
+        {
+            clock.sprite = clock5;
+        }
+        else if(fractime > 3f/6)
+        {
+            clock.sprite = clock4;
+        }
+        else if(fractime > 2f/6)
+        {
+            clock.sprite = clock3;
+        }
+        else if(fractime > 1f/6)
+        {
+            clock.sprite = clock2;
+        }
+        else if(fractime > 0f)
+        {
+            clock.sprite = clock1;
         }
         else
         {
-            // hide warning (used for day transitions)
-            timeWarning.gameObject.SetActive(false);
+            clock.sprite = clock0;
+        }
+        
+        // update time penalty
+        if(pfm.dailyTime <= -3)
+        {
+            // time penalty
+            timeExceeded = true;
+        }
+        else
+        {
+            timeExceeded = false;
         }
     }
 
     public void HideAllPhoneScreens()
     {
+        fakePhone.SetActive(true);
+        timeUI.SetActive(true);
         profile.SetActive(false);
         posts.SetActive(false);
         comments.SetActive(false);

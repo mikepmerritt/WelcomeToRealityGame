@@ -574,10 +574,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5452549192717277122, guid: 3ff6b0c91f5da9e49b45e51ec3025a83, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6183865546587874198, guid: 3ff6b0c91f5da9e49b45e51ec3025a83, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -609,10 +605,6 @@ PrefabInstance:
     - target: {fileID: 7131355337236708092, guid: 3ff6b0c91f5da9e49b45e51ec3025a83, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8742683534787660288, guid: 3ff6b0c91f5da9e49b45e51ec3025a83, type: 3}
-      propertyPath: m_Name
-      value: Profile Backup
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ff6b0c91f5da9e49b45e51ec3025a83, type: 3}
@@ -649,6 +641,8 @@ MonoBehaviour:
   comments: {fileID: 0}
   leavingComments: {fileID: 0}
   profile: {fileID: 0}
+  timeUI: {fileID: 0}
+  fakePhone: {fileID: 0}
   commentContent: {fileID: 0}
   userCommentContent: {fileID: 0}
   commentLayout: {fileID: 0}
@@ -662,7 +656,6 @@ MonoBehaviour:
   leaveCommentButton: {fileID: 0}
   profileReturn: {fileID: 0}
   timeTracker: {fileID: 0}
-  timeWarning: {fileID: 0}
   kaylaProfile: {fileID: 21300000, guid: 289caa2cdb664a24b9a1c397c7f6cb98, type: 3}
   markusProfile: {fileID: 21300000, guid: 613d6fb7fa0104e4f8e9c324f18101c5, type: 3}
   megProfile: {fileID: 21300000, guid: 427f8ab2b06918d4b9f1385aeb463650, type: 3}
@@ -684,6 +677,15 @@ MonoBehaviour:
   fullHeart: {fileID: 21300000, guid: b3790341bc3d2e74b9aba223a349a1d1, type: 3}
   halfHeart: {fileID: 21300000, guid: 34b19bf0942dc2349bba23bc10aed279, type: 3}
   emptyHeart: {fileID: 21300000, guid: 339e81c5db5f2454db2e6486f651b35c, type: 3}
+  timeExceeded: 0
+  clock: {fileID: 0}
+  clock0: {fileID: 21300000, guid: 90105bbf015b6534da55b2281407ccde, type: 3}
+  clock1: {fileID: 21300000, guid: 953626be832e6744d99a47f4a5ed421e, type: 3}
+  clock2: {fileID: 21300000, guid: 6fdc347bafc358e40a6799ddce1bb72b, type: 3}
+  clock3: {fileID: 21300000, guid: 2133da9f396667540914eb2d93f66ee7, type: 3}
+  clock4: {fileID: 21300000, guid: af7bf7da15ce2f641b1b6f9b8de65622, type: 3}
+  clock5: {fileID: 21300000, guid: 448328c56a0dc9f46b995a85abb4c605, type: 3}
+  clock6: {fileID: 21300000, guid: d819835d48a13aa4d9b238560499d250, type: 3}
 --- !u!4 &1468587526
 Transform:
   m_ObjectHideFlags: 0
@@ -910,7 +912,7 @@ MonoBehaviour:
   pfm: {fileID: 0}
   uim: {fileID: 0}
   panel: {fileID: 0}
-  gradesWarning: {fileID: 4742419246832687798}
+  gradesWarning: {fileID: 0}
   highlight: {fileID: 0}
   title: {fileID: 0}
   partyInvite: 0
@@ -923,6 +925,7 @@ MonoBehaviour:
   - meg.farber
   - carlosgonzales28
   - all.is.on_line
+  - annapurna
   nextDay: {fileID: 0}
   loadHighlight: {fileID: 0}
   backToFeed: {fileID: 0}
@@ -1399,8 +1402,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
---- !u!1 &4742419246832687798 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4742419246707161966, guid: 68bec9bc945e3cd4bbada45359cda0e7, type: 3}
-  m_PrefabInstance: {fileID: 4742419246832687797}
-  m_PrefabAsset: {fileID: 0}
