@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text commentExceptionText, profileTitle;
     public Button leaveCommentButton, profileReturn;
     public TMP_Text timeTracker, timeWarning;
-    public Sprite kaylaProfile, markusProfile, megProfile, scamProfile; // TODO: these should be removed when the profile interface is finished
+    public Sprite kaylaProfile, markusProfile, megProfile, carlosScamProfile, allisonProfile, annaProfile, carlosProfile; // TODO: these should be removed when the profile interface is finished
     public List<string> profileExceptions = new List<string>(); // TODO: this too
     public GameObject profileOverlay, profileBackup; // TODO: this too
     public GameObject reputation;
@@ -271,9 +271,24 @@ public class UIManager : MonoBehaviour
             {
                 profileOverlay.GetComponent<Image>().sprite = kaylaProfile;
             }
-            else if(username == "user8390118")
+            else if(username == "carlosgonzales28")
             {
-                profileOverlay.GetComponent<Image>().sprite = scamProfile;
+                if(pfm.currentDay == 2 || pfm.currentDay == 3) // TODO: check dates
+                {
+                    profileOverlay.GetComponent<Image>().sprite = carlosScamProfile;
+                }
+                else
+                {
+                    profileOverlay.GetComponent<Image>().sprite = carlosProfile;
+                }
+            }
+            else if(username == "all.is.on_line")
+            {
+                profileOverlay.GetComponent<Image>().sprite = allisonProfile;
+            }
+            else if(username == "annapurna")
+            {
+                profileOverlay.GetComponent<Image>().sprite = annaProfile;
             }
         }
         else
@@ -362,9 +377,24 @@ public class UIManager : MonoBehaviour
             {
                 profileOverlay.GetComponent<Image>().sprite = kaylaProfile;
             }
-            else if(commenterName == "user8390118")
+            else if(commenterName == "carlosgonzales28")
             {
-                profileOverlay.GetComponent<Image>().sprite = scamProfile;
+                if(pfm.currentDay == 2 || pfm.currentDay == 3) // TODO: check dates
+                {
+                    profileOverlay.GetComponent<Image>().sprite = carlosScamProfile;
+                }
+                else
+                {
+                    profileOverlay.GetComponent<Image>().sprite = carlosProfile;
+                }
+            }
+            else if(commenterName == "all.is.on_line")
+            {
+                profileOverlay.GetComponent<Image>().sprite = allisonProfile;
+            }
+            else if(commenterName == "annapurna")
+            {
+                profileOverlay.GetComponent<Image>().sprite = annaProfile;
             }
         }
         else
