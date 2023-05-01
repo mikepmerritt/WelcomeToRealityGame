@@ -186,7 +186,24 @@ public class CommentChain
 
     public int CalculateSpaceNeeded()
     {
-        int space = 75; // space for initial
+        // // TODO: allocate space dynamically - figure how much space per line is needed and how to calculate lines
+        int space = 0;
+
+        // // constants used for calculations
+        // int oneLineSize = 45; // if the parent comment is only one line, the comment box height should be 45
+        // int additionalLineSize = 21; // for each additional line of text in the comment, increase comment box height by 21
+        // int charsPerLine = 100;
+
+        // int numLines = initial.commentText.Length % charsPerLine;
+
+        // space calculations
+        // space += oneLineSize;
+        // for(int i = 1; i < numLines; i++)
+        // {
+        //     space += additionalLineSize;
+        // }
+
+        space = 75;
         foreach(Comment c in postedReplies)
         {
             space += 75; // space for 1 reply

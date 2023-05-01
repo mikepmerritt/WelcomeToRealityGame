@@ -110,19 +110,13 @@ public class UIManager : MonoBehaviour
             commentExceptionText.gameObject.SetActive(true);
         }
 
-        // allocate space for comment box
-        commentLayout.preferredHeight = 0;
-        foreach(CommentChain c in pfm.curPost.rComments)
-        {
-            commentLayout.preferredHeight += c.CalculateSpaceNeeded();
-        }
-
         // add comments to comments box
         foreach(CommentChain c in pfm.curPost.rComments)
         {
             GameObject o = Instantiate(commentPrefab, commentContent.transform);
             TMP_Text[] commentBoxes = o.GetComponentsInChildren<TMP_Text>();
-            // TODO: reimplement system to create comment chain in box
+
+            float size = 25; // initial size for title is 25, rest will come later
 
             // create singleton comment using initial
             foreach(TMP_Text t in commentBoxes)
@@ -139,16 +133,20 @@ public class UIManager : MonoBehaviour
                 else if(t.gameObject.name == "Comment Text")
                 {
                     t.text = c.initial.commentText;
+                    size += t.preferredHeight; // allocate space for comment text
                 }
             }
+
+            o.GetComponent<RectTransform>().sizeDelta = new Vector2(300, size);
 
             foreach(Reply r in c.postedReplies)
             {
                 GameObject ro = Instantiate(replyPrefab, commentContent.transform);
                 TMP_Text[] replyBoxes = ro.GetComponentsInChildren<TMP_Text>();
-                // TODO: reimplement system to create comment chain in box
 
-                // create singleton comment using initial
+                float rsize = 25; // initial size for title is 25, rest will come later
+
+                // create reply comment
                 foreach(TMP_Text t in replyBoxes)
                 {
                     if(t.gameObject.name == "Commenter")
@@ -163,8 +161,11 @@ public class UIManager : MonoBehaviour
                     else if(t.gameObject.name == "Comment Text")
                     {
                         t.text = r.commentText;
+                        rsize += t.preferredHeight; // allocate space for reply text
                     }
                 }
+
+                ro.GetComponent<RectTransform>().sizeDelta = new Vector2(300, rsize);
             }
         }        
     }
