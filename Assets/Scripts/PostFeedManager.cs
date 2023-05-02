@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 // TODO: make a "first time setup" to purge all r variables for the posts.
 
@@ -20,6 +21,8 @@ public class PostFeedManager : MonoBehaviour
     public TMP_Text dayTracker;
     public List<string> blockedUsers;
     public EventHandler eh;
+    public static int finalGrades, finalRep;
+    public static bool hated;
 
     void Start()
     {
@@ -389,6 +392,20 @@ public class PostFeedManager : MonoBehaviour
         if(currentDay > 1)
         {
             uim.GoToPosts();
+        }
+
+        if(currentDay > 5)
+        {
+            finalGrades = eh.grade;
+            finalRep = eh.collegeRep;
+            foreach(string name in uim.profileExceptions)
+            {
+                if(reputations.TryGetValue(name, out int rep) && rep > 0)
+                {
+                    hated = false;
+                }
+            }
+            SceneManager.LoadScene("EndScene");
         }
 
         // refresh daily time
