@@ -307,7 +307,9 @@ public class PostFeedManager : MonoBehaviour
             else if(c.name == "Post Text")
             {
                 // add post text
-                c.GetComponent<TMP_Text>().text = p.postText;
+                TMP_Text textbox = c.GetComponent<TMP_Text>();
+                textbox.text = p.postText;
+                o.GetComponent<RectTransform>().sizeDelta = new Vector2(300, o.GetComponent<RectTransform>().rect.height + textbox.preferredHeight);
             }
             else if(c.name == "Separator")
             {
