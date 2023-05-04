@@ -679,13 +679,14 @@ MonoBehaviour:
   emptyHeart: {fileID: 21300000, guid: 339e81c5db5f2454db2e6486f651b35c, type: 3}
   timeExceeded: 0
   clock: {fileID: 0}
-  clock0: {fileID: 21300000, guid: 90105bbf015b6534da55b2281407ccde, type: 3}
-  clock1: {fileID: 21300000, guid: 953626be832e6744d99a47f4a5ed421e, type: 3}
-  clock2: {fileID: 21300000, guid: 6fdc347bafc358e40a6799ddce1bb72b, type: 3}
+  clock0: {fileID: 21300000, guid: d819835d48a13aa4d9b238560499d250, type: 3}
+  clock1: {fileID: 21300000, guid: 448328c56a0dc9f46b995a85abb4c605, type: 3}
+  clock2: {fileID: 21300000, guid: af7bf7da15ce2f641b1b6f9b8de65622, type: 3}
   clock3: {fileID: 21300000, guid: 2133da9f396667540914eb2d93f66ee7, type: 3}
-  clock4: {fileID: 21300000, guid: af7bf7da15ce2f641b1b6f9b8de65622, type: 3}
-  clock5: {fileID: 21300000, guid: 448328c56a0dc9f46b995a85abb4c605, type: 3}
-  clock6: {fileID: 21300000, guid: d819835d48a13aa4d9b238560499d250, type: 3}
+  clock4: {fileID: 21300000, guid: 6fdc347bafc358e40a6799ddce1bb72b, type: 3}
+  clock5: {fileID: 21300000, guid: 953626be832e6744d99a47f4a5ed421e, type: 3}
+  clock6: {fileID: 21300000, guid: 90105bbf015b6534da55b2281407ccde, type: 3}
+  clockOver: {fileID: 21300000, guid: aa108496b7589484e9e492e9cf29aa03, type: 3}
 --- !u!4 &1468587526
 Transform:
   m_ObjectHideFlags: 0
@@ -708,6 +709,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 295429167956636907, guid: 9e8c062822b06df4280a3dda226b625b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 295429167956636907, guid: 9e8c062822b06df4280a3dda226b625b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 295429167956636907, guid: 9e8c062822b06df4280a3dda226b625b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 295429167956636907, guid: 9e8c062822b06df4280a3dda226b625b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1206047030193850185, guid: 9e8c062822b06df4280a3dda226b625b, type: 3}
       propertyPath: m_Name
       value: Leave Comment UI
@@ -818,6 +835,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3052359468712368225, guid: 9e8c062822b06df4280a3dda226b625b, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385488933147688176, guid: 9e8c062822b06df4280a3dda226b625b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385488933147688176, guid: 9e8c062822b06df4280a3dda226b625b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752357595438573167, guid: 9e8c062822b06df4280a3dda226b625b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752357595438573167, guid: 9e8c062822b06df4280a3dda226b625b, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6570598888385979020, guid: 9e8c062822b06df4280a3dda226b625b, type: 3}

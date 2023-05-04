@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
     public Sprite fullHeart, halfHeart, emptyHeart;
     public bool timeExceeded;
     public Image clock;
-    public Sprite clock0, clock1, clock2, clock3, clock4, clock5, clock6;
+    public Sprite clock0, clock1, clock2, clock3, clock4, clock5, clock6, clockOver;
 
     void Start()
     {
@@ -507,6 +507,17 @@ public class UIManager : MonoBehaviour
         // update time
         timeTracker.text = "" + pfm.dailyTime;
 
+        // update time penalty
+        if(pfm.dailyTime <= -3)
+        {
+            // time penalty
+            timeExceeded = true;
+        }
+        else
+        {
+            timeExceeded = false;
+        }
+
         // update clock
         if(clock == null)
         {
@@ -514,7 +525,11 @@ public class UIManager : MonoBehaviour
         }
 
         float fractime = ((float) pfm.dailyTime) / pfm.timePerDay;
-        if(fractime > 5f/6)
+        if(timeExceeded)
+        {
+            StartCoroutine(AlternateClockWarningColor(true));
+        }
+        else if(fractime > 5f/6)
         {
             clock.sprite = clock6;
         }
@@ -542,17 +557,22 @@ public class UIManager : MonoBehaviour
         {
             clock.sprite = clock0;
         }
-        
-        // update time penalty
-        if(pfm.dailyTime <= -3)
+    }
+
+    public IEnumerator AlternateClockWarningColor(bool warningColorNext)
+    {
+        if(warningColorNext)
         {
-            // time penalty
-            timeExceeded = true;
+            clock.sprite = clockOver;
         }
         else
         {
-            timeExceeded = false;
+            clock.sprite = clock0;
         }
+
+        yield return new WaitForSeconds(0.5f);
+
+        StartCoroutine(AlternateClockWarningColor(!warningColorNext));
     }
 
     public void HideAllPhoneScreens()
