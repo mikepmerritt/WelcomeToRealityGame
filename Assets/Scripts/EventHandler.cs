@@ -86,6 +86,14 @@ public class EventHandler : MonoBehaviour
         loadHighlight.SetActive(false);
         backToFeed.SetActive(true);
 
+        // randomize important user list so we don't get the same hint always
+        for (int index = 0; index < importantUsers.Count; index++) {
+            string initial = importantUsers[index];
+            int swapIndex = Random.Range(index, importantUsers.Count);
+            importantUsers[index] = importantUsers[swapIndex];
+            importantUsers[swapIndex] = initial;
+        }
+
         if(uim.timeExceeded)
         {
             highlight.text = "You spent too much time on social media today! Hopefully it doesn't affect your grades...";
