@@ -140,7 +140,7 @@ public class EventHandler : MonoBehaviour
 
         highlight.text += "\n\nCurrent grade: " + grade;
         
-        if(collegeRep > 5)
+        if(collegeRep > 0)
         {
             highlight.text += "\nCollege reputation: Good";
         }

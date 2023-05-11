@@ -50,6 +50,8 @@ public class PostFeedManager : MonoBehaviour
 
     public void AllPostsFirstTimeCleanUp()
     {
+        hated = false;
+
         // TODO: replace 4 with number of days
         for(int day = 1; day <= 4; day++)
         {
@@ -168,7 +170,7 @@ public class PostFeedManager : MonoBehaviour
                     foreach(string name in p.decreaseOnLike)
                     {
                         // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
-                        if(!reputations.TryAdd(name, 1))
+                        if(!reputations.TryAdd(name, -1))
                         {
                             // add -rep if post is liked
                             if(p.rLiked)
@@ -240,7 +242,7 @@ public class PostFeedManager : MonoBehaviour
                     foreach(string name in p.decreaseOnShare)
                     {
                         // try to add the reputation to the dictionary, if it fails it already exists so add change to the one that exists already
-                        if(!reputations.TryAdd(name, 1))
+                        if(!reputations.TryAdd(name, -1))
                         {
                             // add -rep if post is shared
                             if(p.rShared)
@@ -400,9 +402,13 @@ public class PostFeedManager : MonoBehaviour
             finalRep = eh.collegeRep;
             foreach(string name in uim.profileExceptions)
             {
-                if(reputations.TryGetValue(name, out int rep) && rep > 0)
+                bool res = reputations.TryGetValue(name, out int rep);
+
+                // Debug.Log($"rating with {name} - {rep}");
+                
+                if(res && rep < 0)
                 {
-                    hated = false;
+                    hated = true;
                 }
             }
             SceneManager.LoadScene("EndScene");
