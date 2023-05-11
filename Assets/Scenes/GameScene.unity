@@ -656,13 +656,37 @@ MonoBehaviour:
   leaveCommentButton: {fileID: 0}
   profileReturn: {fileID: 0}
   timeTracker: {fileID: 0}
-  kaylaProfile: {fileID: 21300000, guid: 289caa2cdb664a24b9a1c397c7f6cb98, type: 3}
-  markusProfile: {fileID: 21300000, guid: 613d6fb7fa0104e4f8e9c324f18101c5, type: 3}
-  megProfile: {fileID: 21300000, guid: 427f8ab2b06918d4b9f1385aeb463650, type: 3}
-  carlosScamProfile: {fileID: 21300000, guid: 79509db332b25834c84b85b9d613234d, type: 3}
-  allisonProfile: {fileID: 21300000, guid: f52304e7a0e12b845a159fa262634feb, type: 3}
-  annaProfile: {fileID: 21300000, guid: aef5ca39fcee94b4194a132b03cd3cd5, type: 3}
-  carlosProfile: {fileID: 21300000, guid: 622851711ba829a47a3ce82bf4399d21, type: 3}
+  alBanner: {fileID: 21300000, guid: a418035dffda90f44a87a455ca06d701, type: 3}
+  anBanner: {fileID: 21300000, guid: 817cbf10c0591094eb90cb5c35be691a, type: 3}
+  azBanner: {fileID: 21300000, guid: ab6b7c5d0ca736e41b7e75eef9b02df9, type: 3}
+  caBanner: {fileID: 21300000, guid: 305ea75ee967c75418a3f5bb7012d081, type: 3}
+  kaBanner: {fileID: 21300000, guid: d76b187354625b749b10ab79234b6a29, type: 3}
+  maBanner: {fileID: 21300000, guid: c6bfca8373a2ed44e9877ea5a1a3602d, type: 3}
+  meBanner: {fileID: 21300000, guid: d308cc487e0c1db498e7d17c28ba15dd, type: 3}
+  noBanner: {fileID: 21300000, guid: 94bf4154e0edd35409e451744ff23273, type: 3}
+  alPosts: {fileID: 21300000, guid: 069afdaa1cbcb6d4e8498f62eaf8fcb7, type: 3}
+  anPosts: {fileID: 21300000, guid: 602a31a69aeed3841aca9df26746def9, type: 3}
+  azPosts: {fileID: 21300000, guid: e26f05816b239884c8f31edee12e7c92, type: 3}
+  caPosts: {fileID: 21300000, guid: a4c9ed8a6e5a31447ac91e28d220eba6, type: 3}
+  caPostsScam: {fileID: 21300000, guid: 37c4e9e95443e80428d9d1a69f901b51, type: 3}
+  maPosts: {fileID: 21300000, guid: e767fd369325f8b45b15903368415df6, type: 3}
+  mePosts: {fileID: 21300000, guid: ee99c79cdf3892742beccbf8800d4792, type: 3}
+  noPosts: {fileID: 21300000, guid: c46e9b2d8bca7494385674400c7dba0e, type: 3}
+  alBio: "Allison Bartley they/she \\nCHS Senior | \u2728Theatre Kid\u2728 | Get
+    tickets to the upcoming show! "
+  anBio: "Anna Tirothe she/they \\nCHS Senior | Dancer ~ Body Positive \u2764\uFE0F
+    | Friends >>>>>> "
+  azBio: "Azure G. they/them \\nCHS Senior | Artist, nerd, cosplayer, and activist~
+    \U0001F3F3\uFE0F\u200D\U0001F308\u270A\U0001F3FE(Art Acc: @artsy.zure)"
+  caBio: "Carlos Gonzales he/him \\nCHS Senior | Trying to think of a pun so witty
+    you won't be able to answer Bach \U0001F3BC "
+  kaBio: "Kayla Brown she/her \\nCHS Senior | Do good to bring good back \U0001F49C
+    ~ Cosmetology Nerd ~ Fashionista \U0001F484\u2728\uFE0F"
+  maBio: "Markus Smith he/him \\nCHS Senior | CHS Track Team | Winning isn\u2019t
+    everything, but I win for my family \U0001F947 "
+  meBio: "Megan Farber she/her  \\nCHS - Senior!! | \u27A1\uFE0F USCT | Life is a
+    party \U0001F389\U0001F495"
+  noBio: 
   profileExceptions:
   - meg.farber
   - marku.s.mith
@@ -670,8 +694,10 @@ MonoBehaviour:
   - carlosgonzales28
   - all.is.on_line
   - annapurna
-  profileOverlay: {fileID: 0}
-  profileBackup: {fileID: 0}
+  - azure.does.art
+  profileBanner: {fileID: 0}
+  profileBio: {fileID: 0}
+  profilePosts: {fileID: 0}
   reputation: {fileID: 0}
   hearts: []
   fullHeart: {fileID: 21300000, guid: b3790341bc3d2e74b9aba223a349a1d1, type: 3}

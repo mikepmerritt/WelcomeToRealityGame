@@ -14,9 +14,11 @@ public class UIManager : MonoBehaviour
     public TMP_Text commentExceptionText, profileTitle;
     public Button leaveCommentButton, profileReturn;
     public TMP_Text timeTracker;
-    public Sprite kaylaProfile, markusProfile, megProfile, carlosScamProfile, allisonProfile, annaProfile, carlosProfile; // TODO: these should be removed when the profile interface is finished
-    public List<string> profileExceptions = new List<string>(); // TODO: this too
-    public GameObject profileOverlay, profileBackup; // TODO: this too
+    public Sprite alBanner, anBanner, azBanner, caBanner, kaBanner, maBanner, meBanner, noBanner;
+    public Sprite alPosts, anPosts, azPosts, caPosts, caPostsScam, maPosts, mePosts, noPosts;
+    public string alBio, anBio, azBio, caBio, kaBio, maBio, meBio, noBio;
+    public List<string> profileExceptions = new List<string>();
+    public GameObject profileBanner, profileBio, profilePosts;
     public GameObject reputation;
     public Image[] hearts;
     public Sprite fullHeart, halfHeart, emptyHeart;
@@ -52,9 +54,9 @@ public class UIManager : MonoBehaviour
 
         pfm = GameObject.Find("Post Feed Manager").GetComponent<PostFeedManager>();
 
-        // TODO: these should be removed when the profile interface is finished
-        profileOverlay = GameObject.Find("Profile Interface");
-        profileBackup = GameObject.Find("Profile Backup");
+        profileBanner = GameObject.Find("Profile Banner");
+        profileBio = GameObject.Find("Profile Bio");
+        profilePosts = GameObject.Find("Profile Posts");
 
         GoToPosts();
     }
@@ -271,45 +273,61 @@ public class UIManager : MonoBehaviour
         // determine if we should use the image overlay or the backup one
         if (profileExceptions.Contains(username))
         {
-            profileOverlay.SetActive(true);
-            profileBackup.SetActive(false);
-
             if(username == "meg.farber")
             {
-                profileOverlay.GetComponent<Image>().sprite = megProfile;
+                profileBanner.GetComponent<Image>().sprite = meBanner;
+                profileBio.GetComponent<TMP_Text>().text = meBio;
+                profilePosts.GetComponent<Image>().sprite = mePosts;
             }
             else if(username == "marku.s.mith")
             {
-                profileOverlay.GetComponent<Image>().sprite = markusProfile;
+                profileBanner.GetComponent<Image>().sprite = maBanner;
+                profileBio.GetComponent<TMP_Text>().text = maBio;
+                profilePosts.GetComponent<Image>().sprite = maPosts;
             }
             else if(username == "kayla_brownie")
             {
-                profileOverlay.GetComponent<Image>().sprite = kaylaProfile;
+                profileBanner.GetComponent<Image>().sprite = kaBanner;
+                profileBio.GetComponent<TMP_Text>().text = kaBio;
+                profilePosts.GetComponent<Image>().sprite = noPosts;
             }
             else if(username == "carlosgonzales28")
             {
+                profileBanner.GetComponent<Image>().sprite = caBanner;
+                profileBio.GetComponent<TMP_Text>().text = caBio;
                 if(pfm.currentDay == 2 || pfm.currentDay == 3) // TODO: check dates
                 {
-                    profileOverlay.GetComponent<Image>().sprite = carlosScamProfile;
+                    profilePosts.GetComponent<Image>().sprite = caPostsScam;
                 }
                 else
                 {
-                    profileOverlay.GetComponent<Image>().sprite = carlosProfile;
+                    profilePosts.GetComponent<Image>().sprite = caPosts;
                 }
             }
             else if(username == "all.is.on_line")
             {
-                profileOverlay.GetComponent<Image>().sprite = allisonProfile;
+                profileBanner.GetComponent<Image>().sprite = alBanner;
+                profileBio.GetComponent<TMP_Text>().text = alBio;
+                profilePosts.GetComponent<Image>().sprite = alPosts;
             }
             else if(username == "annapurna")
             {
-                profileOverlay.GetComponent<Image>().sprite = annaProfile;
+                profileBanner.GetComponent<Image>().sprite = anBanner;
+                profileBio.GetComponent<TMP_Text>().text = anBio;
+                profilePosts.GetComponent<Image>().sprite = anPosts;
+            }
+            else if(username == "azure.does.art")
+            {
+                profileBanner.GetComponent<Image>().sprite = azBanner;
+                profileBio.GetComponent<TMP_Text>().text = azBio;
+                profilePosts.GetComponent<Image>().sprite = azPosts;
             }
         }
         else
         {
-            profileOverlay.SetActive(false);
-            profileBackup.SetActive(true);
+            profileBanner.GetComponent<Image>().sprite = noBanner;
+            profileBio.GetComponent<TMP_Text>().text = noBio;
+            profilePosts.GetComponent<Image>().sprite = noPosts;
         }
 
         // set up profile
@@ -378,45 +396,61 @@ public class UIManager : MonoBehaviour
         // determine if we should use the image overlay or the backup one
         if (profileExceptions.Contains(commenterName))
         {
-            profileOverlay.SetActive(true);
-            profileBackup.SetActive(false);
-
             if(commenterName == "meg.farber")
             {
-                profileOverlay.GetComponent<Image>().sprite = megProfile;
+                profileBanner.GetComponent<Image>().sprite = meBanner;
+                profileBio.GetComponent<TMP_Text>().text = meBio;
+                profilePosts.GetComponent<Image>().sprite = mePosts;
             }
             else if(commenterName == "marku.s.mith")
             {
-                profileOverlay.GetComponent<Image>().sprite = markusProfile;
+                profileBanner.GetComponent<Image>().sprite = maBanner;
+                profileBio.GetComponent<TMP_Text>().text = maBio;
+                profilePosts.GetComponent<Image>().sprite = maPosts;
             }
             else if(commenterName == "kayla_brownie")
             {
-                profileOverlay.GetComponent<Image>().sprite = kaylaProfile;
+                profileBanner.GetComponent<Image>().sprite = kaBanner;
+                profileBio.GetComponent<TMP_Text>().text = kaBio;
+                profilePosts.GetComponent<Image>().sprite = noPosts;
             }
             else if(commenterName == "carlosgonzales28")
             {
+                profileBanner.GetComponent<Image>().sprite = caBanner;
+                profileBio.GetComponent<TMP_Text>().text = caBio;
                 if(pfm.currentDay == 2 || pfm.currentDay == 3) // TODO: check dates
                 {
-                    profileOverlay.GetComponent<Image>().sprite = carlosScamProfile;
+                    profilePosts.GetComponent<Image>().sprite = caPostsScam;
                 }
                 else
                 {
-                    profileOverlay.GetComponent<Image>().sprite = carlosProfile;
+                    profilePosts.GetComponent<Image>().sprite = caPosts;
                 }
             }
             else if(commenterName == "all.is.on_line")
             {
-                profileOverlay.GetComponent<Image>().sprite = allisonProfile;
+                profileBanner.GetComponent<Image>().sprite = alBanner;
+                profileBio.GetComponent<TMP_Text>().text = alBio;
+                profilePosts.GetComponent<Image>().sprite = alPosts;
             }
             else if(commenterName == "annapurna")
             {
-                profileOverlay.GetComponent<Image>().sprite = annaProfile;
+                profileBanner.GetComponent<Image>().sprite = anBanner;
+                profileBio.GetComponent<TMP_Text>().text = anBio;
+                profilePosts.GetComponent<Image>().sprite = anPosts;
+            }
+            else if(commenterName == "azure.does.art")
+            {
+                profileBanner.GetComponent<Image>().sprite = azBanner;
+                profileBio.GetComponent<TMP_Text>().text = azBio;
+                profilePosts.GetComponent<Image>().sprite = azPosts;
             }
         }
         else
         {
-            profileOverlay.SetActive(false);
-            profileBackup.SetActive(true);
+            profileBanner.GetComponent<Image>().sprite = noBanner;
+            profileBio.GetComponent<TMP_Text>().text = noBio;
+            profilePosts.GetComponent<Image>().sprite = noPosts;
         }
 
         // set up profile
