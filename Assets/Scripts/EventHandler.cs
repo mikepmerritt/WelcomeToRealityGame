@@ -20,7 +20,7 @@ public class EventHandler : MonoBehaviour
     public void Start()
     {
         // set initial rep values
-        grade = 95;
+        grade = 100;
         collegeRep = 0;
 
         // set bools to false
@@ -64,6 +64,7 @@ public class EventHandler : MonoBehaviour
     public void GoToNextDay()
     {
         uim.HideAllPhoneScreens();
+        uim.UpdateTime();
         PickAndShowEvent();
     }
 
@@ -71,7 +72,7 @@ public class EventHandler : MonoBehaviour
     {
         if(uim.timeExceeded)
         {
-            grade += (pfm.dailyTime + 2); // +2 so -3 time is -1 grade, -4 time is -2 grade, etc.
+            grade += 3 * (pfm.dailyTime + 2); // 3*(time+2) so -3 time is -3 grade, -4 time is -6 grade, etc.
         }
     }
 

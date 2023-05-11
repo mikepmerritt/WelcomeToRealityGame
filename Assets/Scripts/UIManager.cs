@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
     public GameObject reputation;
     public Image[] hearts;
     public Sprite fullHeart, halfHeart, emptyHeart;
-    public bool timeExceeded;
+    public bool timeExceeded, coroutineStarted;
     public Image clock;
     public Sprite clock0, clock1, clock2, clock3, clock4, clock5, clock6, clockOver;
 
@@ -57,6 +57,8 @@ public class UIManager : MonoBehaviour
         profileBanner = GameObject.Find("Profile Banner");
         profileBio = GameObject.Find("Profile Bio");
         profilePosts = GameObject.Find("Profile Posts");
+
+        coroutineStarted = false;
 
         GoToPosts();
     }
@@ -559,37 +561,55 @@ public class UIManager : MonoBehaviour
         }
 
         float fractime = ((float) pfm.dailyTime) / pfm.timePerDay;
-        if(timeExceeded)
+        if(timeExceeded && !coroutineStarted)
         {
+            coroutineStarted = true;
             StartCoroutine(AlternateClockWarningColor(true));
         }
-        else if(fractime > 5f/6)
+        else if(coroutineStarted)
         {
-            clock.sprite = clock6;
-        }
-        else if(fractime > 4f/6)
-        {
-            clock.sprite = clock5;
-        }
-        else if(fractime > 3f/6)
-        {
-            clock.sprite = clock4;
-        }
-        else if(fractime > 2f/6)
-        {
-            clock.sprite = clock3;
-        }
-        else if(fractime > 1f/6)
-        {
-            clock.sprite = clock2;
-        }
-        else if(fractime > 0f)
-        {
-            clock.sprite = clock1;
+            // do nothing - it's already flashing
+            // check for reset
+            if(fractime > 0f)
+            {
+                clock.sprite = clock6;
+                coroutineStarted = false;
+                StopAllCoroutines();
+            }
         }
         else
         {
-            clock.sprite = clock0;
+            coroutineStarted = false;
+            StopAllCoroutines();
+
+            if(fractime > 5f/6)
+            {
+                clock.sprite = clock6;
+            }
+            else if(fractime > 4f/6)
+            {
+                clock.sprite = clock5;
+            }
+            else if(fractime > 3f/6)
+            {
+                clock.sprite = clock4;
+            }
+            else if(fractime > 2f/6)
+            {
+                clock.sprite = clock3;
+            }
+            else if(fractime > 1f/6)
+            {
+                clock.sprite = clock2;
+            }
+            else if(fractime > 0f)
+            {
+                clock.sprite = clock1;
+            }
+            else
+            {
+                clock.sprite = clock0;
+            }
         }
     }
 
